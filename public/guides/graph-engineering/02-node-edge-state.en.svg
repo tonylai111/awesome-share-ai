@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 280" style="width:100%;max-width:760px;height:auto" role="img" aria-label="Nodes, edges, and state">
+  <rect x="2" y="2" width="756" height="276" rx="14" fill="#ffffff" stroke="#e2e8f0"/>
+  <g font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif">
+    <text x="380" y="34" fill="#0f172a" font-size="15" font-weight="700" text-anchor="middle">Graph triad: Node / Edge / State</text>
+    <rect x="28" y="56" width="210" height="150" rx="12" fill="#eff6ff" stroke="#3b82f6"/>
+    <text x="133" y="88" fill="#1e40af" font-size="16" font-weight="800" text-anchor="middle">Node</text>
+    <text x="133" y="116" fill="#1e3a8a" font-size="12" text-anchor="middle">Unit that does work</text>
+    <text x="133" y="140" fill="#334155" font-size="11.5" text-anchor="middle">Agent / code / tool / human</text>
+    <text x="133" y="162" fill="#64748b" font-size="11" text-anchor="middle">One job - clear boundary</text>
+    <text x="133" y="184" fill="#64748b" font-size="11" text-anchor="middle">Prefer code when deterministic</text>
+    <rect x="275" y="56" width="210" height="150" rx="12" fill="#ecfdf5" stroke="#10b981"/>
+    <text x="380" y="88" fill="#065f46" font-size="16" font-weight="800" text-anchor="middle">Edge</text>
+    <text x="380" y="116" fill="#064e3b" font-size="12" text-anchor="middle">Handoff and routing contract</text>
+    <text x="380" y="140" fill="#334155" font-size="11.5" text-anchor="middle">Fields / permissions / failure</text>
+    <text x="380" y="162" fill="#64748b" font-size="11" text-anchor="middle">Branch / fan-out / fan-in</text>
+    <text x="380" y="184" fill="#64748b" font-size="11" text-anchor="middle">Then is not a real dependency</text>
+    <rect x="522" y="56" width="210" height="150" rx="12" fill="#fff7ed" stroke="#f59e0b"/>
+    <text x="627" y="88" fill="#9a3412" font-size="16" font-weight="800" text-anchor="middle">State</text>
+    <text x="627" y="116" fill="#7c2d12" font-size="12" text-anchor="middle">Shared record on the edges</text>
+    <text x="627" y="140" fill="#334155" font-size="11.5" text-anchor="middle">Version / checkpoint / evidence</text>
+    <text x="627" y="162" fill="#64748b" font-size="11" text-anchor="middle">Pause / resume</text>
+    <text x="627" y="184" fill="#64748b" font-size="11" text-anchor="middle">Partial redo</text>
+    <text x="380" y="244" fill="#475569" font-size="12" text-anchor="middle">Multi-agent counts workers; Graph Engineering designs handoffs</text>
+    <text x="380" y="266" fill="#94a3b8" font-size="11" text-anchor="middle">Good edges have schemas; good state makes failure recoverable</text>
+  </g>
+</svg>

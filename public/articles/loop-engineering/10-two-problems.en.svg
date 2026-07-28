@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 320" style="width:100%;max-width:760px;height:auto" role="img" aria-label="Two problems and corresponding guardrails">
+  <rect x="2" y="2" width="756" height="316" rx="14" fill="#ffffff" stroke="#e2e8f0"/>
+  <g font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif">
+    <rect x="24" y="24" width="350" height="272" rx="12" fill="#fff1f2" stroke="#f43f5e"/>
+    <text x="199" y="56" fill="#9f1239" font-size="15" font-weight="800" text-anchor="middle">Problem 1</text>
+    <text x="199" y="82" fill="#9f1239" font-size="16" font-weight="700" text-anchor="middle">Goals are hard to define</text>
+    <text x="48" y="118" fill="#881337" font-size="12.5">Software work is often exploratory.</text>
+    <text x="48" y="138" fill="#881337" font-size="12.5">Fuzzy endpoints let the loop optimize</text>
+    <text x="48" y="158" fill="#881337" font-size="12.5">toward empty slogans  worse than a</text>
+    <text x="48" y="178" fill="#881337" font-size="12.5">careful manual pass.</text>
+    <text x="48" y="198" fill="#881337" font-size="12.5">Subjective / creative goals rarely converge.</text>
+    <rect x="48" y="220" width="302" height="54" rx="10" fill="#ffffff" stroke="#f43f5e"/>
+    <text x="199" y="242" fill="#9f1239" font-size="13" font-weight="700" text-anchor="middle">Guardrail</text>
+    <text x="199" y="260" fill="#be123c" font-size="11.5" text-anchor="middle">Write a checkable goal first </text>
+    <text x="199" y="276" fill="#be123c" font-size="11.5" text-anchor="middle">no check, no loop</text>
+
+    <rect x="386" y="24" width="350" height="272" rx="12" fill="#fff7ed" stroke="#f59e0b"/>
+    <text x="561" y="56" fill="#9a3412" font-size="15" font-weight="800" text-anchor="middle">Problem 2</text>
+    <text x="561" y="82" fill="#9a3412" font-size="16" font-weight="700" text-anchor="middle">Costs explode overnight</text>
+    <text x="410" y="118" fill="#7c2d12" font-size="12.5">Self-prompting, self-review, helpers,</text>
+    <text x="410" y="138" fill="#7c2d12" font-size="12.5">and retries can burn tokens while</text>
+    <text x="410" y="158" fill="#7c2d12" font-size="12.5">nobody is watching.</text>
+    <text x="410" y="178" fill="#7c2d12" font-size="12.5">Unlimited budget makes hype cheap.</text>
+    <rect x="410" y="200" width="302" height="74" rx="10" fill="#ffffff" stroke="#f59e0b"/>
+    <text x="561" y="226" fill="#9a3412" font-size="13" font-weight="700" text-anchor="middle">Guardrail  budget is architecture</text>
+    <text x="561" y="248" fill="#c2410c" font-size="11.5" text-anchor="middle">Max iterations � no-progress � daily budget</text>
+    <text x="561" y="266" fill="#c2410c" font-size="11.5" text-anchor="middle">+ verification stronger than "agent says done"</text>
+  </g>
+</svg>

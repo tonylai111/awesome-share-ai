@@ -1,0 +1,418 @@
+---
+title:
+  zh: "Loop Engineering：别再手把手提示词，去设计驱动 Agent 的系统"
+  en: "Loop Engineering: Design the System That Drives the Agent"
+description:
+  zh: "从 Prompt → Context → Harness → Loop：把「你当循环」变成「系统设计循环」。整理自 Saulius 对 Loop Engineering 的综述。"
+  en: "From Prompt → Context → Harness → Loop: stop being the loop yourself. Adapted from Saulius' overview of loop engineering."
+date: "2026-07-27"
+tags: [agent, loop-engineering, claude, codex, harness]
+category: ai
+readingMinutes: 18
+---
+
+<<<zh>>>
+## 写在前面
+
+过去两年，很多人用编码 Agent 的方式是：写好提示词 → 喂上下文 → 看结果 → 再打下一句。**你自己就是循环。**
+
+但当模型能在难题上待几小时而不是几分钟，瓶颈变了。有趣的问题不再是「模型能不能写好代码」，而是：**它能不能自己持续推进，还不跑偏、不重复犯错、不过早宣布胜利？**
+
+**Loop Engineering（循环工程）** 回答的就是这件事：你不再亲自提示 Agent，而是设计**去提示 Agent 的系统**——发现工作、分发任务、检查结果、记录进度、决定下一步。角色从操作员变成架构师。
+
+> 你不该再手把手提示编码 Agent；你该设计会提示 Agent 的循环。
+
+本文整合两份材料：
+
+1. [Saulius](https://saulius.io/blog/loop-engineering-systems-that-drive-agents) 的 Loop Engineering 英文综述（流程图见下文 SVG）  
+2. 《Loop Engineering：从 Prompt 到循环工程 · 八课通讲》PDF 小册（下方为干净流程图；完整八课见指南）
+
+八课系统版指南：[Loop Engineering：从 Prompt 到循环工程（八课通讲）](/guides/loop-engineering) · [下载 PDF](/guides/Loop-Engineering.pdf)
+
+## Prompt 和 Loop，到底差在哪
+
+同样是「用 AI 干活」，形状完全不同——差别在**谁来重复**：
+
+![Prompt vs Loop：方式一与方式二](/articles/loop-engineering/figures/01-prompt-vs-loop-cards.png)
+
+![Prompt 一次性 vs Loop 自己转](/articles/loop-engineering/figures/02-prompt-vs-loop-flow.png)
+
+从图里能拎出 Loop 的三个本质：
+
+1. **会自己重复**：不用你每轮推一下  
+2. **每轮都检查**：做完一步，自己判断「好了没」  
+3. **好了自己停**：达到目标就退出，不无限跑  
+
+## 演进：从 Prompt 到 Loop
+
+每一层都叠在上一层之上：
+
+![从提示工程到循环工程的演进](/articles/loop-engineering/01-progression.svg)
+
+| 层级 | 在做什么 |
+| --- | --- |
+| 提示工程 | 写好「单轮」指令 |
+| 上下文工程 | 策展模型窗口里该看见什么 |
+| Harness 工程 | 设计「单次运行」里 Agent 所处的环境 |
+| 循环工程 | 设计按节奏跑 Agent、验证输出、自我续航的自治系统 |
+
+**Harness** 是一次运行里 Agent 的环境；**Loop** 高一层：定时/事件触发、拉子 Agent、验证、不靠你持续盯着也能继续。
+
+一句话切换：
+
+- 旧：`我提示 → Agent 回复 → 我再提示`
+- 新：`我设计自治系统：发现工作、验证结果、驱动进度`
+
+## 谱系：这不是新概念
+
+![谱系：ReAct → AutoGPT → Ralph → /goal](/articles/loop-engineering/02-lineage.svg)
+
+| 阶段 | 要点 |
+| --- | --- |
+| ReAct | 推理 → 行动 → 观察，重复；人盯着每一步 |
+| AutoGPT | 有目标、自我提示；证明可行，也证明「挖坑烧 token」 |
+| Ralph loop | 同一提示、**新鲜上下文**反复跑；强制失忆，避免历史堵死窗口 |
+| `/goal` 等 | 停止条件是「真的做完」且可对照标准验证，而不是固定迭代次数 |
+
+更精确地说：**编码 Agent ≠ 更聪明的模型**；它是「包在循环外的模型」。
+
+![Agent = 包裹层里的循环里的 LLM](/articles/loop-engineering/03-wrapper.svg)
+
+Prompt 工程优化单次交互；Loop 工程把单次交互变成更大系统里的组件——**系统才是工作单元**。
+
+## 核心架构：有反馈、有独立验证
+
+「定时再跑一遍 Agent」不算好循环，那只是更贵的重复失败。可用循环大致长这样：
+
+![核心循环：目标·尝试·反馈·自我纠正·验证·完成](/articles/loop-engineering/04-core-loop.svg)
+
+各段职责：
+
+- **Goal**：可检验的完成定义。不是「修 bug」，而是「`test/auth` 全部通过且符合规格」。写不出检查条件，循环就不知道何时停。
+- **Attempt**：读仓库、改代码、调 API、跑命令。
+- **Feedback**：环境回信号——测试失败、类型错误、不达标。
+- **Self-correct**：读反馈后换思路；这才叫循环，否则只是重试。
+- **Verify**：另开上下文按 rubric 打分；**自评不算数**。
+- **Stop**：验证器通过才停，不是 Agent「觉得做完了」就停。
+
+模型是引擎，循环是底盘。没有循环，强模型也会在长任务上翻车。
+
+## 没有循环时，Agent 常见翻车方式
+
+| # | 失败模式 | 循环怎么对治 |
+| --- | --- | --- |
+| 1 | 上下文崩塌 | 盘上外置记忆，每轮重读 |
+| 2 | 不会自我纠正 | 强制「先诊断再下一轮」 |
+| 3 | 没有验证器 | 独立评分 + rubric |
+| 4 | 跨会话失忆 | 状态落在文件/看板，不在聊天里 |
+| 5 | 没有停止条件 | 硬、可检查的 done |
+
+好 Agent 不是开局漂亮，而是**三小时后还知道自己在干什么**。
+
+## 五大积木 + 一块持久记忆
+
+Saulius 侧是 Automations / Worktrees / Skills / MCP / Sub-agents + Memory。PDF 八课侧把循环拆成五个零件（同一回事，换一套更口语的零件名）：
+
+![五个零件：触发 → 执行 → 验证 → 记忆 → 停止](/articles/loop-engineering/figures/03-five-parts.png)
+
+![五大积木 + 持久记忆围绕循环引擎](/articles/loop-engineering/05-building-blocks.svg)
+
+| 积木 | 作用 |
+| --- | --- |
+| Automations | 心跳：定时/事件触发 |
+| Worktrees | 并行不互踩：每 Agent 独立工作树 |
+| Skills | 项目知识一次写清，循环不再每轮从零学 |
+| Connectors (MCP) | 接到真实工具：工单、DB、CI、飞书/Slack |
+| Sub-agents | Maker / Checker 分家 |
+| Memory（第六块） | `STATE.md`、看板等——模型会忘，仓库不会 |
+
+## 好的第一批循环（从哪开始）
+
+优先选：**重复出现、机器可判定、可回滚** 的事。
+
+- CI 失败分诊：分类 → 简单类起草 PR → 其余升级给人
+- 依赖升级 PR：隔离 worktree 测过再开 PR
+- Lint/format：PR 打开时自动修风格
+- 不稳定测试复现：直到理论站得住
+- Issue → PR 草稿：测试强的仓库尤其合适
+- 提交简报 / 每日摘要
+
+### 「晨间分诊」端到端形状
+
+![晨间分诊循环（端到端）](/articles/loop-engineering/06-morning-triage.svg)
+
+自动化是「永远 1→2→3」；循环是「看状态 → 决定下一步 → 检查 → 要不要再来一轮」。
+
+### 触发与可验证目标
+
+![触发在生命周期里的位置](/articles/loop-engineering/figures/04-loop-lifecycle.png)
+
+![触发升级：手动 → 定时 → 事件](/articles/loop-engineering/figures/05-trigger-ladder.png)
+
+铁律：**触发器有多自动，验证就得有多硬。** 别跳级。
+
+![触发 → 循环引擎 → 可验证目标](/articles/loop-engineering/07-trigger-goal.svg)
+
+没有检查，你搭的不是循环——是一台很自信的 Token 熔炉。
+
+### 何时不要做循环
+
+架构重写、鉴权/支付/计费、生产部署、目标模糊的产品活、以及「完成」全靠主观判断的工作——**人留在椅子上**。
+
+诚实说法：Loop Engineering 是真的，但多数人多数任务还不需要。循环放大产出；若瓶颈其实是**审查带宽**，循环只会让队列更长。
+
+## 最佳实践（可当检查清单）
+
+### 起飞前
+
+![该不该做成循环？起飞检查清单](/articles/loop-engineering/08-preflight.svg)
+
+### 最重要的一条：Maker 与 Checker 分开
+
+产出者不能当唯一评分者。验证放在独立上下文，用明确 rubric；停止条件跟验证器走，不跟「我感觉做完了」走。
+
+PDF 里把验证讲成「一架梯子」——先用最便宜、能挡住问题的那一层：
+
+![验证是一架梯子](/articles/loop-engineering/figures/06-verify-ladder.png)
+
+### Skills 是杠杆最高、也最被低估的积木
+
+没有 Skills，循环每轮从零重学项目；有 Skills，意图会复利。实用约定：一事一 Skill、写密但文件短、让 Agent 维护索引——你只需说「看技能列表，用相关的」。
+
+### 记忆放磁盘，不放上下文
+
+每轮更新：动了哪些文件、分了什么类、开了哪些 PR、哪些升级给人。
+
+### 硬停止要三件套
+
+![停止条件：循环的刹车](/articles/loop-engineering/figures/07-stop-conditions.png)
+
+![三种硬停止控制](/articles/loop-engineering/09-hard-stops.svg)
+
+1. 最大迭代次数  
+2. **无进展检测**（最重要）  
+3. Token / 美元上限（最好按子 Agent）
+
+编排逻辑放在 Agent 外：迭代上限、分支、停止条件用脚本/工作流控；Agent 在结构里干活，别让它自己当总指挥。
+
+## 风险（别只剩热情）
+
+![两大问题与对应护栏](/articles/loop-engineering/10-two-problems.svg)
+
+1. **目标难写准** → 写不出检查就不要循环。  
+2. **成本会炸** → 轮次上限 + 无进展停 + 日预算。  
+3. 弱验证 → 奖励黑客（表面达标、意图落空）。  
+4. 长链路可靠度复利衰减 → 短循环、勤验证。  
+5. 审查瓶颈只是搬家 → 产出变多，队列变长。  
+6. 无人照看的「合格但变烂」。  
+7. 最深风险：**用循环逃避理解**——加速你已懂的工作会复利；逃避理解会悄悄掏空你。
+
+## 你在逃离的：保姆循环
+
+今天很多人还在亲手当循环：写提示 → 授权 → 跑测 → 贴报错 → 再试……二十分钟后发现自己在保姆本想外包的流程。
+
+**试金石**：如果你只在做又笨又重复的动作——那是循环。如果是「想更好的产品策略」——先把目标想清楚，别交给循环。
+
+## 克制的结论
+
+Loop Engineering 是工作方式的真实迁移，不只是自动化换皮。核心可靠且已在窄、可检查任务上落地：**设计驱动 Agent 的系统、独立验证、状态落盘**。
+
+它也还早。务实路径：
+
+1. 选一个重复、可机器判定、可回滚的任务  
+2. 做最小「反馈 + 验证」闭环  
+3. 赚回成本再扩大  
+
+工作正在从「操作 Agent」变成「工程化它所在的循环」。会设计好循环的人拿到杠杆；只会把重试塞进 cron 并自称自治的人，多半只拿到更大账单。
+
+## 延伸阅读
+
+- [Saulius — Loop Engineering](https://saulius.io/blog/loop-engineering-systems-that-drive-agents)（本文主要整合来源；流程图中文版见上文）
+- 八课通讲指南：[Loop Engineering 指南](/guides/loop-engineering)
+- Addy Osmani — Loop Engineering（五积木 + 记忆）
+- Boris Cherny / Peter Steinberger — “write loops, not prompts”
+- Ralph loop、`/goal` 与各家 coding agent 产品文档
+<<<en>>>
+## Before you start
+
+For two years, useful coding-agent work meant holding its hand: careful prompt → enough context → read the reply → type the next instruction. **You were the loop.**
+
+As models stay on hard problems for hours, the bottleneck shifts. The interesting question is no longer "can the model write good code?" but: **can it keep making progress without losing the thread, repeating mistakes, or declaring victory early?**
+
+**Loop engineering** answers that. Instead of prompting the agent yourself, you design the system that prompts it — discover work, hand it out, check results, record progress, decide what's next. Operator → architect.
+
+> You shouldn't be prompting coding agents anymore. You should be designing loops that prompt your agents.
+
+This note integrates [Saulius' overview](https://saulius.io/blog/loop-engineering-systems-that-drive-agents) into plain language and checklists. The original also synthesizes Addy Osmani, Boris Cherny, Ralph loops, `/goal`, and more.
+
+For the eight-lesson course structure (trigger / act / verify / memory / stop), see the guide: [Loop Engineering: From Prompt to Loops](/guides/loop-engineering) (adapted from the Chinese booklet PDF).
+
+Diagrams below reuse the original English SVG flows from the Saulius post (Chinese versions live in the Chinese locale of this article).
+
+## The progression: prompts → loops
+
+![Progression from prompt engineering to loop engineering](/articles/loop-engineering/01-progression.en.svg)
+
+| Layer | Job |
+| --- | --- |
+| Prompt Eng. | One good instruction for one turn |
+| Context Eng. | Curate what fits in the window |
+| Harness Eng. | Environment for one agent run |
+| Loop Eng. | Autonomous system that runs the agent on a cadence, verifies output, feeds itself |
+
+A **harness** is the environment for one run. A **loop** sits one floor higher: timer/events, helpers, verification, progress without you babysitting every turn.
+
+One-line shift:
+
+- Old: `I prompt → agent replies → I prompt again`
+- New: `I design the system that discovers work, verifies results, and drives progress`
+
+## Lineage
+
+![Lineage: ReAct to AutoGPT to Ralph to goal](/articles/loop-engineering/02-lineage.en.svg)
+
+| Stage | Idea |
+| --- | --- |
+| ReAct | Reason → act → observe; human watches each step |
+| AutoGPT | Goal + self-prompting; also pioneered token rabbit holes |
+| Ralph loop | Same prompt, **fresh context**, forced amnesia |
+| `/goal` etc. | Stop when "actually done," verified vs criteria |
+
+A coding agent is not a smarter model — **it is a model wrapped around a loop.**
+
+![An agent is an LLM inside a loop inside a wrapper](/articles/loop-engineering/03-wrapper.en.svg)
+
+Prompt engineering optimizes one interaction. Loop engineering makes that interaction a component — **the system becomes the unit of work.**
+
+## Core architecture
+
+"Run the agent again on a schedule" is just an expensive way to fail repeatedly. A working loop needs feedback and an independent verifier:
+
+![Core loop: goal, attempt, feedback, self-correct, verify, done](/articles/loop-engineering/04-core-loop.en.svg)
+
+- **Goal** — testable done ("all 47 tests in `test/auth` pass"), not "fix the bug"
+- **Attempt** — the agent acts
+- **Feedback** — tests, types, errors — the signal the loop runs on
+- **Self-correct** — diagnose, don't blindly repeat
+- **Verify** — separate context + rubric; self-critique doesn't count
+- **Stop** — verifier passes, not "the agent believes it's finished"
+
+The model is the engine. The loop is the chassis.
+
+## Why agents fail without a loop
+
+| # | Failure | Loop's answer |
+| --- | --- | --- |
+| 1 | Context collapse | Durable memory on disk, re-read each cycle |
+| 2 | No self-correction | Feedback stage that forces diagnosis |
+| 3 | No verifier | Independent grader + rubric |
+| 4 | No memory across sessions | State outside the window |
+| 5 | No stop condition | Hard, checkable definition of done |
+
+A good agent isn't one that starts well. It's one that still knows what it's doing three hours later.
+
+## Five building blocks (+ memory)
+
+![The five building blocks around the loop engine plus memory](/articles/loop-engineering/05-building-blocks.en.svg)
+
+| Block | Role |
+| --- | --- |
+| Automations | Heartbeat / triggers |
+| Worktrees | Parallel without file collisions |
+| Skills | Project knowledge that compounds |
+| Connectors (MCP) | Real tools: tracker, DB, CI, chat |
+| Sub-agents | Maker / checker split |
+| Memory | `STATE.md`, board, DB — the model forgets; the repo doesn't |
+
+## Good first loops
+
+Prefer tasks that are **repetitive, machine-checkable, and reversible**:
+
+- CI failure triage
+- Dependency bump PRs in isolated worktrees
+- Lint-and-fix on PR open
+- Flaky-test reproduction
+- Issue → PR drafts (strong test suites)
+- Commit briefings / daily summaries
+
+### Morning triage shape
+
+![The morning triage loop, end to end](/articles/loop-engineering/06-morning-triage.en.svg)
+
+Automation always does 1→2→3. A loop inspects state, chooses the next action, checks, and decides whether another iteration is needed.
+
+### Triggers and verifiable goals
+
+![Trigger to engine to verifiable goal](/articles/loop-engineering/07-trigger-goal.en.svg)
+
+Without a check, you have not built a loop — you have built a very confident token furnace.
+
+### When not to loop
+
+Architecture rewrites; auth/payments/billing; production deploys; vague product work; judgment-call "done." Keep a human in the chair.
+
+Honest framing: loop engineering is real; most developers don't need it for most tasks yet. Loops multiply output — if review capacity is the bottleneck, loops just lengthen the queue.
+
+## Best practices
+
+### Pre-flight
+
+![Should this be a loop? pre-flight checklist](/articles/loop-engineering/08-preflight.en.svg)
+
+### Separate maker from checker
+
+The producer must not be the only grader. Verify in a separate context with an explicit rubric. Stop on the verifier's verdict.
+
+### Skills are the highest-leverage underused block
+
+No skills → rediscover the project every cycle. Dense, small skills + an index the agent consults beats "remember to use skill X."
+
+### Memory on disk, not in context
+
+Update after every run: files touched, classifications, PRs, escalations.
+
+### Three hard stops
+
+![Three hard-stop controls](/articles/loop-engineering/09-hard-stops.en.svg)
+
+1. Max iterations  
+2. **No-progress detection**  
+3. Token / $ ceiling (ideally per sub-agent)
+
+Keep orchestration outside the agent. Write the goal as something like `vision.md`. Get fluent with supervised parallel sessions before full autonomy. Gate irreversible actions behind a human. Measure spend per useful outcome, not per run.
+
+## Risks
+
+![Two problems and corresponding guardrails](/articles/loop-engineering/10-two-problems.en.svg)
+
+1. Fuzzy goals → don't loop until you can write the check  
+2. Cost explosions overnight → iteration + no-progress + budget  
+3. Weak verification → reward hacking  
+4. Long horizons → reliability compounds against you  
+5. Review bottleneck moves, doesn't vanish  
+6. Unattended quality drift / slop  
+7. Deepest risk: **outsourcing understanding**
+
+## Escaping the babysitting loop
+
+If you only perform dumb, repeatable actions — that's a loop. If the task is "invent a better product strategy" — define the goal first; don't hand it to a loop.
+
+## Measured conclusion
+
+Loop engineering is a real shift: design the system that drives the agent, verify independently, persist state outside the window.
+
+It's also early. Pragmatic path:
+
+1. One repetitive, machine-verifiable, reversible task  
+2. Smallest feedback-and-verify loop  
+3. Expand only once it earns its keep  
+
+The job is changing from operating the agent to engineering the loop it runs inside.
+
+## Further reading
+
+- [Saulius — Loop Engineering](https://saulius.io/blog/loop-engineering-systems-that-drive-agents) (primary source; diagrams adapted above)
+- Eight-lesson guide: [Loop Engineering guide](/guides/loop-engineering)
+- Addy Osmani — Loop Engineering
+- Boris Cherny / Peter Steinberger — “write loops, not prompts”
+- Ralph loop, `/goal`, and current coding-agent product docs

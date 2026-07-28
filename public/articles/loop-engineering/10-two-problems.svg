@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 320" style="width:100%;max-width:760px;height:auto" role="img" aria-label="两大问题与对应护栏">
+  <rect x="2" y="2" width="756" height="316" rx="14" fill="#ffffff" stroke="#e2e8f0"/>
+  <g font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif">
+    <rect x="24" y="24" width="350" height="272" rx="12" fill="#fff1f2" stroke="#f43f5e"/>
+    <text x="199" y="56" fill="#9f1239" font-size="15" font-weight="800" text-anchor="middle">问题 1</text>
+    <text x="199" y="82" fill="#9f1239" font-size="16" font-weight="700" text-anchor="middle">定义好目标很难</text>
+    <text x="48" y="118" fill="#881337" font-size="12.5">软件工作常是探索性的。模糊终点</text>
+    <text x="48" y="138" fill="#881337" font-size="12.5">会让循环优化向一句空话，效果</text>
+    <text x="48" y="158" fill="#881337" font-size="12.5">可能比一次仔细的手动还差。</text>
+    <text x="48" y="186" fill="#881337" font-size="12.5">主观 / 创造性目标往往永远不收敛。</text>
+    <rect x="48" y="210" width="302" height="64" rx="10" fill="#ffffff" stroke="#f43f5e"/>
+    <text x="199" y="236" fill="#9f1239" font-size="13" font-weight="700" text-anchor="middle">护栏</text>
+    <text x="199" y="258" fill="#be123c" font-size="12" text-anchor="middle">先写准、可验证的目标再自动化</text>
+    <text x="199" y="276" fill="#be123c" font-size="12" text-anchor="middle">写不出检查条件，就不要做循环</text>
+
+    <rect x="386" y="24" width="350" height="272" rx="12" fill="#fff7ed" stroke="#f59e0b"/>
+    <text x="561" y="56" fill="#9a3412" font-size="15" font-weight="800" text-anchor="middle">问题 2</text>
+    <text x="561" y="82" fill="#9a3412" font-size="16" font-weight="700" text-anchor="middle">成本会离谱地涨</text>
+    <text x="410" y="118" fill="#7c2d12" font-size="12.5">自我提示、自我审查、拉帮手、重试，</text>
+    <text x="410" y="138" fill="#7c2d12" font-size="12.5">一夜无人看管就能烧掉海量 token。</text>
+    <text x="410" y="158" fill="#7c2d12" font-size="12.5">预算无限时，炒作成本最低。</text>
+    <rect x="410" y="190" width="302" height="84" rx="10" fill="#ffffff" stroke="#f59e0b"/>
+    <text x="561" y="216" fill="#9a3412" font-size="13" font-weight="700" text-anchor="middle">护栏 — 预算即架构</text>
+    <text x="561" y="238" fill="#c2410c" font-size="12" text-anchor="middle">最大迭代 · 无进展检测 · 每日预算</text>
+    <text x="561" y="256" fill="#c2410c" font-size="12" text-anchor="middle">+ 比「Agent 说做完了」更强的验证</text>
+  </g>
+</svg>

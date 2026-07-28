@@ -1,0 +1,543 @@
+---
+title:
+  zh: "Graph Engineering：图谱工程一篇讲清楚"
+  en: "Graph Engineering: One Clear Guide"
+description:
+  zh: "从 Prompt 到 Graph 五层阶梯；节点 / 边 / 状态；何时该上图、何时单 Loop 更好。"
+  en: "Five layers from Prompt to Graph; nodes / edges / state; when a graph earns its keep vs a single loop."
+date: "2026-07-27"
+tags: [graph-engineering, loop-engineering, agent, multi-agent]
+readingMinutes: 28
+theme: graph
+prompt: "tony@graph:~$"
+accent: "#5B4B8A"
+displayName: GRAPH
+icon: agent
+cta: "$ less graph.md →"
+---
+
+<<<zh>>>
+## 写在前面
+
+2026 年 7 月中旬，OpenClaw 作者 Peter Steinberger 在 X 上问了一句：大家还在聊 Loop，还是已经转向 Graph？随后「Graph Engineering / 图谱工程」刷屏。
+
+本指南整合：
+
+- 飞书知识库 [《图谱工程：一篇讲清楚》](https://waytoagi.feishu.cn/wiki/Apirw64Ncimkp0k7dyhci55Wnzf)（WayToAGI / 冲量AI 脉络）
+- Akshay Pachaar 长文：[Graph Engineering Clearly Explained](https://x.com/i/article/2081072230336020480)（[推文入口](https://x.com/akshay_pachaar/status/2081089131808243999)）
+- 与站内 [Loop Engineering 指南](/guides/loop-engineering) 的衔接
+
+先钉死一句话：
+
+> **Graph Engineering 不是给多 Agent 换名字，而是设计和治理多个执行单元之间的关系——节点有边界、边有契约、状态可恢复、结果可验证。**
+
+单 loop 是最小的图（一个节点 + 一条回边）。你不是「抛弃 Loop」，而是在 Loop 不够用时，把多个 Loop 编排成组织。
+
+---
+
+## 目录
+
+1. [五层工程：扩大边界，不是互相替代](#1-五层工程扩大边界不是互相替代)
+2. [同一份「AI 资讯日报」，走完五层会怎样](#2-同一份ai-资讯日报走完五层会怎样)
+3. [定义：节点 · 边 · 状态](#3-定义节点-边-状态)
+4. [两张图：控制 Graph vs 知识 Graph](#4-两张图控制-graph-vs-知识-graph)
+5. [何时才值得上 Graph（三种瓶颈）](#5-何时才值得上-graph三种瓶颈)
+6. [最常用形状：菱形 Fan-out / Fan-in](#6-最常用形状菱形-fan-out-fan-in)
+7. [交接单 Schema、Router、Verifier](#7-交接单-schemarouterverifier)
+8. [成本账：模型分级与等待关卡](#8-成本账模型分级与等待关卡)
+9. [反方意见：旧零件，新矛盾](#9-反方意见旧零件新矛盾)
+10. [好 Graph 的四条标准](#10-好-graph-的四条标准)
+11. [本周上手清单](#11-本周上手清单)
+12. [延伸阅读](#12-延伸阅读)
+
+---
+
+## 1. 五层工程：扩大边界，不是互相替代
+
+![五层 AI 工程](/guides/graph-engineering/01-five-layers.svg)
+
+| 层 | 管什么 | 核心问题 |
+| --- | --- | --- |
+| Prompt | 怎么说 | 我问清楚了吗？ |
+| Context | 看到什么 | 当前步骤有没有对的材料？ |
+| Harness | 能用什么 | 工具、权限、记忆是否到位？ |
+| Loop | 如何持续 | 检查、重试、何时停？ |
+| Graph | 如何协作 | 谁做什么、按什么顺序、共享什么状态？ |
+
+它们是**嵌套**的：Prompt 放进 Context，经 Harness 送到模型，支撑 Agent Loop，多个 loop / 工具 / 人再组成 Graph。
+
+模型变聪明 ≠ 系统变可靠。拿错资料、调错工具、在错误结果上狂转、把未验证结论交给下游——这些单点智能解决不了。越往外，工程对象越像一家公司。
+
+---
+
+## 2. 同一份「AI 资讯日报」，走完五层会怎样
+
+贯穿例子：每天自动产出一份 AI 资讯报告——找新闻、读视频/论文、去重、核对事实、成稿入库。
+
+### Prompt：把任务说清楚
+
+「帮我整理今天最重要的 AI 新闻」太糊。「重要」按融资、技术还是热度？时区？要不要排除传言？交付清单还是文章？
+
+Prompt Engineering 解决「员工没听懂任务」。但指令再精确，也造不出今天的事实。
+
+### Context：把正确材料放到正确位置
+
+当天源、论文、逐字稿、历史报告、偏好、术语表——不能一股脑塞进窗口，要按步骤选择、压缩、更新。Context 解决「听懂了，但材料不对」。
+
+### Harness：给一张能真正干活的桌子
+
+浏览器、搜索、文件系统、代码环境、数据库、权限。没有 Harness，Agent 只会说；有了才能做。
+
+### Loop：一次回答 → 持续交付
+
+搜索 → 抽取 → 证据够不够 → 不够就换词 → 初稿检查 → 不过就返工 → 通过再保存。Loop 管停止条件、重试、检查与状态。
+
+到这里，**一个 Agent 已经可能独立完成整份报告**。那为什么还要 Graph？
+
+因为任务一长，单 loop 会撞上三类结构性问题：上下文越来越脏；自己查自己不独立；全部串行太慢。
+
+### Graph：多个 loop 开始分工
+
+拆成研究（视频 / 论文 / 新闻）、综合、事实核查、编辑、人类审批等单元。Graph 关心的不是「再加几个 Agent」，而是：交接格式、何时返工、核查能否否决、人在哪介入、失败从哪恢复。
+
+> Prompt 管一句话；Graph 管一家公司。
+
+---
+
+## 3. 定义：节点 · 边 · 状态
+
+![节点、边与状态](/guides/graph-engineering/02-node-edge-state.svg)
+
+**Graph Engineering** = 设计和治理多个执行单元之间的关系，让节点有边界、边有契约、状态可恢复、结果可验证。
+
+### 节点（Node）
+
+做事的单元：Agent、确定性代码、搜索工具、规则引擎、人类审核都行。
+
+别把每一步都做成 Agent。格式转换、数字校验、去重——代码更合适。Agent 适合开放判断；人适合高风险拍板。好 Graph 不是 Agent 最多，而是每个节点用了最合适的执行方式。
+
+### 边（Edge）
+
+不只是箭头，还要回答：
+
+- 上游必须交付哪些字段，下游才可开始？  
+- 传的是原始资料、结构化结论，还是验证结果？  
+- 谁可读 / 改 / 否决？  
+- 哪种状态走正常路径，哪种触发重试或升级？  
+- 发现问题退回哪个节点？  
+
+若边只表示「下一步」，那只是画成图的流水线。工程价值在**边上的契约**。
+
+### 状态（State）
+
+整张图不必每次从头来：已抓了哪些源、哪些结论过了核查、哪步在等人、当前结果来自哪版资料。没有状态，复杂流是黑箱；有了状态，才能暂停、恢复、回放、局部重做。
+
+---
+
+## 4. 两张图：控制 Graph vs 知识 Graph
+
+常被混谈，其实不是一回事：
+
+| | 控制 Graph | 知识 Graph |
+| --- | --- | --- |
+| 管什么 | 任务怎么流 | 事实怎么关联 |
+| 回答 | 现在轮到谁？失败去哪？ | 实体/证据/结论关系？ |
+| 例子 | 并行研究 → 综合 → 核查 → 人审 | 公司—发布—模型；视频说法—实验—结论 |
+
+控制 Graph 记录决策怎样发生；知识 Graph 提供决策依据的语义关系。连起来，系统才既知道「做过什么」，也知道「为什么这样做」。
+
+另：Graph Reasoning（模型内部推理结构）≠ Graph Engineering（工程编排）。本指南讲后者。
+
+---
+
+## 5. 何时才值得上 Graph（三种瓶颈）
+
+Graph 用额外协调成本换可靠性、可追踪与并行。没有下列瓶颈时，**设计良好的单 loop 往往更好**。
+
+### 瓶颈一：Context rot
+
+长任务堆满搜索结果、工具日志、草稿与失败尝试。窗口还没爆，有效信号已被噪声稀释。Graph 让每个节点只拿完成本职所需的信息，用结构化交接，而不是无限胀上下文。
+
+### 瓶颈二：无法真正独立复核
+
+「写完请认真检查」常常只是表面修补——同一推理路径、同一上下文、同一偏好。独立来自**信息边界与验证方法**：核查可不读写作者推理，只据原始来源重验；或用代码校验数字；高风险交给人。
+
+### 瓶颈三：串行等待
+
+视频 / 论文 / 新闻检索通常无强依赖。单 Agent 串行会拖成一条长链。Graph 可并行，再由综合节点汇总——前提是并行收益大于协调成本。
+
+反过来：一次回答就够、步骤高度耦合、没有评估标准——上 Graph 等于提前购买复杂度。
+
+> 先证明单 loop 为何失败，再工程化那一条关系。
+
+| 信号 | 单 Loop 够用 | 考虑 Graph |
+| --- | --- | --- |
+| 任务形状 | 一个清晰终点 | 多专长交接 |
+| 并行 | 必须串行 | 需扇出再汇合 |
+| 工具/模型 | 全程同一套 | 每步不同工具或模型 |
+| 控制流 | Agent 自由探索安全 | 需要可审计路由 |
+| 失败隔离 | 坏一步就重试 | 坏节点不毒害全局 |
+| 验证 | 环内自检够用 | 需要独立审核节点 |
+
+---
+
+## 6. 最常用形状：菱形 Fan-out / Fan-in
+
+![菱形拓扑](/guides/graph-engineering/03-diamond.svg)
+
+- **Fan-out**：入口把独立工作分给多个节点并行  
+- **Fan-in**：汇总、去重、排序，再交给下游  
+
+叠在一起就是菱形——市场调研、依赖审计、代码评审、研究报告都能复用这副骨架。
+
+易踩坑：**先后顺序 ≠ 依赖**。「总结文件再查天气」——天气根本不依赖总结，不必排队。Graph Engineering 的基础能力，是看清**真正的依赖**。
+
+---
+
+## 7. 交接单 Schema、Router、Verifier
+
+### Schema（交接单）
+
+资料员只回一大段散文 → 写作节点找不到链接、分不清事实与观点。约定固定字段（标题、链接、重要度……），缺一项交接不合格。Schema 把「猜」变成「验」。
+
+### Router（分诊）
+
+普通观点轻量核对；安全/数据/产品结论走多视角交叉检查。Router 按风险把任务引向不同边。
+
+### Verifier（专门挑错）
+
+工作不是再写一份答案，而是试图推翻结论。扛得住才往下传。可对抗式、多视角、或评委制。Maker 与 Checker 分家——和 Loop Engineering 同一条原则，升格成独立节点。
+
+并行改文件时：每节点独立 worktree，避免互相覆盖。
+
+循环边必须有停止条件（如连续两轮无新发现），否则 token 永动机。
+
+---
+
+## 8. 成本账：模型分级与等待关卡
+
+每启一个 Agent 都要读材料、思考、输出——并行省的是**墙钟时间**，不是免费算力。
+
+- **模型分级**：抽取标题、格式整理 → 便宜模型；冲突仲裁、终稿 → 旗舰模型  
+- **关卡 vs 流水线**：必须看齐全部上游再继续 → 关卡（等最慢的）；可独立流转 → 流水线（先到先处理）  
+- **拓扑即成本**：节点数 × 模型档 × 等待结构 = 账单形状  
+
+设计得好：更少钱、更快交付。设计得差：更多模型一起更快烧 token。
+
+编排脚本本身可以「零模型 token」（用代码调度），但干活的每个 Agent 照常计费——排班表不拿工资，员工还是要拿。
+
+---
+
+## 9. 反方意见：旧零件，新矛盾
+
+「不就是工作流、状态机、DAG、多 Agent / LangGraph 吗？」——对一半。
+
+节点、边、状态、检查点都不新。LangGraph、AutoGen GraphFlow、Google ADK、A2A 早就在做图编排。Graph Engineering **没有发明新计算结构**。
+
+新概念有没有价值，取决于是否准确指出**新的主要矛盾**：当单 Agent 能力不再是瓶颈，限制系统的是**节点之间能否正确协作**——关系质量。
+
+「多 Agent」数人头；Graph Engineering 问：为什么连、怎样连、连失败怎么办。
+
+名字可选；从「一个 loop」升级到「多个专用节点 + 共享状态」的设计升级是真的——但多数任务本周还不需要。
+
+---
+
+## 10. 好 Graph 的四条标准
+
+不看 Agent 数量，看：
+
+1. **更可靠**：故意喂错源、制造超时，核查与降级是否成立  
+2. **可追踪**：成稿里一个数字能回到原始来源、抽取节点、验证结果与版本  
+3. **可恢复**：一个视频字幕失败，不该逼所有研究重跑；改语气不该改已核过的事实  
+4. **净收益为正**：质量/时延收益 > 额外调用、维护与审批成本  
+
+好 Graph 不是让系统看起来更复杂，而是让复杂任务变得可控。
+
+---
+
+## 11. 本周上手清单
+
+1. **先留在 Loop**：单 Agent + 好验证器能否做完？能就停。  
+2. **节点必须是真专长**：不同模型/工具集，或只读审核角色——能内联的步骤不是节点。  
+3. **先画边再写码**：顺序、扇出、扇入、条件回边——餐巾纸画不清就太复杂。  
+4. **显式设计共享状态**：谁写哪些字段；状态漂移是图腐烂的第一原因。  
+5. **给 Verifier 牙齿**：独立、尽量只读、不同上下文。  
+6. **失败隔离**：坏节点可重试，不污染全局状态。  
+7. **优先用现成框架**：LangGraph / ADK / Claude Dynamic Workflows 等，别手搓运行时。  
+8. **预算与硬停**：图 = 多个 loop；弱验证会并行烧钱。  
+
+> Graph 应从故障中生长，而不是从架构图中生长。
+
+Loop 解决一个 Agent 如何反复做到合格；Graph 解决多个 Agent 如何分工、交接、检查，以及如何不白烧 token。
+
+**重点不是图本身，而是每一条箭头为什么存在。**
+
+---
+
+## 12. 延伸阅读
+
+- [图谱工程：一篇讲清楚（飞书）](https://waytoagi.feishu.cn/wiki/Apirw64Ncimkp0k7dyhci55Wnzf)  
+- [Akshay — Graph Engineering Clearly Explained](https://x.com/i/article/2081072230336020480)  
+- 站内：[Loop Engineering 八课通讲](/guides/loop-engineering) · [文章短读](/articles/loop-engineering)  
+- Anthropic：Claude Code Dynamic Workflows  
+- LangGraph / Google ADK 文档（图编排先验艺术）  
+
+<<<en>>>
+## Before you start
+
+In mid-July 2026, OpenClaw creator Peter Steinberger asked on X whether the field was still talking about loops or had already shifted to graphs. "Graph engineering" lit up the timeline.
+
+This guide synthesizes:
+
+- The Chinese deep-dive [*图谱工程：一篇讲清楚*](https://waytoagi.feishu.cn/wiki/Apirw64Ncimkp0k7dyhci55Wnzf) (WayToAGI / Impulse AI lineage)
+- Akshay Pachaar: [Graph Engineering Clearly Explained](https://x.com/i/article/2081072230336020480) ([tweet](https://x.com/akshay_pachaar/status/2081089131808243999))
+- Continuity with our [Loop Engineering guide](/guides/loop-engineering)
+
+One sentence to pin:
+
+> **Graph engineering is not "multi-agent with a new name." It is designing and governing relationships between execution units — nodes with boundaries, edges with contracts, recoverable state, verifiable outcomes.**
+
+A single loop is the smallest graph (one node + an edge back to itself). You do not throw loops away; you compose them when one loop is the wrong shape.
+
+---
+
+## Contents
+
+1. [Five layers: expand the boundary, don't replace](#1-five-layers-expand-the-boundary-dont-replace)
+2. [One daily AI brief, climbed through five layers](#2-one-daily-ai-brief-climbed-through-five-layers)
+3. [Definition: node · edge · state](#3-definition-node-edge-state)
+4. [Two graphs: control vs knowledge](#4-two-graphs-control-vs-knowledge)
+5. [When a graph earns its keep (three bottlenecks)](#5-when-a-graph-earns-its-keep-three-bottlenecks)
+6. [Canonical shape: the diamond](#6-canonical-shape-the-diamond)
+7. [Schema handoffs, routers, verifiers](#7-schema-handoffs-routers-verifiers)
+8. [Cost math: model tiers and barriers](#8-cost-math-model-tiers-and-barriers)
+9. [Skeptics: old parts, new bottleneck](#9-skeptics-old-parts-new-bottleneck)
+10. [Four standards for a good graph](#10-four-standards-for-a-good-graph)
+11. [This-week checklist](#11-this-week-checklist)
+12. [Further reading](#12-further-reading)
+
+---
+
+## 1. Five layers: expand the boundary, don't replace
+
+![Five layers of AI engineering](/guides/graph-engineering/01-five-layers.en.svg)
+
+| Layer | What you engineer | Core question |
+| --- | --- | --- |
+| Prompt | How you ask | Am I asking clearly? |
+| Context | What the model sees | Right material for this step? |
+| Harness | What it can use | Tools, permissions, memory? |
+| Loop | How one agent persists | Check, retry, stop? |
+| Graph | How many units collaborate | Who, in what order, sharing what state? |
+
+They nest: prompt sits in context, harness delivers it, loops run, graphs coordinate loops / tools / humans.
+
+A smarter model ≠ a more reliable system. Wrong sources, wrong tools, retrying on bad results, handing unverified claims downstream — single-point IQ does not fix division of labor. Outer layers look like an organization.
+
+---
+
+## 2. One daily AI brief, climbed through five layers
+
+Running example: an automated daily AI briefing — find news, read video/papers, dedupe, fact-check, ship to a vault.
+
+### Prompt — say the job clearly
+
+"Summarize today's important AI news" is mush. Important by funding, tech, or heat? Timezone? Rumors? List or essay?
+
+Prompt engineering fixes "the employee didn't understand the brief." It cannot invent today's facts.
+
+### Context — right material in the right place
+
+Sources, papers, transcripts, history, preferences, glossary — not dumped wholesale; selected, compressed, refreshed per step.
+
+### Harness — a desk that can actually work
+
+Browser, search, filesystem, code, DB, permissions. Without a harness the agent only talks; with one it can act.
+
+### Loop — from one reply to continuous delivery
+
+Search → extract → enough evidence? → re-query → draft checks → rework → save. Loops own stop conditions, retries, verification, state.
+
+A single agent may finish the whole brief. Why a graph?
+
+Long tasks hit three structural walls: dirty context, weak self-review, pure serial waiting.
+
+### Graph — many loops start specializing
+
+Split research (video / papers / news), synthesis, fact-check, editing, human approval. Graph care is not "add agents" but handoff formats, rework rules, veto rights, human gates, recovery points.
+
+> Prompt manages a sentence; graph manages a company.
+
+---
+
+## 3. Definition: node · edge · state
+
+![Nodes, edges, and state](/guides/graph-engineering/02-node-edge-state.en.svg)
+
+**Graph engineering** = design and govern relationships among execution units so nodes have boundaries, edges have contracts, state is recoverable, outcomes are verifiable.
+
+### Node
+
+Agent, deterministic code, tool, rules engine, or human reviewer. Do not Agent-ify every step. Formatting, numeric checks, dedupe belong in code. Agents for open judgment; humans for high-stakes calls. Best graphs maximize fit, not agent count.
+
+### Edge
+
+More than an arrow — answer:
+
+- Required fields before downstream may start?  
+- Raw evidence, structured claims, or verification results?  
+- Who may read / mutate / veto?  
+- Which states take the happy path vs retry / escalate?  
+- On failure, rewind to which node?  
+
+If edges only mean "next," you drew a pipeline. Value lives in **contracts on the edges**.
+
+### State
+
+So the graph need not restart: sources fetched, claims verified, waiting-on-human steps, which corpus version produced the current draft. Without state, complex flows are black boxes; with it you pause, resume, replay, redo locally.
+
+---
+
+## 4. Two graphs: control vs knowledge
+
+| | Control graph | Knowledge graph |
+| --- | --- | --- |
+| About | How work flows | How facts relate |
+| Answers | Whose turn? Where on failure? | Entity / evidence / claim links? |
+| Example | Parallel research → synthesize → verify → human | Company—released—model; claim—experiment—conclusion |
+
+Control graphs record how decisions happened; knowledge graphs supply semantic grounds. Together you know both *what* and *why*.
+
+Also: Graph Reasoning (inside-the-model structure) ≠ Graph Engineering (orchestration). This guide is the latter.
+
+---
+
+## 5. When a graph earns its keep (three bottlenecks)
+
+Graphs trade coordination cost for reliability, traceability, and parallelism. Absent these bottlenecks, a **good single loop** usually wins.
+
+### Bottleneck 1: Context rot
+
+Long runs fill the window with searches, tool logs, drafts, failed tries. Capacity remains; signal dilutes. Graphs give each node only what its job needs, via structured handoffs.
+
+### Bottleneck 2: No real independent review
+
+"Please carefully check your own essay" is usually surface polish — same path, same context, same bias. Independence needs **information boundaries and methods**: verify from sources without the writer's chain of thought; code-check numbers; escalate humans.
+
+### Bottleneck 3: Serial waiting
+
+Video / paper / news research rarely must queue. One agent serializes them into a long chain. Graphs fan out, then join — when speedup beats merge cost.
+
+If one answer suffices, steps are tightly coupled, or you have no eval — a graph is prepaid complexity.
+
+> Prove why the loop failed before you engineer a relationship.
+
+| Signal | Loop enough | Reach for a graph |
+| --- | --- | --- |
+| Task shape | One clear finish line | Distinct specialties handing off |
+| Parallelism | Must be sequential | Fan-out then join |
+| Tools / models | Same throughout | Different per step |
+| Control flow | Free-roam is safe | Explicit, auditable routing |
+| Failure isolation | Bad step just retries | Bad node must not poison the rest |
+| Verification | In-loop check is enough | Dedicated reviewer node |
+
+---
+
+## 6. Canonical shape: the diamond
+
+![Diamond topology](/guides/graph-engineering/03-diamond.en.svg)
+
+- **Fan-out** — split independent work to parallel nodes  
+- **Fan-in** — join, dedupe, rank, then continue  
+
+Together: the diamond — reusable for research briefs, dependency audits, code review, market scans.
+
+Trap: **order ≠ dependency**. "Summarize then check Beijing weather" — weather need not wait. Graph engineering starts by seeing **true dependencies**.
+
+---
+
+## 7. Schema handoffs, routers, verifiers
+
+### Schema
+
+A researcher returns a wall of prose → the writer cannot find links or separate fact from opinion. Require fields (title, URL, importance…). Missing field = failed handoff. Schemas turn guessing into checking.
+
+### Router
+
+Light claims get light checks; safety / numbers / product conclusions get multi-angle review. Routers triage onto different edges by risk.
+
+### Verifier
+
+Job is not to rewrite — it is to try to break the claim. Survive to proceed. Adversarial, multi-perspective, or judge panels. Separate maker from checker — same Loop Engineering principle, promoted to a node.
+
+Parallel file edits: isolated worktrees so writers do not clobber each other.
+
+Loop-back edges need stop conditions (e.g. two rounds with no new findings) or you build a token furnace.
+
+---
+
+## 8. Cost math: model tiers and barriers
+
+Every agent reads, thinks, writes — parallelism buys **wall-clock**, not free compute.
+
+- **Model tiers** — cheap models for extraction/format; flagship for conflict arbitration and final draft  
+- **Barrier vs pipeline** — need all upstream → barrier (wait for the slowest); independent items → pipeline (first-done first-processed)  
+- **Topology is cost** — nodes × model tier × wait structure = bill shape  
+
+Orchestration scripts can be "zero model tokens" (code schedules) while worker agents still bill normally — the roster is unpaid; the staff are not.
+
+---
+
+## 9. Skeptics: old parts, new bottleneck
+
+"Isn't this just workflows, state machines, DAGs, multi-agent / LangGraph?" — half right.
+
+Nodes, edges, state, checkpoints are not new. LangGraph, AutoGen GraphFlow, Google ADK, A2A already orchestrate graphs. Graph engineering did **not** invent a new compute primitive.
+
+A concept earns its keep when it names the **new primary bottleneck**: once single-agent capability is no longer the limit, systems fail on **whether nodes collaborate correctly** — relationship quality.
+
+"Multi-agent" counts heads; graph engineering asks why connect, how to connect, and what happens when the connection fails.
+
+The label is optional; the escalation from one loop to specialized nodes over shared state is real — and most tasks this week still do not need it.
+
+---
+
+## 10. Four standards for a good graph
+
+Ignore agent count. Ask:
+
+1. **More reliable** — inject bad sources / timeouts; do checks and degradations hold?  
+2. **Traceable** — a number in the draft maps back to source, extraction node, verification, version  
+3. **Recoverable** — one failed transcript must not force all research to rerun; tone edits must not rewrite verified facts  
+4. **Positive net** — quality/latency gains beat extra calls, maintenance, and approvals  
+
+A good graph does not look more complex; it makes complex work controllable.
+
+---
+
+## 11. This-week checklist
+
+1. **Stay in a loop** if one agent + a strong verifier finishes the job.  
+2. **Nodes must be real specialties** — different model/toolset or read-only reviewer. Inlinable steps are not nodes.  
+3. **Draw edges before code** — sequence, fan-out, fan-in, conditional loop-back. If it won't fit on a napkin, simplify.  
+4. **Design shared state explicitly** — who writes which fields; drift is how graphs rot.  
+5. **Give the verifier teeth** — separate, preferably read-only, different context.  
+6. **Isolate failure** — retry a node without poisoning global state.  
+7. **Prefer a framework** — LangGraph / ADK / Claude Dynamic Workflows; don't hand-roll the runtime.  
+8. **Budget and hard stops** — a graph is many loops; weak verification burns tokens in parallel.  
+
+> Graphs should grow from failures, not from architecture diagrams.
+
+Loops answer how one agent keeps working until done; graphs answer how many agents divide, hand off, check — and how not to waste tokens.
+
+**The point is not the picture. It is why each arrow exists.**
+
+---
+
+## 12. Further reading
+
+- [*图谱工程：一篇讲清楚* (Feishu)](https://waytoagi.feishu.cn/wiki/Apirw64Ncimkp0k7dyhci55Wnzf)  
+- [Akshay — Graph Engineering Clearly Explained](https://x.com/i/article/2081072230336020480)  
+- On this site: [Loop Engineering (8 lessons)](/guides/loop-engineering) · [short article](/articles/loop-engineering)  
+- Anthropic: Claude Code Dynamic Workflows  
+- LangGraph / Google ADK docs (prior art for graph orchestration)  

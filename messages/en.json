@@ -1,0 +1,93 @@
+{
+  "meta": {
+    "siteName": "Tony",
+    "title": "Tony — Xiao Ming",
+    "description": "AI practitioner and content creator. Building agent workflows, AI writing, and video generation systems."
+  },
+  "nav": {
+    "about": "About",
+    "works": "Works",
+    "articles": "Writing",
+    "guides": "Guides"
+  },
+  "home": {
+    "greeting": "Hi, I'm Tony",
+    "aka": "also known as Xiao Ming",
+    "p1": "I'm an AI practitioner and content creator with 7 years of software engineering experience, based in Shenzhen. I run the WeChat publication 「Tony's Tea House」, and focus on AI writing systems, video generation, and automated agent workflows.",
+    "p2": "At work I lean on Claude; day to day I use OpenClaw. I also explore quant trading pipelines, local LLM deployment, and Japanese (JLPT N2). Motto: if an agent can do it, don't do it by hand.",
+    "ctaArticles": "Read writing",
+    "ctaGuides": "Browse guides"
+  },
+  "about": {
+    "title": "About",
+    "p1": "Hi, I'm Tony — also Xiao Ming. With 7 years in software, I work in AI and create content under 「Tony's Tea House」, based in Shenzhen.",
+    "p2": "My core focus is building AI writing, video generation systems, and automated agent workflows for real business use. I'm Mac-first, fluent in Feishu/Lark, and comfortable across Windows and Linux.",
+    "p3": "Stack: Claude, OpenClaw, Kimi API, Codex, IBKR quant pipelines, Python automation, and TradingView + Claude AI trading bots. Claude for work; OpenClaw for daily life.",
+    "p4": "I'm studying the full agent-engineer skill stack, AI video generation, local LLM deployment, and automated quant systems — plus Japanese JLPT N2. I run and cycle regularly. Recently engaged; settled in Shenzhen.",
+    "p5": "I prefer clear, beginner-friendly writing that still goes deep — translating dense finance and AI jargon into plain language, and organizing knowledge with Markdown, mind maps, and Anki."
+  },
+  "articles": {
+    "breadcrumbHome": "Home",
+    "breadcrumb": "Writing",
+    "title": "Writing",
+    "subtitle": "Notes on AI agents, automation workflows, quant trading, and how I learn.",
+    "all": "All",
+    "categories": {
+      "ai": "AI & Technology",
+      "quant": "Quant Trading",
+      "notes": "Study Notes"
+    },
+    "minRead": "{minutes} min read",
+    "wordCount": "{count}",
+    "empty": "No articles yet."
+  },
+  "works": {
+    "breadcrumbHome": "Home",
+    "breadcrumb": "Works",
+    "title": "Works",
+    "subtitle": "Projects and experiments that are public.",
+    "visit": "Open project →",
+    "items": {
+      "agentCards": {
+        "title": "Agent Cards",
+        "description": "A card wall of agent skills, workflows, and practices — browsable and shareable."
+      }
+    }
+  },
+  "guides": {
+    "title": "Guides",
+    "subtitle": "Hands-on guides from install to practice — for people who want AI that actually ships.",
+    "cta": "$ cat guide.md →",
+    "tree": "$ tree",
+    "hide": "H hide",
+    "show": "H show",
+    "nav": "nav",
+    "search": "search",
+    "searchPlaceholder": "Search sections…",
+    "noResults": "No matching sections",
+    "toBottom": "Jump to bottom",
+    "toTop": "Back to top"
+  },
+  "scroll": {
+    "toBottom": "Jump to bottom",
+    "toTop": "Back to top"
+  },
+  "footer": {
+    "tagline": "AI practitioner & content creator.",
+    "nav": "Navigate",
+    "guides": "Guides",
+    "contact": "Contact",
+    "wechat": "WeChat: Tony's Tea House",
+    "location": "Shenzhen"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "toggle": "Toggle theme"
+  },
+  "locale": {
+    "label": "Language",
+    "zh": "简体中文",
+    "en": "English"
+  }
+}

@@ -1,0 +1,77 @@
+---
+title:
+  zh: "IBKR 量化管线入门：从想法到下单"
+  en: "IBKR Quant Pipeline 101: Idea to Order"
+description:
+  zh: "用通俗语言拆开 IBKR + Python 自动化交易的最小可行管线。"
+  en: "A plain-language walkthrough of a minimal IBKR + Python trading pipeline."
+date: "2026-07-10"
+tags: [ibkr, python, quant]
+category: quant
+readingMinutes: 12
+---
+
+<<<zh>>>
+## 先把术语翻译成人话
+
+- **Broker（券商）**：帮你保管钱和股票、帮你下单的「柜台」
+- **IBKR**：一家接口相对完善的券商，适合程序化交易
+- **管线（pipeline）**：数据进来 → 算出信号 → 风控检查 → 下单 → 记账
+
+量化不是神秘公式，是**可重复的决策流水线**。
+
+## 最小可行结构
+
+```text
+行情/基本面 → 信号脚本 → 仓位与风控 → IBKR API 下单 → 日志与复盘
+```
+
+每一段先做成独立脚本，能单独跑通，再串起来。
+
+## 常见坑
+
+1. 回测很好看，实盘滑点与手续费把收益吃光
+2. 没有「最大回撤」和「单笔上限」就上杠杆
+3. 日志不全，出问题无法复盘
+
+## 和 AI 怎么配合
+
+我习惯用 Claude 帮我：
+
+- 把策略逻辑写成可测试的函数
+- 审查风控边界
+- 把 TradingView 思路翻译成 Python 伪代码
+
+记住：AI 可以加速写代码，但**不能替你承担亏损**。
+<<<en>>>
+## Terms in plain English
+
+- **Broker**: the counter that holds cash/shares and places orders
+- **IBKR**: a broker with solid APIs for programmatic trading
+- **Pipeline**: data in → signal → risk checks → order → books
+
+Quant is not mysticism. It's a **repeatable decision assembly line**.
+
+## Minimal shape
+
+```text
+Market data → signal script → sizing/risk → IBKR API → logs/review
+```
+
+Make each stage a standalone script first, then wire them.
+
+## Common traps
+
+1. Pretty backtests, ugly live slippage/fees
+2. Leverage without drawdown and per-trade caps
+3. Thin logs — you can't debug what you didn't record
+
+## Where AI helps
+
+I use Claude to:
+
+- turn strategy logic into testable functions
+- review risk boundaries
+- translate TradingView ideas into Python-ish sketches
+
+AI speeds coding up. It does **not** take the loss for you.
