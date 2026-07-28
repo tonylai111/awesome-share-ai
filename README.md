@@ -19,6 +19,12 @@ npm run dev
 - next-themes（深色模式）
 - MDX 内容（`content/articles`、`content/guides`）
 
-## 内容
+## 部署
 
-在对应目录新增 `.mdx`，frontmatter 支持中英文字段，正文用 `<<<zh>>>` / `<<<en>>>` 分段。
+推荐 [Vercel](https://vercel.com)：导入本仓库后一键部署，Framework Preset 选 Next.js。
+
+本地生产预览：
+
+```bash
+npm run build && npm start
+```
