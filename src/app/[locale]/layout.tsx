@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Press_Start_2P } from "next/font/google";
+import { Geist, Geist_Mono, Noto_Sans_SC, Press_Start_2P } from "next/font/google";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
@@ -18,6 +18,13 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const notoSansSC = Noto_Sans_SC({
+  variable: "--font-noto-sans-sc",
+  weight: ["400", "500", "700"],
+  subsets: ["latin"],
+  display: "swap",
 });
 
 const pressStart = Press_Start_2P({
@@ -66,7 +73,7 @@ export default async function LocaleLayout({
       lang={locale}
       suppressHydrationWarning
       data-scroll-behavior="smooth"
-      className={`${geistSans.variable} ${geistMono.variable} ${pressStart.variable} h-full`}
+      className={`${geistSans.variable} ${geistMono.variable} ${notoSansSC.variable} ${pressStart.variable} h-full`}
     >
       <body className="min-h-full antialiased">
         <ThemeProvider>
