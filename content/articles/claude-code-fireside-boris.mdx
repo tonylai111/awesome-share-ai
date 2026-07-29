@@ -1,0 +1,584 @@
+---
+title:
+  zh: "编码不再是瓶颈：Claude Code 炉边对谈里，Boris 真正在谈什么"
+  en: "Coding Is No Longer the Bottleneck: What Boris Actually Said"
+description:
+  zh: "Meta × Anthropic 炉边对谈综述：当 AI 能写大部分代码，真正要解决的是 ROI、Loops、评审/安全/CI 瓶颈，以及工程师如何不退化。"
+  en: "A synthesis of the Meta × Anthropic fireside chat: once AI writes most of the code, the real work is ROI, loops, review/security/CI bottlenecks, and keeping engineers sharp."
+date: "2026-07-29"
+tags: [claude-code, anthropic, boris, agent, loops, cowork]
+category: ai
+readingMinutes: 17
+---
+
+<<<zh>>>
+## 写在前面
+
+2026 年 7 月，Meta 开发者工具产品负责人主持了一场炉边对谈，嘉宾是 Anthropic Claude Code 负责人 **Boris Cherny**。主线很硬：
+
+> **编码已经被大致「解决」了。真正要设计的，是 ROI、Loops，以及编码之后迁到下游的瓶颈。**
+
+本文按这条主线重排。术语第一次出现会给短定义；数据与观点均来自 Boris 现场表述（或由其转述的 Anthropic 内部实践）。
+
+## 编码已经「被解决」
+
+Boris 自己的用量（约自 3 月起）：
+
+| 指标 | 数量 |
+| --- | --- |
+| 合并 PR | ~1,700 |
+| 代码增减 | +40 万 / −25 万行 |
+| Token | ~80 亿 |
+| 工具 | Opus 4.5 之后 **100% Claude Code** |
+| 场景 | 多数在手机上 |
+
+Anthropic 内部：约 **80–90%** 的代码由 Claude Code 生成，不少团队接近 **100%**。Boris 的说法更直白——从 Opus 4.5 起，他几乎不再打开 IDE。
+
+这不是「AI 辅助写几行补丁」的故事，而是：**写代码本身不再是团队产能的主瓶颈。**
+
+## ROI，不是先砍成本
+
+很多公司第一反应是控 Token。Boris 的顺序反过来：
+
+![ROI 漏斗：全员实验 → 验证有效 → 后端控成本](/articles/claude-code-fireside/02-roi-funnel.svg)
+
+1. **先对所有角色开放 Token**——工程师、PM、设计、数据都该能试  
+2. **创新往往来自非工程师**；先证明哪里有价值  
+3. **价值成立后，再在后端控成本**——席位预算、降级参考模型、调 Agent 强度
+
+框架很简单：**投入 = Token；回报 = 工程师产出增速。** Anthropic 内部粗算约 **8×**。
+
+> 先放大 ROI，再谈省钱。把 Token 锁死，等于提前关掉实验。
+
+## 从 Agent 到 Loops：抽象升了一级
+
+Boris 用编程语言类比三层抽象：
+
+![抽象层级：手写 → Agent → Loops](/articles/claude-code-fireside/01-abstraction.svg)
+
+| 层级 | 类比 | 你在做什么 |
+| --- | --- | --- |
+| 手写源码 | 单条语句 | 自己敲实现 |
+| Agent | 函数 | 让模型写一段代码 |
+| **Loops** | **高阶函数** | 写提示去驱动 Agent，而不是亲自写代码 |
+
+**Loop**（循环）：持续扫描某一类工作、自动开 PR、按节奏推进的自治流程——不是你每轮再打一行提示。
+
+Boris 估计自己约 **30%** 的代码来自 Loops；有时接近 **100%**（例如一整周几乎都在跑自动循环）。
+
+这和本站另一篇 [Loop Engineering](/articles/loop-engineering) 是同一方向：你不该再当循环本身，而该设计驱动 Agent 的系统。
+
+## Loops ≠ Workflow
+
+现场容易把两个词混在一起。Boris 的区分是：
+
+![Loops 与 Workflow 对比](/articles/claude-code-fireside/03-loops-vs-workflow.svg)
+
+| | Loops | Workflow |
+| --- | --- | --- |
+| 层级 | 业务层循环 | 算力层调度 |
+| 形态 | 反复处理同一类任务 | 单次复杂任务拉大量子 Agent |
+| 目的 | 持续产出（评审、修复、维护） | **测试时计算**（test-time compute），用更多算力换更高质量 |
+| 例子 | 自动扫反馈修 bug | 一条提示跑数小时、烧数百万 Token |
+
+一句话：**Loop 管「持续干什么」；Workflow 管「这一次要多认真」。**
+
+## 瓶颈在搬家：评审 → 安全 → CI / 创意
+
+编码被啃掉之后，瓶颈往下游走：
+
+![瓶颈迁移：编码 → 评审 → 安全 → CI/创意](/articles/claude-code-fireside/04-bottleneck-chain.svg)
+
+| 旧瓶颈 | 新瓶颈 | Anthropic 侧应对 |
+| --- | --- | --- |
+| 写代码 | 代码评审 | Claude Code Review（Boris：约 **98–99%** 的评审走自动化） |
+| 评审 | 安全审计 | Claude Security |
+| 安全 | CI 与「想清楚做什么」 | Workflow + 人定目标 |
+
+现场例子：用 **一条提示 + Workflow**，跑了数小时、消耗数百万 Token，产出约 **4 个 PR**，把 CI 相关耗时大约砍掉 **一半**。
+
+> 每解决一环，下一环立刻成为新瓶颈。工具链要跟着瓶颈迁移，而不是停在「会写代码」这一层。
+
+整条交付链可以看成飞轮：
+
+![研发飞轮：写码 → 评审 → 安全 → 上线 → 业务指标](/articles/claude-code-fireside/06-flywheel.svg)
+
+模型越来越能包中间环节；**两端仍归人**：定目标，以及判断「这件事值不值得做」。
+
+## Co-Work：同一套 SDK，给非工程师
+
+**Co-Work** 不是另一套模型，而是同一套 **Agent SDK** 面向非技术人员的产品形态：桌面端、沙箱 VM、防 Prompt Injection。
+
+![Co-Work 与 Claude Code 共用 Agent SDK](/articles/claude-code-fireside/05-cowork.svg)
+
+| | Claude Code | Co-Work |
+| --- | --- | --- |
+| 用户 | 工程师 | 非技术人员 |
+| 环境 | 终端 / 仓库 / PR | 沙箱虚拟机 |
+| 关注点 | 写码与交付 | 权限、注入防御、可恢复执行 |
+
+案例：站会自动同步进度；差旅自动订票订酒店。协作上，目前多通过 **MCP** 接到 Slack / Teams / Git；Boris 也提到后续会加更多原生协作能力。
+
+## 模型怎么选：Fable、成本与能力边界
+
+关于日常用哪个模型，Boris 的态度很明确：
+
+- 日常优先用 **Fable**  
+
+- Fable 相对上一代的跃迁，他认为 **不亚于 Opus 4.5 那次跳跃**  
+- 策略：**优先放大 ROI，而不是优先砍成本**；省钱可以靠后端治理，不该靠关掉最强模型
+
+他也坦陈薄弱处：
+
+| 仍偏弱 | 含义 |
+| --- | --- |
+| 产品洞察 | 「做什么产品」仍难外包 |
+| 分布式系统设计 | 高难度架构判断仍要人 |
+
+换言之：Agent 很会实现，但**还不会替你负责「该不该做」和「系统怎么长」**。
+
+## 提示疲劳 → Auto Mode；学习模式防退化
+
+全自动之后，人会遇到另一种疲劳：**提示写腻了**。应对是 **Auto Mode**——少写提示、多让系统自己转。
+
+同时担心工程师「不会写代码了」。Boris 的回答不是禁止用 Agent，而是用 **Output Style** 保住理解力，例如：
+
+- **exploratory**：边做边解释  
+- **learning**：刻意当教练，逼你跟上
+
+> 自动化解决产能；学习模式解决能力折旧。两者要一起设计。
+
+## 工程师的工作变成了什么
+
+![工程师角色：从写代码到设计目标并监督 Agent](/articles/claude-code-fireside/07-engineer-role.svg)
+
+| 以前 | 现在 |
+| --- | --- |
+| 手写实现 | 定义目标与验收标准 |
+| 自己盯每一处细节 | 监督 Agent / Loops |
+| 瓶颈 ≈ 打字与语法 | 瓶颈 ≈ **想法** 与语音输入速度 |
+
+Boris 的个人画像很极端：大部分代码在手机上产出，瓶颈变成「脑子里的想法」和「说话有多快」。这不适合所有人照搬，但方向清楚——**工程师从实现者变成目标设定者与 Agent 监督者**，并且更有机会端到端推完一个想法。
+
+关于协作与未来：没有固定的「明年路线图」式承诺；方向是更长任务、更高质量与安全、更好的意图对齐，以及环境兼容。
+
+## 给普通人的行动与洞见
+
+上面偏工程师视角。Boris 的分享里，**非工程师同样可以立刻动手**。下面按「马上能做」和「值得记住的判断」拆开。
+
+### 立刻做：把 AI 从「代笔」改成「导师」
+
+默认用法是：让 AI 直接把活干完。Boris 建议换输出风格，把它变成教练：
+
+| 模式 | 它怎么带你 | 适合谁 |
+| --- | --- | --- |
+| **Learning（学习）** | 不替你做完；一步步告诉你「先打开这个文件、这样改」，你做完再往下 | 想学会、怕被代劳掏空 |
+| **Exploratory（探索）** | 边改边讲架构与原理，解释「为什么这样动」 | 要跟上工作流、保住主体性 |
+
+> 代笔换速度；导师换能力。只追求前者，思维会悄悄变懒。
+
+### 立刻做：用 Co-Work 和 Loops 吃掉琐事
+
+非技术人员可以用面向自己的产品形态（如 **Co-Work**）接管行政与协调：
+
+| 场景 | 做法 |
+| --- | --- |
+| 项目管理 | AI 在 Slack 问进度 → 自动写入项目表，「零配置」追踪 |
+| 差旅 | 盯邮件与日历 → 发现异地活动 → 按偏好订票订酒店 |
+| 流程升级 | 从「每次手打提示」改成「让 AI 按节奏自转」——例如定时读反馈、生成改进建议 |
+
+这就是抽象升级：你不再只派单次任务，而是**管理一整条流程**。
+
+### 洞见：创新常来自意想不到的角落
+
+最成功的做法不是只给工程师发 Token，而是**全员普及**——会计、市场、PM 都该有额度。
+
+原因很朴素：改流程、提效率的点子，经常来自角落里的会计，或从未被 CEO 注意到的市场同事，而不是高级工程师。
+
+对普通人的含义：**你不必是技术专家，也可以成为部门里的创新驱动者。** 缺的往往是实验权限，不是头衔。
+
+### 洞见：瓶颈从「执行力」迁到「想法」
+
+编码与基础设计被 AI 推到接近「喷气背包」的效率后，人的价值焦点变了：
+
+| 曾经稀缺 | 现在更稀缺 |
+| --- | --- |
+| 写得出来、做得出来 | **有没有好主意**、提示与表达有多快 |
+| 执行细节 | **产品感**、用户洞察、跨部门协调 |
+
+即便像 Boris 这样的顶尖开发者，也几乎 100% 用 AI 写代码；他自己承认瓶颈只剩「提示速度」和「有没有好主意」。AI 仍弱于人类的，是产品感、复杂分布式系统设计，以及原创点子。
+
+普通人该把精力压在：理解市场、洞察需求、协调多方——这些 AI 还不擅长替你负责。
+
+### 洞见：盯 ROI，别只盯成本
+
+面对更贵但更强的模型（如 Fable），Boris 的态度是：**看上限（回报能涨多少），别先卡下限（怎么少花钱）。**
+
+配套条件是「试错安全感」：Token 够用，试错不被惩罚，人才更可能走出真正提效的新路径。锁死额度，等于提前关掉发现。
+
+> 跳出「工具使用者」：做意图的定义者、流程的管理者。用学习模式养能力，用自动化清琐事，把脑子留给 AI 还不擅长的「好主意」。
+
+## 可带走的清单
+
+1. **先证明 ROI，再控 Token**——对全员开放实验，后端治理成本  
+2. **抽象升到 Loops**——别只当 Agent 的打字员  
+3. **分清 Loops 与 Workflow**——持续业务循环 ≠ 单次测试时计算  
+4. **跟着瓶颈搬家**——评审、安全、CI、创意，一环环补工具  
+5. **非工程师也能用同一套 Agent 能力**（Co-Work + 沙箱）  
+6. **模型选择服务 ROI**；薄弱处仍在产品洞察与高难度系统设计  
+7. **Auto Mode 治提示疲劳；learning / exploratory 治能力退化**  
+8. **人的新岗位**：定目标、做取舍、监督 Agent，而不是手写每一行  
+9. **普通人立刻可做**：开导师模式、自动化琐事、争取全员 Token、把精力押在想法与产品感上
+
+## 来源与说明
+
+- 材料：Meta × Anthropic Claude Code 炉边对谈（嘉宾 Boris Cherny；主持人为 Meta 开发者工具产品负责人）  
+- 视频：[YouTube](https://www.youtube.com/watch?v=Z47vatpsGPI)  
+- 日期：2026-07-29  
+- 相关阅读：[Loop Engineering](/articles/loop-engineering)
+
+## 附 · 术语表
+
+本文第一次出现的黑话都在这里。读完后面不必再卡词。
+
+**Token / 用量单位**  大模型计费与限流的最小计量单位，大致对应「处理多少文字」。公司说「开放 Token」，意思是给你额度去用 AI，而不是只给工程师。例：一次长对话、一次自动修 CI，都会烧掉 Token。
+
+**ROI / 投资回报**  Return on Investment。本文里：投入主要是 Token 与席位成本，回报是产出增速（多干了多少有用的活）。Boris 的顺序是先放大回报，再谈省钱。
+
+**Agent / 智能体**  能自己决定调用什么工具、采取什么行动来达成目标的 AI 程序。不只聊天回答，还能动手：读文件、改代码、跑命令、开 PR。例：Claude Code 就是一个 Agent。
+
+**Claude Code**  Anthropic 面向工程师的编码 Agent 产品：在终端/仓库里读改代码、跑测试、提 PR。Boris 从 Opus 4.5 起几乎只用它写代码。
+
+**IDE / 集成开发环境**  传统写代码的桌面工具（如 VS Code）。文中「几乎不再打开 IDE」= 日常实现工作交给 Agent，人更少亲自敲文件。
+
+**PR / 拉取请求**  Pull Request。把代码改动提交给团队审查、合并进主分支的标准动作。文中的「产出」常以合并了多少 PR 来衡量。
+
+**Loop / 循环**  Agent 按节奏自己转的流程：扫一类工作 → 动手 → 看结果 → 再决定，直到达标或停下。关键是**它自己重复**，不用你每轮手推一句提示。例：定时读用户反馈并自动开修复 PR。
+
+**Loop Engineering / 循环工程**  设计「会提示、校验、记忆、重跑、停下」的系统，而不是自己每次手动提示 Agent。一句话：你不当循环，你设计循环。详见站内 [Loop Engineering](/articles/loop-engineering)。
+
+**Workflow / 工作流（算力层）**  本文里特指：为**单次**复杂任务调度大量子 Agent、砸更多算力换更高质量（常叫 test-time compute）。和 Loop 不同——Loop 管「持续干什么」，Workflow 管「这一次要多认真」。
+
+**Test-time compute / 测试时计算**  推理阶段多花钱、多跑几轮（更多 Agent、更长思考），用算力换更好结果，而不是只靠换更大训练模型。
+
+**CI / 持续集成**  Continuous Integration。代码合并前后自动跑构建、测试、检查的流水线。编码变快后，CI 经常变成新瓶颈。
+
+**Code Review / 代码评审**  合并前由人或工具检查改动是否正确、安全、符合规范。Anthropic 侧大量用 Claude Code Review 自动化这一环。
+
+**Claude Security**  面向安全审计的 Claude 能力/产品线（文中相对 Code Review 的下一环）：在评审之后扛「安全是否过关」的瓶颈。
+
+**Co-Work**  同一套 Agent 能力面向**非工程师**的产品形态：桌面端、沙箱环境，用来做行政、协调、差旅等，而不只是写代码。
+
+**Agent SDK**  用来搭建 Agent 应用的软件工具包。Claude Code 与 Co-Work 共用同一套底层，只是用户与界面不同。
+
+**Sandbox / 沙箱 · VM / 虚拟机**  把 AI 的操作关在隔离环境里跑，降低误删文件、乱访问系统的风险。Co-Work 强调沙箱 VM，就是这个意思。
+
+**Prompt Injection / 提示注入**  攻击手法：在网页、邮件、文档里塞进恶意指令，诱骗 Agent「听话」去泄密或乱操作。防注入 = 不让外部脏文本劫持 Agent。
+
+**MCP / 模型上下文协议**  Model Context Protocol。一种让 Agent 接外部工具与数据源的标准接口。文中例子：经 MCP 接到 Slack、Teams、Git。
+
+**Fable**  Boris 提到的新一代（更强、通常更贵）模型名称；他主张日常优先用它来放大 ROI，而不是先为了省钱降级。
+
+**Opus 4.5**  Anthropic 上一档旗舰编码模型世代；Boris 以此为分界：之后几乎 100% 用 Claude Code、很少再开 IDE。
+
+**Prompt / 提示**  你给 AI 的一次输入（一句话或一段指令）。「提示疲劳」= 老是要手写提示，写腻了。
+
+**Auto Mode / 自动模式**  少写提示、多让系统自己转的用法：把重复推动交给循环/自动化，减轻提示疲劳。
+
+**Output Style / 输出风格**  控制 AI「怎么跟你说话、怎么带你干活」的模式开关。文中重点两个：Learning、Exploratory。
+
+**Learning mode / 学习模式**  AI 不替你做完；像老师一步步引导，你做完再往下。用来防「被代劳掏空」。
+
+**Exploratory mode / 探索模式**  AI 边改边讲架构与原理，帮你理解「为什么这样动」，保住工作流里的主体性。
+
+**Product sense / 产品感**  判断「该做什么、对谁有用、值不值得做」的直觉与判断力。Boris 认为这里人类仍明显强于 AI。
+
+**Distributed systems design / 分布式系统设计**  多台机器、多服务如何协作、容错、扩展的架构设计。文中列为 AI 仍偏弱、仍要人拍板的领域。
+
+**PM / 产品经理**  Product Manager。负责需求、优先级与跨角色协调的角色；文中强调也应有 Token，因为创新常来自非工程师。
+
+<<<en>>>
+## Before you start
+
+In July 2026, Meta’s Dev Tools product lead hosted a fireside chat with **Boris Cherny**, who leads Claude Code at Anthropic. The spine:
+
+> **Coding is largely “solved.” What you actually design next is ROI, loops, and the bottlenecks that move downstream of code.**
+
+This note follows that spine. Terms get a short definition on first use. Numbers and claims come from Boris on stage (or Anthropic practice as he described it).
+
+## Coding is largely “solved”
+
+Boris’s own usage (roughly since March):
+
+| Metric | Figure |
+| --- | --- |
+| Merged PRs | ~1,700 |
+| Diff | +400k / −250k lines |
+| Tokens | ~8B |
+| Tooling | **100% Claude Code** since Opus 4.5 |
+| Context | Mostly from his phone |
+
+Inside Anthropic: about **80–90%** of code is generated with Claude Code; many teams near **100%**. Blunter still: since Opus 4.5 he barely opens an IDE.
+
+This is not “AI helped with a few patches.” **Writing code is no longer the main throughput bottleneck.**
+
+## ROI first — not cost-cutting first
+
+Many companies’ first move is locking tokens. Boris reverses the order:
+
+![ROI funnel: open access → validate → govern cost](/articles/claude-code-fireside/02-roi-funnel.en.svg)
+
+1. **Open tokens to every role** — eng, PM, design, data  
+2. **Ideas often come from non-engineers**; prove where value shows up  
+3. **Only then govern cost on the backend** — seat budgets, lighter reference models, effort knobs
+
+Simple frame: **input = tokens; return = engineer output velocity.** Inside Anthropic, roughly **~8×**.
+
+> Amplify ROI first. Locking tokens early just shuts down experiments.
+
+## From agents to loops: one level up
+
+Boris’s programming analogy:
+
+![Abstraction ladder: hand-written → Agent → Loops](/articles/claude-code-fireside/01-abstraction.en.svg)
+
+| Layer | Analogy | What you do |
+| --- | --- | --- |
+| Hand-written code | A statement | You implement |
+| Agent | A function | The model writes a chunk |
+| **Loops** | **A higher-order function** | You write prompts that drive agents |
+
+A **loop** is an autonomous cadence that keeps scanning a class of work and opening PRs — not you typing the next prompt every turn.
+
+Boris estimates ~**30%** of his code comes from loops; sometimes near **100%** (a week almost entirely on auto loops).
+
+Same direction as [Loop Engineering](/articles/loop-engineering) on this site: stop *being* the loop; design the system that drives the agent.
+
+## Loops ≠ Workflow
+
+Easy to conflate on stage. Boris’s split:
+
+![Loops vs Workflow](/articles/claude-code-fireside/03-loops-vs-workflow.en.svg)
+
+| | Loops | Workflow |
+| --- | --- | --- |
+| Layer | Business cadence | Compute orchestration |
+| Shape | Repeat one class of work | One hard job, many sub-agents |
+| Goal | Steady output (review, fixes, maintenance) | **Test-time compute** — spend more for higher quality |
+| Example | Auto-scan feedback and patch | One prompt for hours / millions of tokens |
+
+**Loops decide what keeps running; Workflow decides how hard this run tries.**
+
+## Bottlenecks migrate: review → security → CI / ideas
+
+Once coding is chewed through, pressure moves down the pipe:
+
+![Bottleneck chain: coding → review → security → CI/ideas](/articles/claude-code-fireside/04-bottleneck-chain.en.svg)
+
+| Old bottleneck | New bottleneck | Anthropic response |
+| --- | --- | --- |
+| Writing code | Code review | Claude Code Review (~**98–99%** automated, per Boris) |
+| Review | Security audit | Claude Security |
+| Security | CI and “what should we build?” | Workflow + human goals |
+
+Example: **one prompt + Workflow**, hours of runtime, millions of tokens, ~**4 PRs**, CI-related time cut roughly **in half**.
+
+> Clear one link and the next becomes the bottleneck. Tooling has to migrate with the bottleneck — not stop at “can write code.”
+
+Think of delivery as a flywheel:
+
+![Delivery flywheel: code → review → security → ship → metrics](/articles/claude-code-fireside/06-flywheel.en.svg)
+
+Models increasingly own the middle. **Humans still own both ends:** goals, and whether the work is worth doing.
+
+## Co-Work: same SDK, non-engineers
+
+**Co-Work** is not a different model family. It’s the same **Agent SDK** shaped for non-engineers: desktop, sandboxed VM, prompt-injection defenses.
+
+![Co-Work and Claude Code share the Agent SDK](/articles/claude-code-fireside/05-cowork.en.svg)
+
+| | Claude Code | Co-Work |
+| --- | --- | --- |
+| Users | Engineers | Non-engineers |
+| Environment | Terminal / repo / PRs | Sandboxed VM |
+| Focus | Shipping code | Permissions, injection defense, recoverable runs |
+
+Examples: standup progress sync; auto travel booking. Collaboration today often lands via **MCP** into Slack / Teams / Git; Boris also flagged more native collab coming.
+
+## Model choice: Fable, cost, and limits
+
+On daily models, Boris was blunt:
+
+- Prefer **Fable** day-to-day  
+
+- The jump to Fable is, in his view, **at least as large as the Opus 4.5 jump**  
+- Strategy: **amplify ROI before cutting cost**; save money with backend governance, not by turning off the strongest model
+
+Honest weak spots:
+
+| Still weak | Meaning |
+| --- | --- |
+| Product insight | “What to build” still hard to outsource |
+| Distributed systems design | Hard architecture calls stay human |
+
+Agents implement well; they still don’t own **should we?** or **how should the system grow?**
+
+## Prompt fatigue → Auto Mode; learning styles vs atrophy
+
+Full automation creates a new fatigue: **you’re tired of writing prompts.** Answer: **Auto Mode** — fewer prompts, more system motion.
+
+Fear that engineers “can’t code anymore” isn’t answered by banning agents. Use **output styles** that preserve understanding, e.g.:
+
+- **exploratory** — explain while doing  
+- **learning** — coach mode that forces you to keep up
+
+> Automation fixes throughput; learning modes fix skill depreciation. Design both.
+
+## What the engineer’s job becomes
+
+![Engineer role: from writing code to setting goals and supervising agents](/articles/claude-code-fireside/07-engineer-role.en.svg)
+
+| Before | Now |
+| --- | --- |
+| Hand-write implementation | Define goals and acceptance |
+| Babysit every detail | Supervise agents / loops |
+| Bottleneck ≈ typing & syntax | Bottleneck ≈ **ideas** and dictation speed |
+
+Boris’s personal extreme: most code from a phone; bottleneck = ideas and how fast he can talk. Don’t copy that lifestyle blindly — the direction is clear: **engineers become goal-setters and agent supervisors**, with more room to ship an idea end-to-end.
+
+On collaboration and the future: no fixed year-plan promise; direction is longer tasks, higher quality/security, better intent alignment, and environment compatibility.
+
+## Actions and insights for everyone
+
+The sections above lean engineer. Boris’s talk also says **non-engineers can act immediately**. Split into “do now” and “remember this.”
+
+### Do now: turn AI from ghostwriter into tutor
+
+Default use: let AI finish the work. Boris’s fix is output style — make it a coach:
+
+| Mode | How it teaches | Who it’s for |
+| --- | --- | --- |
+| **Learning** | Won’t finish for you; steps like “open this file, change it like this,” then waits | You want to learn, not be hollowed out |
+| **Exploratory** | Changes code while explaining architecture and why | You want to stay in the loop and keep agency |
+
+> Ghostwriting buys speed; tutoring buys skill. Chase only the first and your thinking quietly goes soft.
+
+### Do now: use Co-Work and loops on chores
+
+Non-engineers can use products built for them (e.g. **Co-Work**) for admin and coordination:
+
+| Scenario | Pattern |
+| --- | --- |
+| Project tracking | AI asks for status in Slack → writes the project sheet — near “zero-config” tracking |
+| Travel | Watch mail and calendar → spot an away event → book flights/hotels to preference |
+| Process upgrade | Stop one-off prompts; let AI run on a cadence — e.g. periodically read feedback and suggest fixes |
+
+That’s the abstraction jump: you manage **a whole flow**, not single tasks.
+
+### Insight: innovation often comes from the corners
+
+The winning move isn’t tokens for engineers only — **open them to everyone**: accounting, marketing, PMs.
+
+Why: the process-changing idea often comes from the accountant in the corner, or a marketer the CEO never noticed — not the senior engineer.
+
+For everyone else: **you don’t need to be a tech expert to drive innovation in your team.** What’s missing is usually permission to experiment, not a title.
+
+### Insight: the bottleneck moved from execution to ideas
+
+Once coding and basic design feel like a jetpack, human leverage shifts:
+
+| Used to be scarce | Now scarcer |
+| --- | --- |
+| Shipping the work | **Having a good idea**, and how fast you can prompt/speak |
+| Execution detail | **Product sense**, user insight, cross-team coordination |
+
+Even a top developer like Boris is near 100% AI-written code; he says his bottleneck is prompt speed and whether he has a good idea. AI still lags humans on product sense, hard distributed-system design, and original ideas.
+
+Put your energy on markets, needs, and coordination — work AI still won’t own for you.
+
+### Insight: watch ROI, not only cost
+
+On expensive, stronger models (e.g. Fable), Boris’s stance is: **watch the upside (how much return can grow), don’t clamp the floor first (how to spend less).**
+
+The companion condition is psychological safety to experiment: enough tokens, room to try without punishment — that’s how people find real productivity paths. Lock the budget early and you shut discovery down.
+
+> Stop being only a tool user. Become the person who defines intent and manages the process. Use learning modes to grow skill, automation to clear chores, and free your head for the good ideas AI still can’t supply.
+
+## Takeaways
+
+1. **Prove ROI before locking tokens** — open experiments; govern cost later  
+2. **Raise abstraction to loops** — stop being the agent’s typist  
+3. **Separate loops from workflow** — business cadence ≠ one-shot test-time compute  
+4. **Follow the bottleneck** — review, security, CI, ideas — tool each link  
+5. **Non-engineers can use the same agent stack** (Co-Work + sandbox)  
+6. **Model choice serves ROI**; weak spots remain product insight and hard system design  
+7. **Auto Mode for prompt fatigue; learning / exploratory for atrophy**  
+8. **Human job:** set goals, make tradeoffs, supervise agents — not hand-write every line  
+9. **Anyone can start now:** tutor modes, automate chores, push for org-wide tokens, bet on ideas and product sense
+
+## Sources
+
+- Source: Meta × Anthropic Claude Code fireside chat (guest: Boris Cherny; host: Meta Dev Tools product lead)  
+- Video: [YouTube](https://www.youtube.com/watch?v=Z47vatpsGPI)  
+- Dated: 2026-07-29  
+- Related: [Loop Engineering](/articles/loop-engineering)
+
+## Appendix · Glossary
+
+Terms that show up in this note, defined once in plain language.
+
+**Token**  The billing/quota unit for large models — roughly “how much text was processed.” “Open tokens to everyone” means give people budget to use AI, not engineers only. Ex: a long chat or an automated CI fix both burn tokens.
+
+**ROI (return on investment)**  Here: input is mostly token/seat cost; return is output velocity (how much useful work you ship). Boris’s order: grow return first, then save money.
+
+**Agent**  An AI program that chooses tools and actions to reach a goal. Not just chat — it acts: read files, edit code, run commands, open PRs. Ex: Claude Code is an agent.
+
+**Claude Code**  Anthropic’s coding agent for engineers: works in the terminal/repo, edits code, runs tests, opens PRs. Since Opus 4.5 Boris nearly uses it for all coding.
+
+**IDE**  Traditional coding app (e.g. VS Code). “Barely opens an IDE” = day-to-day implementation is delegated to the agent.
+
+**PR (pull request)**  The standard way to propose code changes for review and merge. Output is often counted in merged PRs.
+
+**Loop**  An agent cadence that runs itself: scan a class of work → act → check → decide again until done or stop. The point is **it repeats without you pushing every turn**. Ex: periodically read feedback and auto-open fix PRs.
+
+**Loop engineering**  Designing the system that prompts, verifies, remembers, retries, and stops — instead of hand-prompting the agent every time. One line: don’t *be* the loop; design it. See [Loop Engineering](/articles/loop-engineering).
+
+**Workflow (compute layer)**  In this note: orchestrating many sub-agents for **one** hard job, spending more compute for higher quality (often called test-time compute). Loops decide what keeps running; workflow decides how hard this run tries.
+
+**Test-time compute**  Spend more at inference time (more agents, longer thinking) to buy better results — not only by training a bigger model.
+
+**CI (continuous integration)**  Automated build/test/check pipelines around merges. After coding speeds up, CI often becomes the next bottleneck.
+
+**Code review**  Checking changes before merge for correctness, safety, and standards. Anthropic automates much of this with Claude Code Review.
+
+**Claude Security**  Claude capability/product line aimed at security audit — the next bottleneck after review in this talk.
+
+**Co-Work**  The same agent stack shaped for **non-engineers**: desktop + sandbox, for admin, coordination, travel — not only coding.
+
+**Agent SDK**  The software kit for building agent apps. Claude Code and Co-Work share one SDK; users and UI differ.
+
+**Sandbox / VM**  An isolated environment for agent actions so mistakes can’t freely trash your machine. Co-Work leans on sandboxed VMs.
+
+**Prompt injection**  An attack: malicious instructions hidden in web pages, mail, or docs that trick an agent into leaking data or misbehaving. Defenses keep external text from hijacking the agent.
+
+**MCP (Model Context Protocol)**  A standard way for agents to plug into tools and data sources. Ex: connect Slack, Teams, or Git via MCP.
+
+**Fable**  The newer, stronger (usually pricier) model Boris prefers day-to-day — amplify ROI first, don’t downgrade just to cut cost.
+
+**Opus 4.5**  A prior Anthropic flagship coding generation; Boris’s breakpoint after which he went near-100% Claude Code and rarely opened an IDE.
+
+**Prompt**  One input you give the AI (a sentence or a block of instructions). “Prompt fatigue” = you’re tired of writing those prompts.
+
+**Auto Mode**  Use fewer prompts and let the system run itself — hand repeated pushing to loops/automation.
+
+**Output style**  Controls how the AI talks and coaches you. Two that matter here: Learning and Exploratory.
+
+**Learning mode**  The AI won’t finish for you; it guides step by step and waits. Guards against skill atrophy.
+
+**Exploratory mode**  The AI changes things while explaining architecture and why — keeps you in the loop with agency.
+
+**Product sense**  Judgment about what to build, for whom, and whether it’s worth it. Boris says humans still clearly beat AI here.
+
+**Distributed systems design**  Architecture for many machines/services: collaboration, failure, scale. Listed as still weak for AI; humans still decide.
+
+**PM (product manager)**  Owns requirements, priority, and cross-role coordination. Should get tokens too — innovation often comes from non-engineers.

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 320" style="width:100%;max-width:760px;height:auto" role="img" aria-label="Loops 与 Workflow 对比">
+<rect x="2" y="2" width="756" height="316" rx="14" fill="#fff" stroke="#e2e8f0"/>
+<text x="380" y="34" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="700" text-anchor="middle">Loops ≠ Workflow</text>
+<rect x="40" y="56" width="320" height="240" rx="14" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+<text x="200" y="96" fill="#3730a3" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="22" font-weight="800" text-anchor="middle">Loops</text>
+<text x="200" y="124" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" text-anchor="middle">业务层循环</text>
+<text x="68" y="160" fill="#334155" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13">• 持续扫描一类任务</text>
+<text x="68" y="192" fill="#334155" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13">• 自动提交 PR</text>
+<text x="68" y="224" fill="#334155" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13">• 例：评审 / 反馈修复 / 库维护</text>
+<rect x="400" y="56" width="320" height="240" rx="14" fill="#ecfeff" stroke="#06b6d4" stroke-width="2"/>
+<text x="560" y="96" fill="#0e7490" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="22" font-weight="800" text-anchor="middle">Workflow</text>
+<text x="560" y="124" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" text-anchor="middle">算力层调度</text>
+<text x="428" y="160" fill="#334155" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13">• 单次复杂任务</text>
+<text x="428" y="192" fill="#334155" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13">• 调度大量子 Agent</text>
+<text x="428" y="224" fill="#334155" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13">• 测试时计算 · 换更高质量</text>
+</svg>

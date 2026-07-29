@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 220" style="width:100%;max-width:760px;height:auto" role="img" aria-label="Delivery flywheel">
+<defs><marker id="f1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker></defs>
+<rect x="2" y="2" width="756" height="220" rx="14" fill="#fff" stroke="#e2e8f0"/>
+<text x="380" y="30" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" font-weight="700" text-anchor="middle">Code → review → ship → business metrics</text>
+<rect x="30" y="70" width="120" height="80" rx="12" fill="#ecfeff" stroke="#06b6d4" stroke-width="2"/>
+<text x="90" y="104" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Code</text>
+<text x="90" y="128" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="11" text-anchor="middle">Agent</text>
+<path d="M154 110 L171 110" stroke="#64748b" stroke-width="2" marker-end="url(#f1)"/>
+<rect x="175" y="70" width="120" height="80" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+<text x="235" y="104" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Review</text>
+<text x="235" y="128" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="11" text-anchor="middle">Review</text>
+<path d="M299 110 L316 110" stroke="#64748b" stroke-width="2" marker-end="url(#f1)"/>
+<rect x="320" y="70" width="120" height="80" rx="12" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/>
+<text x="380" y="104" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Security</text>
+<text x="380" y="128" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="11" text-anchor="middle">Security</text>
+<path d="M444 110 L461 110" stroke="#64748b" stroke-width="2" marker-end="url(#f1)"/>
+<rect x="465" y="70" width="120" height="80" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+<text x="525" y="104" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Ship / CI</text>
+<text x="525" y="128" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="11" text-anchor="middle">Workflow</text>
+<path d="M589 110 L606 110" stroke="#64748b" stroke-width="2" marker-end="url(#f1)"/>
+<rect x="610" y="70" width="120" height="80" rx="12" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
+<text x="670" y="104" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Metrics</text>
+<text x="670" y="128" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="11" text-anchor="middle">Human goals</text>
+<text x="380" y="190" fill="#475569" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" text-anchor="middle">Models own the middle; humans own both ends: goals and go/no-go</text>
+</svg>

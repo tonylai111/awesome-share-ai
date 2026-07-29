@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" style="width:100%;max-width:760px;height:auto" role="img" aria-label="工程师角色转变">
+<defs><marker id="a7" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker></defs>
+<rect x="2" y="2" width="756" height="300" rx="14" fill="#fff" stroke="#e2e8f0"/>
+<text x="380" y="30" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="700" text-anchor="middle">从写代码的人 → 设计目标并监督 Agent 的人</text>
+<rect x="50" y="56" width="300" height="180" rx="14" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+<text x="200" y="92" fill="#475569" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="18" font-weight="800" text-anchor="middle">以前</text>
+<text x="74" y="130" fill="#334155" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13">• 手写实现</text>
+<text x="74" y="160" fill="#334155" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13">• 自己盯细节</text>
+<text x="74" y="190" fill="#334155" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13">• 瓶颈 = 打字与语法</text>
+<rect x="410" y="56" width="300" height="180" rx="14" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+<text x="560" y="92" fill="#3730a3" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="18" font-weight="800" text-anchor="middle">现在</text>
+<text x="434" y="130" fill="#334155" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13">• 定义目标与验收</text>
+<text x="434" y="160" fill="#334155" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13">• 监督 Agent / Loops</text>
+<text x="434" y="190" fill="#334155" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13">• 瓶颈 = 想法与语音输入速度</text>
+<path d="M360 146 L400 146" stroke="#64748b" stroke-width="2.5" marker-end="url(#a7)"/>
+<rect x="50" y="250" width="660" height="34" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="380" y="272" fill="#475569" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" text-anchor="middle">防退化：Auto Mode 解决提示疲劳；exploratory / learning 保住理解力</text>
+</svg>

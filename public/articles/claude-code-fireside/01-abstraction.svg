@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 320" style="width:100%;max-width:760px;height:auto" role="img" aria-label="抽象层级：手写 → Agent → Loops">
+<defs><marker id="u1" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker></defs>
+<rect x="2" y="2" width="756" height="316" rx="14" fill="#fff" stroke="#e2e8f0"/>
+<text x="380" y="30" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="700" text-anchor="middle">抽象层级升级</text>
+<rect x="100" y="230" width="560" height="64" rx="12" fill="#f1f5f9" stroke="#94a3b8"/>
+<text x="380" y="256" fill="#334155" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="16" font-weight="700" text-anchor="middle">手写源码</text>
+<text x="380" y="278" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" text-anchor="middle">≈ 单条语句</text>
+<path d="M380 226 L380 206" stroke="#64748b" stroke-width="2.5" marker-end="url(#u1)"/>
+<rect x="100" y="138" width="560" height="64" rx="12" fill="#ecfeff" stroke="#22d3ee"/>
+<text x="380" y="164" fill="#0e7490" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="16" font-weight="700" text-anchor="middle">Agent 写代码</text>
+<text x="380" y="186" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" text-anchor="middle">≈ 函数</text>
+<path d="M380 134 L380 114" stroke="#64748b" stroke-width="2.5" marker-end="url(#u1)"/>
+<rect x="100" y="46" width="560" height="64" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2.5"/>
+<text x="380" y="72" fill="#3730a3" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="16" font-weight="800" text-anchor="middle">Loops 提示 Agent</text>
+<text x="380" y="94" fill="#6366f1" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="600" text-anchor="middle">≈ 高阶函数</text>
+</svg>

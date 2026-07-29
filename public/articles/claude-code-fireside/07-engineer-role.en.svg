@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" style="width:100%;max-width:760px;height:auto" role="img" aria-label="The engineer’s new job">
+<defs><marker id="a7" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker></defs>
+<rect x="2" y="2" width="756" height="300" rx="14" fill="#fff" stroke="#e2e8f0"/>
+<text x="380" y="30" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" font-weight="700" text-anchor="middle">From writing code → setting goals and supervising agents</text>
+<rect x="50" y="56" width="300" height="180" rx="14" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+<text x="200" y="92" fill="#475569" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="18" font-weight="800" text-anchor="middle">Before</text>
+<text x="74" y="130" fill="#334155" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13">• Hand-write implementation</text>
+<text x="74" y="160" fill="#334155" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13">• Babysit every detail</text>
+<text x="74" y="190" fill="#334155" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13">• Bottleneck = typing & syntax</text>
+<rect x="410" y="56" width="300" height="180" rx="14" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+<text x="560" y="92" fill="#3730a3" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="18" font-weight="800" text-anchor="middle">Now</text>
+<text x="434" y="130" fill="#334155" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13">• Define goals & acceptance</text>
+<text x="434" y="160" fill="#334155" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13">• Supervise agents / loops</text>
+<text x="434" y="190" fill="#334155" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13">• Bottleneck = ideas & dictation speed</text>
+<path d="M360 146 L400 146" stroke="#64748b" stroke-width="2.5" marker-end="url(#a7)"/>
+<rect x="50" y="250" width="660" height="34" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="380" y="272" fill="#475569" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" text-anchor="middle">Stay sharp: Auto Mode vs prompt fatigue; exploratory / learning styles</text>
+</svg>

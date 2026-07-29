@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 340" style="width:100%;max-width:760px;height:auto" role="img" aria-label="ROI 漏斗：全员实验 → 验证有效 → 后端控成本">
+<rect x="2" y="2" width="756" height="340" rx="14" fill="#fff" stroke="#e2e8f0"/>
+<text x="380" y="30" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="700" text-anchor="middle">ROI 优先，而不是先砍成本</text>
+<rect x="70.0" y="50" width="620" height="70" rx="12" fill="#fef3c7" stroke="#f59e0b"/>
+<text x="380" y="78" fill="#92400e" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="700" text-anchor="middle">1. 全员开放 Token</text>
+<text x="380" y="102" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" text-anchor="middle">工程师 / PM / 设计 / 数据都可实验</text>
+<rect x="110.0" y="132" width="540" height="70" rx="12" fill="#ecfeff" stroke="#06b6d4"/>
+<text x="380" y="160" fill="#0e7490" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="700" text-anchor="middle">2. 验证有效场景</text>
+<text x="380" y="184" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" text-anchor="middle">创新往往来自非工程师</text>
+<rect x="150.0" y="214" width="460" height="70" rx="12" fill="#eef2ff" stroke="#6366f1"/>
+<text x="380" y="242" fill="#3730a3" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="700" text-anchor="middle">3. 后端再控成本</text>
+<text x="380" y="266" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" text-anchor="middle">席位预算 · 降级参考模型 · 调强度</text>
+<rect x="40" y="304" width="680" height="52" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="380" y="334" fill="#475569" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" text-anchor="middle">投入 = Token 消耗  ·  回报 = 工程师产出增速  ·  Anthropic 内部：约 8×</text>
+</svg>

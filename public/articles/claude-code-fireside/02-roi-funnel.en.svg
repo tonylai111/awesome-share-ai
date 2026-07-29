@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 340" style="width:100%;max-width:760px;height:auto" role="img" aria-label="ROI funnel: open access → validate → govern cost">
+<rect x="2" y="2" width="756" height="340" rx="14" fill="#fff" stroke="#e2e8f0"/>
+<text x="380" y="30" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" font-weight="700" text-anchor="middle">ROI first, not cost-cutting first</text>
+<rect x="70.0" y="50" width="620" height="70" rx="12" fill="#fef3c7" stroke="#f59e0b"/>
+<text x="380" y="78" fill="#92400e" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" font-weight="700" text-anchor="middle">1. Open tokens to everyone</text>
+<text x="380" y="102" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" text-anchor="middle">Eng / PM / Design / Data can experiment</text>
+<rect x="110.0" y="132" width="540" height="70" rx="12" fill="#ecfeff" stroke="#06b6d4"/>
+<text x="380" y="160" fill="#0e7490" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" font-weight="700" text-anchor="middle">2. Validate what works</text>
+<text x="380" y="184" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" text-anchor="middle">Ideas often come from non-engineers</text>
+<rect x="150.0" y="214" width="460" height="70" rx="12" fill="#eef2ff" stroke="#6366f1"/>
+<text x="380" y="242" fill="#3730a3" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" font-weight="700" text-anchor="middle">3. Govern cost on the backend</text>
+<text x="380" y="266" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" text-anchor="middle">Seat budgets · lighter models · effort knobs</text>
+<rect x="40" y="304" width="680" height="52" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="380" y="334" fill="#475569" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" text-anchor="middle">Input = token spend  ·  Return = output velocity  ·  Inside Anthropic: ~8×</text>
+</svg>
