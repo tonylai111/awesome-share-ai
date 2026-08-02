@@ -19,31 +19,11 @@ cta: "$ less hermes.md →"
 <<<zh>>>
 ## 写在前面
 
-本文同步自橙皮书小册《Hermes Agent 从入门到精通》（花叔），并配干净概念图。正文骨架对齐 **Hermes Agent v0.7.0**；文末附录用白话补齐 Agent Harness 深读，以及 **v0.7 → v0.19.1** 的版本演进。
+本文同步自橙皮书小册《Hermes Agent 从入门到精通》（花叔），并配干净概念图。
 
 原 PDF：[下载](/guides/Hermes-Agent.pdf)
 
-插图目录：`/guides/hermes-agent/`。
-
-> AI 工具迭代很快，安装与安全细节请以 [官方文档](https://hermes-agent.nousresearch.com/) / [Changelog](https://hermes-ai.net/changelog/) 为准。
-
-> 本手册正文基于 Hermes Agent **v0.7.0** 编写；文末「版本演进」附录用白话补齐至 **v0.19.1**（2026-07-30）。AI 工具迭代迅速，请以官方文档为准。
->
-> 作者：花叔 · 公众号「花叔」· B站「AI进化论-花生」
->
-> 关键词：自改进 Agent · 跨会话记忆 · Skill 系统 · MCP · 多平台 · Agent Harness · 版本演进
-
-# Hermes Agent
-
-**从入门到精通**
-
-> The Agent That Grows With You
-
-第一个出厂就带缰绳的 AI Agent
-
-Nous Research 开源框架实战指南
-
-> 插图为干净概念图，位于同目录 `hermes-agent-assets/`。
+> AI 工具迭代很快，安装与安全细节请以 [官方文档](https://hermes-agent.nousresearch.com/) / [Changelog](https://hermes-ai.net/changelog/) 为准。正文基于 Hermes Agent **v0.7.0**；文末「版本演进」附录用白话补齐至 **v0.19.1**（2026-07-30）。
 
 ---
 
@@ -51,33 +31,37 @@ Nous Research 开源框架实战指南
 
 ### Part 1: 概念
 
-- §01 不是又一个Agent：从Harness到Hermes
-- §02 Hermes Agent全景：60秒看懂
+- [§01 不是又一个Agent：从Harness到Hermes](#01-不是又一个agent从harness到hermes)
+- [§02 Hermes Agent全景：60秒看懂](#02-hermes-agent全景60秒看懂)
+
 ### Part 2: 核心机制
 
-- §03 学习循环：Agent自己给自己造缰绳
-- §04 三层记忆：从金鱼到老友
-- §05 Skill系统：会自我进化的能力
-- §06 40+工具与MCP：连接一切
+- [§03 学习循环：Agent自己给自己造缰绳](#03-学习循环agent自己给自己造缰绳)
+- [§04 三层记忆：从金鱼到老友](#04-三层记忆从金鱼到老友)
+- [§05 Skill系统：会自我进化的能力](#05-skill系统会自我进化的能力)
+- [§06 40+工具与MCP：连接一切](#06-40工具与mcp连接一切)
+
 ### Part 3: 动手搭建
 
-- §07 安装与配置：三种方式
-- §08 第一次对话：让Hermes认识你
-- §09 多平台接入：在哪都能找到它
-- §10 自定义Skill：教Hermes新技能
-- §11 MCP集成：连接你的工具栈
+- [§07 安装与配置：三种方式](#07-安装与配置三种方式)
+- [§08 第一次对话：让Hermes认识你](#08-第一次对话让hermes认识你)
+- [§09 多平台接入：在哪都能找到它](#09-多平台接入在哪都能找到它)
+- [§10 自定义Skill：教Hermes新技能](#10-自定义skill教hermes新技能)
+- [§11 MCP集成：连接你的工具栈](#11-mcp集成连接你的工具栈)
+
 ### Part 4: 实战场景
 
-- §12 个人知识助手：跨会话记忆的威力
-- §13 开发自动化：代码审查到部署
-- §14 内容创作：从调研到成稿
-- §15 多Agent编排：让三匹马同时跑
+- [§12 个人知识助手：跨会话记忆的威力](#12-个人知识助手跨会话记忆的威力)
+- [§13 开发自动化：代码审查到部署](#13-开发自动化代码审查到部署)
+- [§14 内容创作：从调研到成稿](#14-内容创作从调研到成稿)
+- [§15 多Agent编排：让三匹马同时跑](#15-多agent编排让三匹马同时跑)
+
 ### Part 5: 深度思考
 
-- §16 Hermes vs OpenClaw vs Claude Code：不是选择题
-- §17 自改进Agent的边界：它能走多远
-- 附 · Agent Harness 深读：从聊天机器人到智能体
-- 附 · 版本演进：从 v0.7 到 v0.19（白话版）
+- [§16 Hermes vs OpenClaw vs Claude Code：不是选择题](#16-hermes-vs-openclaw-vs-claude-code不是选择题)
+- [§17 自改进Agent的边界：它能走多远](#17-自改进agent的边界它能走多远)
+- [附 · Agent Harness 深读：从聊天机器人到智能体](#附-agent-harness-深读从聊天机器人到智能体)
+- [附 · 版本演进：从 v0.7 到 v0.19（白话版）](#附-版本演进从-v07-到-v019白话版)
 
 ---
 

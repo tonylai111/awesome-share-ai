@@ -70,18 +70,19 @@ function extractExplicitToc(markdown: string): TocItem[] | null {
     }
 
     if (!collecting) continue;
-    if (!line.trim()) {
-      if (linked.length || plainCount) break;
-      continue;
-    }
+    // Allow blank lines and Part labels inside an in-page TOC block.
+    if (!line.trim()) continue;
+    if (/^###\s+/.test(line)) continue;
 
-    const link = line.match(/^\d+\.\s+\[([^\]]+)\]\(#([^)]+)\)/);
+    const link = line.match(
+      /^(?:\d+\.|[-*])\s+\[([^\]]+)\]\(#([^)]+)\)/,
+    );
     if (link) {
       linked.push({ id: link[2], text: link[1].trim(), level: 2 });
       continue;
     }
 
-    if (/^\d+\.\s+/.test(line)) {
+    if (/^(?:\d+\.|[-*])\s+/.test(line)) {
       plainCount += 1;
       continue;
     }
