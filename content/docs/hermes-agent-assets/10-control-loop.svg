@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 304" style="width:100%;max-width:760px;height:auto" role="img" aria-label="人在环内到自改进边界">
+<rect x="2" y="2" width="756" height="300" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="380" y="28" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="700" text-anchor="middle">控制权光谱：自改进的边界</text>
+<rect x="80" y="60" width="600" height="55" rx="12" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+<text x="100" y="82" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="800" text-anchor="start">In the loop</text>
+<text x="100" y="102" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="500" text-anchor="start">人在环内：每步亲手推</text>
+<rect x="80" y="130" width="600" height="55" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+<text x="100" y="152" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="800" text-anchor="start">On the loop</text>
+<text x="100" y="172" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="500" text-anchor="start">人在环上：盯着、偶尔调缰绳</text>
+<rect x="80" y="200" width="600" height="55" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="100" y="222" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="800" text-anchor="start">Out of the loop?</text>
+<text x="100" y="242" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="500" text-anchor="start">Hermes 倾向：学习循环自转，缰绳自己长</text>
+<text x="380" y="280" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="600" text-anchor="middle">开源可审计 · 边界由你画：改 Skill？可以。改学习循环逻辑？慎重。</text>
+</svg>

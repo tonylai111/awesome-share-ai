@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 264" style="width:100%;max-width:760px;height:auto" role="img" aria-label="工具五大类与MCP">
+<defs><marker id="a6" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker></defs>
+<rect x="2" y="2" width="756" height="260" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="380" y="28" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="700" text-anchor="middle">40+ 工具 + MCP：连接一切</text>
+<rect x="40" y="60" width="120" height="80" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+<text x="100" y="92" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="800" text-anchor="middle">执行</text>
+<text x="100" y="116" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="10" font-weight="500" text-anchor="middle">terminal · file</text>
+<rect x="180" y="60" width="120" height="80" rx="12" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text x="240" y="92" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="800" text-anchor="middle">信息</text>
+<text x="240" y="116" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="10" font-weight="500" text-anchor="middle">web · browser</text>
+<rect x="320" y="60" width="120" height="80" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+<text x="380" y="92" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="800" text-anchor="middle">媒体</text>
+<text x="380" y="116" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="10" font-weight="500" text-anchor="middle">vision · tts</text>
+<rect x="460" y="60" width="120" height="80" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="520" y="92" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="800" text-anchor="middle">记忆</text>
+<text x="520" y="116" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="10" font-weight="500" text-anchor="middle">memory · skill</text>
+<rect x="600" y="60" width="120" height="80" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+<text x="660" y="92" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="800" text-anchor="middle">协调</text>
+<text x="660" y="116" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="10" font-weight="500" text-anchor="middle">delegation</text>
+<rect x="120" y="170" width="520" height="60" rx="12" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="380" y="196" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">MCP 统一接口 → 6000+ 外部应用（GitHub / Slack / DB / …）</text>
+<text x="380" y="218" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="500" text-anchor="middle">Toolset 按需启用 = 注意力 + 安全边界</text>
+</svg>

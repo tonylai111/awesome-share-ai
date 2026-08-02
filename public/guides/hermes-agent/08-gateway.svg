@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 284" style="width:100%;max-width:760px;height:auto" role="img" aria-label="多平台Gateway架构">
+<defs><marker id="a8" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker></defs>
+<rect x="2" y="2" width="756" height="280" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="380" y="28" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="700" text-anchor="middle">Messaging Gateway：一个大脑，多处入口</text>
+<rect x="40" y="50" width="100" height="48" rx="12" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="90" y="80" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="700" text-anchor="middle">Telegram</text>
+<path d="M90 102 L90 140" stroke="#64748b" stroke-width="1.5"/>
+<rect x="160" y="50" width="100" height="48" rx="12" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="210" y="80" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="700" text-anchor="middle">Discord</text>
+<path d="M210 102 L210 140" stroke="#64748b" stroke-width="1.5"/>
+<rect x="280" y="50" width="100" height="48" rx="12" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="330" y="80" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="700" text-anchor="middle">Slack</text>
+<path d="M330 102 L330 140" stroke="#64748b" stroke-width="1.5"/>
+<rect x="400" y="50" width="100" height="48" rx="12" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="450" y="80" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="700" text-anchor="middle">CLI</text>
+<path d="M450 102 L380 140" stroke="#64748b" stroke-width="1.5"/>
+<rect x="520" y="50" width="100" height="48" rx="12" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="570" y="80" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="700" text-anchor="middle">WhatsApp</text>
+<path d="M570 102 L570 140" stroke="#64748b" stroke-width="1.5"/>
+<rect x="640" y="50" width="100" height="48" rx="12" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="690" y="80" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="700" text-anchor="middle">Signal</text>
+<path d="M690 102 L690 140" stroke="#64748b" stroke-width="1.5"/>
+<rect x="220" y="148" width="320" height="56" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="380" y="182" fill="#ea580c" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="800" text-anchor="middle">Messaging Gateway</text>
+<rect x="220" y="220" width="320" height="40" rx="12" fill="#ecfeff" stroke="#0891b2" stroke-width="1.5"/>
+<text x="380" y="246" fill="#0891b2" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="600" text-anchor="middle">同一 Hermes · 同一记忆 · 同一 Skill</text>
+</svg>

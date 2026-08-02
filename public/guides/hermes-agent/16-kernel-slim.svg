@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 284" style="width:100%;max-width:760px;height:auto" role="img" aria-label="run_agent解耦前后对比">
+<rect x="2" y="2" width="756" height="280" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="380" y="28" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="700" text-anchor="middle">核心引擎瘦身：单体 → 微内核</text>
+<rect x="50" y="60" width="280" height="140" rx="12" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+<text x="190" y="100" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="800" text-anchor="middle">以前</text>
+<text x="190" y="130" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">run_agent.py ≈ 16,000 行</text>
+<text x="190" y="158" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="500" text-anchor="middle">啥都塞一个文件里</text>
+<rect x="430" y="60" width="280" height="140" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="570" y="100" fill="#ea580c" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="800" text-anchor="middle">v0.15+ 之后</text>
+<text x="570" y="130" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">核心 ≈ 3,800 行（−76%）</text>
+<text x="570" y="158" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="500" text-anchor="middle">拆成 agent/ 下 14 个模块</text>
+<text x="380" y="240" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="600" text-anchor="middle">提示词 / 提供商 / 持久化各管一段 → 更好扩展、更快启动</text>
+</svg>

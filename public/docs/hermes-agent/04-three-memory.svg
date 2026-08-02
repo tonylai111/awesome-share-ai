@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 344" style="width:100%;max-width:760px;height:auto" role="img" aria-label="三层记忆架构">
+<rect x="2" y="2" width="756" height="340" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="380" y="30" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="700" text-anchor="middle">三层记忆：从金鱼到老友</text>
+<rect x="50" y="55" width="660" height="70" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+<text x="70" y="83" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="800" text-anchor="start">第一层 · 会话记忆</text>
+<text x="70" y="107" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="500" text-anchor="start">发生了什么？（情景）  ·  SQLite 对话痕迹 · 最近上下文</text>
+<rect x="50" y="140" width="660" height="70" rx="12" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text x="70" y="168" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="800" text-anchor="start">第二层 · 持久记忆</text>
+<text x="70" y="192" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="500" text-anchor="start">你是谁？（语义）  ·  偏好 · 工具链 · 项目习惯</text>
+<rect x="50" y="225" width="660" height="70" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="70" y="253" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="800" text-anchor="start">第三层 · Skill 记忆</text>
+<text x="70" y="277" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="500" text-anchor="start">怎么做事？（程序性）  ·  ~/.hermes/skills/*.md</text>
+<text x="380" y="320" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="600" text-anchor="middle">可选外挂：Honcho 用户建模 → 比「记得你说过什么」更深一层</text>
+</svg>

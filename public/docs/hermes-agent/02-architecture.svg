@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 204" style="width:100%;max-width:760px;height:auto" role="img" aria-label="Hermes架构：学习循环到Gateway">
+<defs><marker id="a2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker></defs>
+<rect x="2" y="2" width="756" height="200" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="380" y="28" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="700" text-anchor="middle">Hermes 架构一条线</text>
+<rect x="30" y="60" width="120" height="90" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="90" y="98" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="800" text-anchor="middle">学习循环</text>
+<text x="90" y="124" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="500" text-anchor="middle">心脏</text>
+<path d="M154 105 L164 105" stroke="#64748b" stroke-width="2" marker-end="url(#a2)"/>
+<rect x="170" y="60" width="120" height="90" rx="12" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text x="230" y="98" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="800" text-anchor="middle">三层记忆</text>
+<text x="230" y="124" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="500" text-anchor="middle">大脑</text>
+<path d="M294 105 L304 105" stroke="#64748b" stroke-width="2" marker-end="url(#a2)"/>
+<rect x="310" y="60" width="120" height="90" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+<text x="370" y="98" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="800" text-anchor="middle">Skill 系统</text>
+<text x="370" y="124" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="500" text-anchor="middle">技能库</text>
+<path d="M434 105 L444 105" stroke="#64748b" stroke-width="2" marker-end="url(#a2)"/>
+<rect x="450" y="60" width="120" height="90" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+<text x="510" y="98" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="800" text-anchor="middle">40+ 工具</text>
+<text x="510" y="124" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="500" text-anchor="middle">手脚</text>
+<path d="M574 105 L584 105" stroke="#64748b" stroke-width="2" marker-end="url(#a2)"/>
+<rect x="590" y="60" width="120" height="90" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+<text x="650" y="98" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="800" text-anchor="middle">Gateway</text>
+<text x="650" y="124" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="500" text-anchor="middle">入口</text>
+<text x="380" y="180" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="500" text-anchor="middle">持续复盘 → 按需检索 → 自我进化 → 连接世界 → 处处可达</text>
+</svg>

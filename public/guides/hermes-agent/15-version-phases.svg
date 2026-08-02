@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 264" style="width:100%;max-width:760px;height:auto" role="img" aria-label="Hermes版本演进两个阶段">
+<rect x="2" y="2" width="756" height="260" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="380" y="28" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="700" text-anchor="middle">四个月怎么长：两个阶段</text>
+<rect x="40" y="55" width="330" height="140" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+<text x="205" y="90" fill="#92400e" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="16" font-weight="800" text-anchor="middle">4–5 月 · 打地基</text>
+<text x="205" y="120" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="600" text-anchor="middle">跨平台 · API 兼容 · 解耦</text>
+<text x="205" y="148" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="600" text-anchor="middle">记忆 / Skill / Gateway 成型</text>
+<rect x="390" y="55" width="330" height="140" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="555" y="90" fill="#ea580c" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="16" font-weight="800" text-anchor="middle">6–7 月 · 上战场</text>
+<text x="555" y="120" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="600" text-anchor="middle">桌面端 · 性能压榨</text>
+<text x="555" y="148" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="600" text-anchor="middle">安全加固 · 企业级控制</text>
+<text x="380" y="230" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">v0.7（本手册起点）→ v0.19.1（稳定基线）</text>
+</svg>

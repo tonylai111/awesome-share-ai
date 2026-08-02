@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 384" style="width:100%;max-width:760px;height:auto" role="img" aria-label="Harness五组件映射到Hermes内建系统">
+<defs><marker id="a1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker></defs>
+<rect x="2" y="2" width="756" height="380" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+<text x="380" y="28" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="700" text-anchor="middle">Harness 五组件：手动 → Hermes 内建</text>
+<rect x="40" y="48" width="200" height="36" rx="12" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1"/>
+<text x="140" y="72" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">组件</text>
+<rect x="260" y="48" width="220" height="36" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="1"/>
+<text x="370" y="72" fill="#92400e" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">手动实现</text>
+<rect x="500" y="48" width="220" height="36" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="610" y="72" fill="#ea580c" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="800" text-anchor="middle">Hermes 内建</text>
+<rect x="40" y="100" width="200" height="44" rx="12" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="140" y="128" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">指令层</text>
+<rect x="260" y="100" width="220" height="44" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="370" y="128" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="500" text-anchor="middle">手写 CLAUDE.md</text>
+<path d="M486 122 L494 122" stroke="#64748b" stroke-width="2" marker-end="url(#a1)"/>
+<rect x="500" y="100" width="220" height="44" rx="12" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/>
+<text x="610" y="128" fill="#ea580c" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="700" text-anchor="middle">Skill 系统</text>
+<rect x="40" y="152" width="200" height="44" rx="12" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="140" y="180" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">约束层</text>
+<rect x="260" y="152" width="220" height="44" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="370" y="180" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="500" text-anchor="middle">hooks / linter / CI</text>
+<path d="M486 174 L494 174" stroke="#64748b" stroke-width="2" marker-end="url(#a1)"/>
+<rect x="500" y="152" width="220" height="44" rx="12" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/>
+<text x="610" y="180" fill="#ea580c" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="700" text-anchor="middle">权限 · 沙箱 · Toolset</text>
+<rect x="40" y="204" width="200" height="44" rx="12" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="140" y="232" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">反馈层</text>
+<rect x="260" y="204" width="220" height="44" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="370" y="232" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="500" text-anchor="middle">人工审查</text>
+<path d="M486 226 L494 226" stroke="#64748b" stroke-width="2" marker-end="url(#a1)"/>
+<rect x="500" y="204" width="220" height="44" rx="12" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/>
+<text x="610" y="232" fill="#ea580c" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="700" text-anchor="middle">自改进学习循环</text>
+<rect x="40" y="256" width="200" height="44" rx="12" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="140" y="284" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">记忆层</text>
+<rect x="260" y="256" width="220" height="44" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="370" y="284" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="500" text-anchor="middle">手动 knowledge base</text>
+<path d="M486 278 L494 278" stroke="#64748b" stroke-width="2" marker-end="url(#a1)"/>
+<rect x="500" y="256" width="220" height="44" rx="12" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/>
+<text x="610" y="284" fill="#ea580c" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="700" text-anchor="middle">三层记忆 + Honcho</text>
+<rect x="40" y="308" width="200" height="44" rx="12" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="140" y="336" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">编排层</text>
+<rect x="260" y="308" width="220" height="44" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="370" y="336" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="500" text-anchor="middle">自搭 multi-agent</text>
+<path d="M486 330 L494 330" stroke="#64748b" stroke-width="2" marker-end="url(#a1)"/>
+<rect x="500" y="308" width="220" height="44" rx="12" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/>
+<text x="610" y="336" fill="#ea580c" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="700" text-anchor="middle">子 Agent + cron</text>
+<text x="380" y="368" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="600" text-anchor="middle">从「你给 AI 造缰绳」→「AI 自己给自己造缰绳」</text>
+</svg>

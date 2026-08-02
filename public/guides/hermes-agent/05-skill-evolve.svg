@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 224" style="width:100%;max-width:760px;height:auto" role="img" aria-label="Skill自我进化闭环">
+<defs><marker id="a5" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker></defs>
+<rect x="2" y="2" width="756" height="220" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="380" y="28" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="700" text-anchor="middle">Skill 自改进闭环</text>
+<rect x="60" y="80" width="130" height="70" rx="12" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+<text x="125" y="120" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="800" text-anchor="middle">执行任务</text>
+<path d="M194 115 L224 115" stroke="#64748b" stroke-width="2" marker-end="url(#a5)"/>
+<rect x="230" y="80" width="130" height="70" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+<text x="295" y="120" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="800" text-anchor="middle">收集反馈</text>
+<path d="M364 115 L394 115" stroke="#64748b" stroke-width="2" marker-end="url(#a5)"/>
+<rect x="400" y="80" width="130" height="70" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="465" y="120" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="800" text-anchor="middle">改写 Skill</text>
+<path d="M534 115 L564 115" stroke="#64748b" stroke-width="2" marker-end="url(#a5)"/>
+<rect x="570" y="80" width="130" height="70" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+<text x="635" y="120" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="800" text-anchor="middle">下次更好</text>
+<path d="M635 160 C635 190, 125 190, 125 160" fill="none" stroke="#ea580c" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#a5)"/>
+<text x="380" y="200" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="600" text-anchor="middle">用户纠正 → 规则更新 → 下次默认带上（录像带变笔记本）</text>
+</svg>

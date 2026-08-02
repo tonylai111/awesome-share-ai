@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 304" style="width:100%;max-width:760px;height:auto" role="img" aria-label="学习循环五个环节">
+<defs><marker id="a3" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker></defs>
+<rect x="2" y="2" width="756" height="300" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="380" y="28" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="700" text-anchor="middle">学习循环：五个环节，一个飞轮</text>
+<rect x="40" y="50" width="180" height="70" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="130" y="78" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="800" text-anchor="middle">1. 策划记忆</text>
+<text x="130" y="100" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="500" text-anchor="middle">写日记式提炼</text>
+<rect x="290" y="50" width="180" height="70" rx="12" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text x="380" y="78" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="800" text-anchor="middle">2. 创建 Skill</text>
+<text x="380" y="100" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="500" text-anchor="middle">沉淀可复用方案</text>
+<rect x="540" y="50" width="180" height="70" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="630" y="78" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="800" text-anchor="middle">3. Skill 自改进</text>
+<text x="630" y="100" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="500" text-anchor="middle">反馈写回规则</text>
+<rect x="165" y="160" width="180" height="70" rx="12" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text x="255" y="188" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="800" text-anchor="middle">4. FTS5 召回</text>
+<text x="255" y="210" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="500" text-anchor="middle">按需检索历史</text>
+<rect x="415" y="160" width="180" height="70" rx="12" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text x="505" y="188" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="800" text-anchor="middle">5. 用户建模</text>
+<text x="505" y="210" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="500" text-anchor="middle">推断你是谁</text>
+<text x="380" y="270" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="600" text-anchor="middle">用得越多 → 记忆更准 → Skill 更好 → 召回更狠 → 画像更深</text>
+<text x="380" y="290" fill="#ea580c" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="700" text-anchor="middle">正反馈飞轮（为单个用户转）</text>
+</svg>

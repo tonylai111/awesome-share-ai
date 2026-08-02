@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 244" style="width:100%;max-width:760px;height:auto" role="img" aria-label="Harness七个架构决策">
+<rect x="2" y="2" width="756" height="240" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="380" y="28" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="700" text-anchor="middle">定义每个 Harness 的七个决策</text>
+<rect x="40" y="60" width="160" height="55" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="120" y="93" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">单 vs 多 Agent</text>
+<rect x="220" y="60" width="160" height="55" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+<text x="300" y="93" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">ReAct vs 计划-执行</text>
+<rect x="400" y="60" width="160" height="55" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="480" y="93" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">上下文策略</text>
+<rect x="580" y="60" width="160" height="55" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+<text x="660" y="93" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">验证循环</text>
+<rect x="40" y="140" width="160" height="55" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="120" y="173" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">权限松紧</text>
+<rect x="220" y="140" width="160" height="55" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+<text x="300" y="173" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">工具范围</text>
+<rect x="200" y="140" width="160" height="55" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="280" y="173" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Harness 薄厚</text>
+<text x="380" y="220" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="600" text-anchor="middle">原则：先榨干单 Agent；工具宁少勿滥；随模型变强，脚手架应变薄</text>
+</svg>

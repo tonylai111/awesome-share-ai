@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 284" style="width:100%;max-width:760px;height:auto" role="img" aria-label="Hermes vs OpenClaw vs Claude Code">
+<rect x="2" y="2" width="756" height="280" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="380" y="28" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="700" text-anchor="middle">不是选择题：三个物种，三种分工</text>
+<rect x="40" y="55" width="220" height="190" rx="12" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text x="150" y="90" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="16" font-weight="800" text-anchor="middle">Claude Code</text>
+<text x="150" y="120" fill="#0891b2" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">结对工程师</text>
+<text x="150" y="155" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="500" text-anchor="middle">交互式编码</text>
+<text x="150" y="190" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="600" text-anchor="middle">你坐旁边实时协作</text>
+<rect x="270" y="55" width="220" height="190" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+<text x="380" y="90" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="16" font-weight="800" text-anchor="middle">OpenClaw</text>
+<text x="380" y="120" fill="#f59e0b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">配置即行为</text>
+<text x="380" y="155" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="500" text-anchor="middle">SOUL.md 塑形</text>
+<text x="380" y="190" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="600" text-anchor="middle">人工养虾 · 生态大</text>
+<rect x="500" y="55" width="220" height="190" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="610" y="90" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="16" font-weight="800" text-anchor="middle">Hermes</text>
+<text x="610" y="120" fill="#ea580c" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">自主后台</text>
+<text x="610" y="155" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="500" text-anchor="middle">自改进学习循环</text>
+<text x="610" y="190" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="600" text-anchor="middle">24/7 · 缰绳自己长</text>
+<text x="380" y="268" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="600" text-anchor="middle">Skill 可互通（agentskills.io）· 组合使用，而不是互斥替换</text>
+</svg>
