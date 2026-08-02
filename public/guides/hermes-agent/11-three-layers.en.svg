@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 304" style="width:100%;max-width:760px;height:auto" role="img" aria-label="Prompt, context, Harness three layers">
+<rect x="2" y="2" width="756" height="300" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="380" y="28" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" font-weight="700" text-anchor="middle">Three engineering layers: concentric circles</text>
+<rect x="140" y="50" width="480" height="55" rx="12" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+<text x="380" y="72" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" font-weight="800" text-anchor="middle">Prompt engineering</text>
+<text x="380" y="94" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" font-weight="500" text-anchor="middle">Craft the instructions the model gets this turn</text>
+<rect x="100" y="120" width="560" height="55" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+<text x="380" y="142" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" font-weight="800" text-anchor="middle">Context engineering</text>
+<text x="380" y="164" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" font-weight="500" text-anchor="middle">Manage what the model sees, and when</text>
+<rect x="60" y="190" width="640" height="70" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="380" y="212" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" font-weight="800" text-anchor="middle">Harness engineering</text>
+<text x="380" y="234" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" font-weight="500" text-anchor="middle">Tools · state · recovery · verify · safety · lifecycle</text>
+<text x="380" y="280" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" font-weight="600" text-anchor="middle">Harness covers the first two, plus the whole app infrastructure</text>
+
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 304" style="width:100%;max-width:760px;height:auto" role="img" aria-label="One Harness loop TAO ReAct">
+<rect x="2" y="2" width="756" height="300" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="380" y="28" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" font-weight="700" text-anchor="middle">One Harness loop (TAO / ReAct)</text>
+<rect x="40" y="70" width="150" height="70" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="115" y="98" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" font-weight="800" text-anchor="middle">1 Assemble</text>
+<text x="115" y="120" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" font-weight="500" text-anchor="middle">sys+tools+mem+hist</text>
+<rect x="200" y="70" width="150" height="70" rx="12" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text x="275" y="98" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" font-weight="800" text-anchor="middle">2 Call model</text>
+<text x="275" y="120" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" font-weight="500" text-anchor="middle">Reason / tool asks</text>
+<rect x="360" y="70" width="150" height="70" rx="12" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text x="435" y="98" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" font-weight="800" text-anchor="middle">3 Classify</text>
+<text x="435" y="120" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" font-weight="500" text-anchor="middle">Stop or continue</text>
+<rect x="520" y="70" width="150" height="70" rx="12" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text x="595" y="98" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" font-weight="800" text-anchor="middle">4 Run tools</text>
+<text x="595" y="120" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" font-weight="500" text-anchor="middle">Validate · ACL · sandbox</text>
+<rect x="120" y="180" width="150" height="70" rx="12" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text x="195" y="208" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" font-weight="800" text-anchor="middle">5 Pack results</text>
+<text x="195" y="230" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" font-weight="500" text-anchor="middle">Errors can return too</text>
+<rect x="320" y="180" width="150" height="70" rx="12" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text x="395" y="208" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" font-weight="800" text-anchor="middle">6 Update ctx</text>
+<text x="395" y="230" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" font-weight="500" text-anchor="middle">Compress if needed</text>
+<rect x="520" y="180" width="150" height="70" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="595" y="208" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" font-weight="800" text-anchor="middle">7 Loop again</text>
+<text x="595" y="230" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" font-weight="500" text-anchor="middle">Until stop condition</text>
+<text x="380" y="280" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="11" font-weight="600" text-anchor="middle">Stop: no tool calls · turn/token caps · guardrails · user interrupt</text>
+
+</svg>

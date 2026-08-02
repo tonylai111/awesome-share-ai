@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 284" style="width:100%;max-width:760px;height:auto" role="img" aria-label="Sub-agent delegation star">
+<defs><marker id="a7en" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker></defs>
+<rect x="2" y="2" width="756" height="280" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="380" y="28" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" font-weight="700" text-anchor="middle">Sub-agent delegation: three horses at once</text>
+<rect x="280" y="50" width="200" height="56" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="380" y="84" fill="#ea580c" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="16" font-weight="800" text-anchor="middle">Main Agent</text>
+<rect x="40" y="160" width="200" height="70" rx="12" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text x="140" y="188" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" font-weight="800" text-anchor="middle">Sub-agent A</text>
+<text x="140" y="210" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="11" font-weight="500" text-anchor="middle">Research · web/browser</text>
+<rect x="280" y="160" width="200" height="70" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+<text x="380" y="188" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" font-weight="800" text-anchor="middle">Sub-agent B</text>
+<text x="380" y="210" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="11" font-weight="500" text-anchor="middle">Code · terminal/file</text>
+<rect x="520" y="160" width="200" height="70" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+<text x="620" y="188" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" font-weight="800" text-anchor="middle">Sub-agent C</text>
+<text x="620" y="210" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="11" font-weight="500" text-anchor="middle">Test · restricted tools</text>
+<path d="M340 110 L140 154" stroke="#64748b" stroke-width="2" marker-end="url(#a7en)"/>
+<path d="M380 110 L380 154" stroke="#64748b" stroke-width="2" marker-end="url(#a7en)"/>
+<path d="M420 110 L620 154" stroke="#64748b" stroke-width="2" marker-end="url(#a7en)"/>
+<text x="380" y="260" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="11" font-weight="600" text-anchor="middle">Up to 3 concurrent · isolated context · results return to main Agent</text>
+
+</svg>

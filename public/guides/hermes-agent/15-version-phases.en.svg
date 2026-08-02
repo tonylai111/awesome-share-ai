@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 264" style="width:100%;max-width:760px;height:auto" role="img" aria-label="Hermes version evolution two phases">
+<rect x="2" y="2" width="756" height="260" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="380" y="28" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" font-weight="700" text-anchor="middle">Four months of growth: two phases</text>
+<rect x="40" y="55" width="330" height="140" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+<text x="205" y="90" fill="#92400e" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" font-weight="800" text-anchor="middle">Apr–May · Foundations</text>
+<text x="205" y="120" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" font-weight="600" text-anchor="middle">Cross-platform · API fit · decouple</text>
+<text x="205" y="148" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" font-weight="600" text-anchor="middle">Memory / Skills / Gateway take shape</text>
+<rect x="390" y="55" width="330" height="140" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="555" y="90" fill="#ea580c" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" font-weight="800" text-anchor="middle">Jun–Jul · Into battle</text>
+<text x="555" y="120" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" font-weight="600" text-anchor="middle">Desktop · performance squeeze</text>
+<text x="555" y="148" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" font-weight="600" text-anchor="middle">Hardened security · enterprise controls</text>
+<text x="380" y="230" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" font-weight="700" text-anchor="middle">v0.7 (this handbook’s start) → v0.19.1 (stable baseline)</text>
+
+</svg>

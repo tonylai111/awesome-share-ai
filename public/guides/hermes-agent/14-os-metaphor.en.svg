@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 264" style="width:100%;max-width:760px;height:auto" role="img" aria-label="LLM and Harness OS metaphor">
+<rect x="2" y="2" width="756" height="260" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="380" y="28" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Scaffold metaphor: LLM is CPU, Harness is the OS</text>
+<rect x="60" y="60" width="160" height="90" rx="12" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+<text x="140" y="100" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" font-weight="800" text-anchor="middle">Raw LLM</text>
+<text x="140" y="124" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="11" font-weight="500" text-anchor="middle">CPU with no memory/IO</text>
+<rect x="300" y="60" width="160" height="90" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+<text x="380" y="100" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" font-weight="800" text-anchor="middle">Context window</text>
+<text x="380" y="124" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="11" font-weight="500" text-anchor="middle">≈ RAM (fast, limited)</text>
+<rect x="540" y="60" width="160" height="90" rx="12" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text x="620" y="100" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" font-weight="800" text-anchor="middle">Storage / tools</text>
+<text x="620" y="124" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="11" font-weight="500" text-anchor="middle">≈ disk + drivers</text>
+<rect x="180" y="175" width="400" height="55" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="380" y="208" fill="#ea580c" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" font-weight="800" text-anchor="middle">Harness = OS (orchestrates it all)</text>
+
+</svg>

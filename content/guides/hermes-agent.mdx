@@ -2377,36 +2377,38 @@ Hermes 不再只是「几条妙招提示词 + API」。它用瘦下来的内核�
 
 <<<en>>>
 ## Before you start
+
 This guide is adapted from the Chinese handbook *Hermes Agent: From Zero to Fluent* (花叔 / 橙皮书系列), based on **v0.7.0**, with appendices covering Harness theory and evolution through **v0.19.1**.
+
 Original PDF: [Download](/guides/Hermes-Agent.pdf)
-Figures live under `/guides/hermes-agent/`. For the full narrative voice and tables, switch to 中文; English below mirrors the outline with matching diagrams.
+
+> AI tools move fast—treat [official docs](https://hermes-agent.nousresearch.com/) / [Changelog](https://hermes-ai.net/changelog/) as source of truth. Core chapters follow Hermes Agent **v0.7.0**; the evolution appendix catches up in plain English to **v0.19.1** (2026-07-30).
+
+For the full narrative voice and tables, switch to 中文; English below mirrors the outline with matching diagrams.
+
+---
+
 ## Contents
-- §01 Not Another Agent: From Harness to Hermes
-- §02 Hermes at a Glance
-- §03 The Learning Loop
-- §04 Three-Layer Memory
-- §05 Skills That Evolve
-- 触发条件
-- 执行步骤
-- 用户偏好
-- §06 Tools & MCP
-- §07 Install & Configure
-- §08 First Conversation
-- §09 Multi-Platform Gateway
-- §10 Custom Skills
-- 触发条件
-- 行为规则
-- 示例
-- 审校流程
-- §11 MCP Integration
-- §12 Personal Knowledge Assistant
-- §13 Dev Automation
-- §14 Content Creation
-- §15 Multi-Agent Orchestration
-- §16 Hermes vs OpenClaw vs Claude Code
-- §17 Boundaries of Self-Improving Agents
-- Appendix · Agent Harness Deep Dive
-- Appendix · Version Evolution (v0.7 → v0.19)
+
+- [§01 Not Another Agent: From Harness to Hermes](#01-not-another-agent-from-harness-to-hermes)
+- [§02 Hermes at a Glance](#02-hermes-at-a-glance)
+- [§03 The Learning Loop](#03-the-learning-loop)
+- [§04 Three-Layer Memory](#04-three-layer-memory)
+- [§05 Skills That Evolve](#05-skills-that-evolve)
+- [§06 Tools & MCP](#06-tools-mcp)
+- [§07 Install & Configure](#07-install-configure)
+- [§08 First Conversation](#08-first-conversation)
+- [§09 Multi-Platform Gateway](#09-multi-platform-gateway)
+- [§10 Custom Skills](#10-custom-skills)
+- [§11 MCP Integration](#11-mcp-integration)
+- [§12 Personal Knowledge Assistant](#12-personal-knowledge-assistant)
+- [§13 Dev Automation](#13-dev-automation)
+- [§14 Content Creation](#14-content-creation)
+- [§15 Multi-Agent Orchestration](#15-multi-agent-orchestration)
+- [§16 Hermes vs OpenClaw vs Claude Code](#16-hermes-vs-openclaw-vs-claude-code)
+- [§17 Boundaries of Self-Improving Agents](#17-boundaries-of-self-improving-agents)
+- [Appendix · Agent Harness Deep Dive](#appendix-agent-harness-deep-dive)
+- [Appendix · Version Evolution (v0.7 → v0.19)](#appendix-version-evolution-v07-v019)
 
 ---
 
@@ -2414,51 +2416,39 @@ Figures live under `/guides/hermes-agent/`. For the full narrative voice and tab
 
 Hermes is not “another lobster.” It productizes Harness Engineering: the straps around the model become built-in, and can grow by themselves.
 
-![§01 Not Another Agent: From Harness to Hermes](/guides/hermes-agent/01-harness-five.svg)
+![§01 Not Another Agent: From Harness to Hermes](/guides/hermes-agent/01-harness-five.en.svg)
 
 ## §02 Hermes at a Glance
 
 One line architecture: learning loop → three-layer memory → Skills → 40+ tools → multi-platform Gateway. Cheap to run, open source (MIT).
 
-![§02 Hermes at a Glance](/guides/hermes-agent/02-architecture.svg)
+![§02 Hermes at a Glance](/guides/hermes-agent/02-architecture.en.svg)
 
 ## §03 The Learning Loop
 
 Five linked stages: curate memory → create Skills → improve Skills → FTS5 recall → user modeling. Use it daily and the flywheel spins.
 
-![§03 The Learning Loop](/guides/hermes-agent/03-learning-loop.svg)
+![§03 The Learning Loop](/guides/hermes-agent/03-learning-loop.en.svg)
 
 ## §04 Three-Layer Memory
 
 Session / persistent / Skill memory (episodic · semantic · procedural). Optional Honcho modeling. Search with FTS5, think with the model.
 
-![§04 Three-Layer Memory](/guides/hermes-agent/04-three-memory.svg)
+![§04 Three-Layer Memory](/guides/hermes-agent/04-three-memory.en.svg)
 
 ## §05 Skills That Evolve
 
 Skills are markdown SOPs under ~/.hermes/skills/. They can be created and edited by the agent from feedback—not static docs.
 
-![§05 Skills That Evolve](/guides/hermes-agent/05-skill-evolve.svg)
-
-## 触发条件
-
-See the Chinese edition for full detail.
-
-## 执行步骤
-
-See the Chinese edition for full detail.
-
-## 用户偏好
-
-See the Chinese edition for full detail.
+![§05 Skills That Evolve](/guides/hermes-agent/05-skill-evolve.en.svg)
 
 ## §06 Tools & MCP
 
 Five tool families + MCP for 6000+ apps. Enable Toolsets on demand; delegate up to three sub-agents with restricted tools.
 
-![§06 Tools & MCP](/guides/hermes-agent/06-tools-mcp.svg)
+![§06 Tools & MCP](/guides/hermes-agent/06-tools-mcp.en.svg)
 
-![§06 Tools & MCP](/guides/hermes-agent/07-subagents.svg)
+![§06 Sub-agent delegation](/guides/hermes-agent/07-subagents.en.svg)
 
 ## §07 Install & Configure
 
@@ -2472,27 +2462,11 @@ Just talk. Memory and Skills start forming without a setup wizard.
 
 One Gateway, many surfaces (Telegram, Discord, Slack…). Same brain across channels.
 
-![§09 Multi-Platform Gateway](/guides/hermes-agent/08-gateway.svg)
+![§09 Multi-Platform Gateway](/guides/hermes-agent/08-gateway.en.svg)
 
 ## §10 Custom Skills
 
 Hand-write Skills, install from hub, or port Claude Code skills. Trigger conditions matter.
-
-## 触发条件
-
-See the Chinese edition for full detail.
-
-## 行为规则
-
-See the Chinese edition for full detail.
-
-## 示例
-
-See the Chinese edition for full detail.
-
-## 审校流程
-
-See the Chinese edition for full detail.
 
 ## §11 MCP Integration
 
@@ -2518,32 +2492,32 @@ delegate_task with isolation, durable ledgers (later versions), and careful tool
 
 Three species, one ecosystem. Hermes drives; OpenClaw can contain; Claude Code pairs interactively.
 
-![§16 Hermes vs OpenClaw vs Claude Code](/guides/hermes-agent/09-three-species.svg)
+![§16 Hermes vs OpenClaw vs Claude Code](/guides/hermes-agent/09-three-species.en.svg)
 
 ## §17 Boundaries of Self-Improving Agents
 
 Let agents improve “how”; you keep “what” and “never.” Stay on the loop for direction.
 
-![§17 Boundaries of Self-Improving Agents](/guides/hermes-agent/10-control-loop.svg)
+![§17 Boundaries of Self-Improving Agents](/guides/hermes-agent/10-control-loop.en.svg)
 
 ## Appendix · Agent Harness Deep Dive
 
 Harness = OS around the LLM. Twelve components, TAO loop, seven design decisions—mapped back to Hermes.
 
-![Appendix · Agent Harness Deep Dive](/guides/hermes-agent/14-os-metaphor.svg)
+![Appendix · Agent Harness Deep Dive](/guides/hermes-agent/14-os-metaphor.en.svg)
 
-![Appendix · Agent Harness Deep Dive](/guides/hermes-agent/11-three-layers.svg)
+![Appendix · three engineering layers](/guides/hermes-agent/11-three-layers.en.svg)
 
-![Appendix · Agent Harness Deep Dive](/guides/hermes-agent/12-tao-loop.svg)
+![Appendix · TAO / ReAct loop](/guides/hermes-agent/12-tao-loop.en.svg)
 
-![Appendix · Agent Harness Deep Dive](/guides/hermes-agent/13-seven-decisions.svg)
+![Appendix · seven Harness decisions](/guides/hermes-agent/13-seven-decisions.en.svg)
 
 ## Appendix · Version Evolution (v0.7 → v0.19)
 
 Apr–Jul 2026: from terminal wrapper to durable personal AI infra. Velocity → Surface → Quicksilver.
 
-![Appendix · Version Evolution (v0.7 → v0.19)](/guides/hermes-agent/15-version-phases.svg)
+![Appendix · Version Evolution (v0.7 → v0.19)](/guides/hermes-agent/15-version-phases.en.svg)
 
-![Appendix · Version Evolution (v0.7 → v0.19)](/guides/hermes-agent/17-six-pillars.svg)
+![Appendix · six capability pillars](/guides/hermes-agent/17-six-pillars.en.svg)
 
-![Appendix · Version Evolution (v0.7 → v0.19)](/guides/hermes-agent/16-kernel-slim.svg)
+![Appendix · kernel slimdown](/guides/hermes-agent/16-kernel-slim.en.svg)

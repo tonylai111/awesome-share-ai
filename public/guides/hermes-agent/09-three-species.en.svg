@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 284" style="width:100%;max-width:760px;height:auto" role="img" aria-label="Hermes vs OpenClaw vs Claude Code">
+<rect x="2" y="2" width="756" height="280" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="380" y="28" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Not a multiple-choice: three species, three jobs</text>
+<rect x="40" y="55" width="220" height="190" rx="12" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text x="150" y="90" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="16" font-weight="800" text-anchor="middle">Claude Code</text>
+<text x="150" y="120" fill="#0891b2" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Pair engineer</text>
+<text x="150" y="155" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" font-weight="500" text-anchor="middle">Interactive coding</text>
+<text x="150" y="190" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" font-weight="600" text-anchor="middle">You sit beside it live</text>
+<rect x="270" y="55" width="220" height="190" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+<text x="380" y="90" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="16" font-weight="800" text-anchor="middle">OpenClaw</text>
+<text x="380" y="120" fill="#f59e0b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Config = behavior</text>
+<text x="380" y="155" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" font-weight="500" text-anchor="middle">SOUL.md shaping</text>
+<text x="380" y="190" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" font-weight="600" text-anchor="middle">Hand-raised · big ecosystem</text>
+<rect x="500" y="55" width="220" height="190" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="610" y="90" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="16" font-weight="800" text-anchor="middle">Hermes</text>
+<text x="610" y="120" fill="#ea580c" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" font-weight="700" text-anchor="middle">Autonomous backstage</text>
+<text x="610" y="155" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" font-weight="500" text-anchor="middle">Self-improving loop</text>
+<text x="610" y="190" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" font-weight="600" text-anchor="middle">24/7 · harness grows itself</text>
+<text x="380" y="268" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="11" font-weight="600" text-anchor="middle">Skills interoperable (agentskills.io) · combine, don’t mutual-exclude</text>
+
+</svg>

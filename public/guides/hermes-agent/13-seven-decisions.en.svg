@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 244" style="width:100%;max-width:760px;height:auto" role="img" aria-label="Seven Harness architecture decisions">
+<rect x="2" y="2" width="756" height="240" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="380" y="28" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" font-weight="700" text-anchor="middle">Seven decisions that define every Harness</text>
+<rect x="40" y="55" width="160" height="55" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="120" y="88" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" font-weight="700" text-anchor="middle">Single vs multi</text>
+<rect x="220" y="55" width="160" height="55" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+<text x="300" y="88" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" font-weight="700" text-anchor="middle">ReAct vs plan-exec</text>
+<rect x="400" y="55" width="160" height="55" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="480" y="88" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" font-weight="700" text-anchor="middle">Context strategy</text>
+<rect x="580" y="55" width="160" height="55" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+<text x="660" y="88" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" font-weight="700" text-anchor="middle">Verify loops</text>
+<rect x="40" y="130" width="160" height="55" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="120" y="163" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" font-weight="700" text-anchor="middle">Permission tightness</text>
+<rect x="220" y="130" width="160" height="55" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+<text x="300" y="163" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" font-weight="700" text-anchor="middle">Tool scope</text>
+<rect x="400" y="130" width="160" height="55" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="480" y="163" fill="#0f172a" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" font-weight="700" text-anchor="middle">Harness thin/thick</text>
+<text x="380" y="220" fill="#64748b" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="11" font-weight="600" text-anchor="middle">Principle: squeeze one Agent first; fewer tools; as models get stronger, scaffolding thins</text>
+
+</svg>
