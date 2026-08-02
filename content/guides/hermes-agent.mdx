@@ -4,7 +4,7 @@ title:
   en: "Hermes Agent: From Zero to Fluent"
 description:
   zh: "第一个出厂就带缰绳的 AI Agent。学习循环、三层记忆、Skill、MCP、多平台 Gateway；附 Harness 深读与 v0.7→v0.19 演进。"
-  en: "The agent that ships with a harness. Learning loops, three-layer memory, Skills, MCP, Gateway—plus Harness deep dive and v0.7→v0.19 evolution."
+  en: "Full English edition of the Hermes handbook: learning loops, three-layer memory, Skills, MCP, Gateway—plus Harness deep dive and v0.7→v0.19 evolution."
 date: "2026-08-02"
 tags: [hermes, agent, harness, skills, mcp, memory]
 readingMinutes: 120
@@ -2378,146 +2378,2346 @@ Hermes 不再只是「几条妙招提示词 + API」。它用瘦下来的内核�
 <<<en>>>
 ## Before you start
 
-This guide is adapted from the Chinese handbook *Hermes Agent: From Zero to Fluent* (花叔 / 橙皮书系列), based on **v0.7.0**, with appendices covering Harness theory and evolution through **v0.19.1**.
+This article is synced from the Orange Book mini-guide *Hermes Agent: From Beginner to Mastery* (Huashu), with clean concept diagrams.
 
 Original PDF: [Download](/guides/Hermes-Agent.pdf)
 
-> AI tools move fast—treat [official docs](https://hermes-agent.nousresearch.com/) / [Changelog](https://hermes-ai.net/changelog/) as source of truth. Core chapters follow Hermes Agent **v0.7.0**; the evolution appendix catches up in plain English to **v0.19.1** (2026-07-30).
-
-For the full narrative voice and tables, switch to 中文; English below mirrors the outline with matching diagrams.
+> AI tools move fast—installation and security details should follow the [official docs](https://hermes-agent.nousresearch.com/) / [Changelog](https://hermes-ai.net/changelog/). The main text is based on Hermes Agent **v0.7.0**; the “Version evolution” appendix at the end fills in plain language up to **v0.19.1** (2026-07-30).
 
 ---
 
 ## Contents
 
+### Part 1: Concepts
+
 - [§01 Not Another Agent: From Harness to Hermes](#01-not-another-agent-from-harness-to-hermes)
-- [§02 Hermes at a Glance](#02-hermes-at-a-glance)
-- [§03 The Learning Loop](#03-the-learning-loop)
-- [§04 Three-Layer Memory](#04-three-layer-memory)
-- [§05 Skills That Evolve](#05-skills-that-evolve)
-- [§06 Tools & MCP](#06-tools-mcp)
-- [§07 Install & Configure](#07-install-configure)
-- [§08 First Conversation](#08-first-conversation)
-- [§09 Multi-Platform Gateway](#09-multi-platform-gateway)
-- [§10 Custom Skills](#10-custom-skills)
-- [§11 MCP Integration](#11-mcp-integration)
-- [§12 Personal Knowledge Assistant](#12-personal-knowledge-assistant)
-- [§13 Dev Automation](#13-dev-automation)
-- [§14 Content Creation](#14-content-creation)
-- [§15 Multi-Agent Orchestration](#15-multi-agent-orchestration)
-- [§16 Hermes vs OpenClaw vs Claude Code](#16-hermes-vs-openclaw-vs-claude-code)
-- [§17 Boundaries of Self-Improving Agents](#17-boundaries-of-self-improving-agents)
-- [Appendix · Agent Harness Deep Dive](#appendix-agent-harness-deep-dive)
-- [Appendix · Version Evolution (v0.7 → v0.19)](#appendix-version-evolution-v07-v019)
+- [§02 Hermes Agent at a Glance: 60 Seconds](#02-hermes-agent-at-a-glance-60-seconds)
+
+### Part 2: Core Mechanisms
+
+- [§03 The Learning Loop: The Agent Builds Its Own Harness](#03-the-learning-loop-the-agent-builds-its-own-harness)
+- [§04 Three-Layer Memory: From Goldfish to Old Friend](#04-three-layer-memory-from-goldfish-to-old-friend)
+- [§05 The Skill System: Capabilities That Evolve](#05-the-skill-system-capabilities-that-evolve)
+- [§06 40+ Tools & MCP: Connect Everything](#06-40-tools-mcp-connect-everything)
+
+### Part 3: Hands-on Setup
+
+- [§07 Install & Configure: Three Ways](#07-install-configure-three-ways)
+- [§08 First Conversation: Let Hermes Meet You](#08-first-conversation-let-hermes-meet-you)
+- [§09 Multi-Platform Access: Reach It Anywhere](#09-multi-platform-access-reach-it-anywhere)
+- [§10 Custom Skills: Teach Hermes New Tricks](#10-custom-skills-teach-hermes-new-tricks)
+- [§11 MCP Integration: Connect Your Tool Stack](#11-mcp-integration-connect-your-tool-stack)
+
+### Part 4: Practical Scenarios
+
+- [§12 Personal Knowledge Assistant: Power of Cross-Session Memory](#12-personal-knowledge-assistant-power-of-cross-session-memory)
+- [§13 Dev Automation: From Code Review to Deploy](#13-dev-automation-from-code-review-to-deploy)
+- [§14 Content Creation: From Research to Draft](#14-content-creation-from-research-to-draft)
+- [§15 Multi-Agent Orchestration: Three Horses at Once](#15-multi-agent-orchestration-three-horses-at-once)
+
+### Part 5: Deeper Thinking
+
+- [§16 Hermes vs OpenClaw vs Claude Code: Not a Multiple-Choice Question](#16-hermes-vs-openclaw-vs-claude-code-not-a-multiple-choice-question)
+- [§17 Boundaries of Self-Improving Agents: How Far Can They Go](#17-boundaries-of-self-improving-agents-how-far-can-they-go)
+- [Appendix · Agent Harness Deep Dive: From Chatbot to Agent](#appendix-agent-harness-deep-dive-from-chatbot-to-agent)
+- [Appendix · Version Evolution: From v0.7 to v0.19 (Plain English)](#appendix-version-evolution-from-v07-to-v019-plain-english)
 
 ---
 
 ## §01 Not Another Agent: From Harness to Hermes
 
-Hermes is not “another lobster.” It productizes Harness Engineering: the straps around the model become built-in, and can grow by themselves.
+*Not Another Agent: From Harness to Hermes*
 
-![§01 Not Another Agent: From Harness to Hermes](/guides/hermes-agent/01-harness-five.en.svg)
+The OpenClaw hype had barely cooled when Hermes Agent showed up. It isn’t “yet another Agent tool”—it’s the first productization of the Harness Engineering idea.
 
-## §02 Hermes at a Glance
+### Here we go again?
 
-One line architecture: learning loop → three-layer memory → Skills → 40+ tools → multi-platform Gateway. Cheap to run, open source (MIT).
+I get the fatigue.
 
-![§02 Hermes at a Glance](/guides/hermes-agent/02-architecture.en.svg)
+OpenClaw kicked off the lobster craze at the end of 2025. Twenty-six million users; big domestic players rushed to ship their own lobster-style products. Your feed was probably flooded with “I’m raising a lobster.” The lobster wave hadn’t fully subsided when something new appeared.
 
-## §03 The Learning Loop
+In February 2026, Nous Research released Hermes Agent. In under two months, GitHub stars shot past 27,000+.
 
-Five linked stages: curate memory → create Skills → improve Skills → FTS5 recall → user modeling. Use it daily and the flywheel spins.
+Your first reaction might be: I still haven’t figured out the lobster—now this?
 
-![§03 The Learning Loop](/guides/hermes-agent/03-learning-loop.en.svg)
+I spent a week tearing Hermes apart end to end and found it takes a completely different path from OpenClaw. Hermes isn’t another lobster. It’s doing something we’ve talked about for a long time but nobody had shipped as a product.
 
-## §04 Three-Layer Memory
+### What is Harness Engineering?
 
-Session / persistent / Skill memory (episodic · semantic · procedural). Optional Honcho modeling. Search with FTS5, think with the model.
+If you read the previous Orange Book *Harness Engineering*, or you already know Agent Harness, skim this and see “Appendix · Agent Harness Deep Dive” at the end for details. If not, here’s a 30-second intuition.
 
-![§04 Three-Layer Memory](/guides/hermes-agent/04-three-memory.en.svg)
+Early 2026, a consensus landed in the AI coding world: **the bottleneck isn’t the model—it’s the environment.** The LangChain team ran an experiment: same model (GPT-5.2-Codex), only the surrounding “harness” config changed—score went from 52.8% to 66.5%, rank from Top 30 to Top 5. Not a single line of model code changed.
 
-## §05 Skills That Evolve
+The industry calls everything around the model **Agent Harness**: orchestration loop, tools, memory, context management, state, error handling, safety guardrails. One line: **the Agent is emergent behavior; the Harness is the machinery that produces it.** (Full 12 components, loop walkthrough, and seven architecture decisions are in the appendix.)
 
-Skills are markdown SOPs under ~/.hermes/skills/. They can be created and edited by the agent from feedback—not static docs.
+Mitchell Hashimoto (creator of Terraform) practices this with plain engineering habits: every time the AI makes a mistake, add a rule so it never makes the same mistake again. The file is alive—it keeps growing.
 
-![§05 Skills That Evolve](/guides/hermes-agent/05-skill-evolve.en.svg)
+In that book I collapsed Harness into five components. Those five are the key to understanding Hermes—and the left column of the “Five-component mapping” below.
 
-## §06 Tools & MCP
+### Five-component mapping
 
-Five tool families + MCP for 6000+ apps. Enable Toolsets on demand; delegate up to three sub-agents with restricted tools.
+![Harness five components: manual implementation vs Hermes built-in](/guides/hermes-agent/01-harness-five.en.svg)
 
-![§06 Tools & MCP](/guides/hermes-agent/06-tools-mcp.en.svg)
+Harness Engineering is methodology—“what kind of harness you should build for AI.” Methodology has one problem: execution is all on you. You write CLAUDE.md yourself, configure hooks yourself, build the memory system yourself, design workflows yourself.
 
-![§06 Sub-agent delegation](/guides/hermes-agent/07-subagents.en.svg)
+What Hermes does: bake all five components in.
 
-## §07 Install & Configure
+| Harness five components | Manual implementation | Hermes built-in system |
+| --- | --- | --- |
+| Instruction layer | Hand-written CLAUDE.md / AGENTS.md | Skill system (markdown skill files, auto-create + self-improve) |
+| Constraint layer | Configure hooks / linter / CI | Tool permissions + sandbox + toolset enabled on demand |
+| Feedback layer | Human review / evaluator Agent | Self-improving learning loop (auto retrospective after tasks) |
+| Memory layer | Manually maintained knowledge base | Three-layer memory (session / persistent / Skill) + Honcho user modeling |
+| Orchestration layer | Build your own multi-Agent pipeline | Sub-Agent delegation + cron scheduling |
 
-Local script, Docker, or a ~$5 VPS. Production later shifted to Docker First—see the evolution appendix.
+Compare left and right. The left is all manual—you need to be an experienced engineer to stand it up. The right is out of the box: install and you’re there.
 
-## §08 First Conversation
+That’s the essential difference between Hermes and OpenClaw. OpenClaw gives you configuration-as-behavior: you write SOUL.md, it becomes what you want. Its memory is solid (Daily Logs + MEMORY.md + semantic search), the Skill ecosystem is huge, but maintenance is mostly manual.
 
-Just talk. Memory and Skills start forming without a setup wizard.
+Hermes bakes in all five dimensions—and makes them run automatically.
 
-## §09 Multi-Platform Gateway
+> **Concept link** If you’ve used Claude Code’s CLAUDE.md + hooks + memory, you’re already implementing Harness manually. Hermes turns that manual workflow into an automatic system—from “you build the harness for AI” to “AI builds its own harness.”
 
-One Gateway, many surfaces (Telegram, Discord, Slack…). Same brain across channels.
+### Why Nous Research built this
 
-![§09 Multi-Platform Gateway](/guides/hermes-agent/08-gateway.en.svg)
+Hermes Agent wasn’t built by a big company—it’s from an open-source AI research lab.
 
-## §10 Custom Skills
+In AI circles, Nous Research is described as a “mysterious force in the open-source community.” Core figure Teknium leads fine-tuning and dataset curation; early compute came from Redmond AI; the team has always stayed small. Yet the Hermes model family (8B through Hermes 4 at 14B/70B/405B) reached frontier level through post-training alone—no pre-training from scratch, no massive compute budget.
 
-Hand-write Skills, install from hub, or port Claude Code skills. Trigger conditions matter.
+That philosophy carries into Hermes Agent: open-source tools + any LLM API, and individuals can deploy Agents that rival commercial setups. MIT license, fully open source.
 
-## §11 MCP Integration
+Their principles are sharp. User control first; the model is steerable—you adjust behavior on demand, without corporate content-policy constraints.
 
-stdio or HTTP MCP servers. Prefer native tools when Hermes already has them; use MCP for your stack.
+On censorship they’re explicit: models are “unencumbered by censorship, neutrally aligned.” They don’t compromise on creativity, math, coding, or reasoning either.
 
-## §12 Personal Knowledge Assistant
+Those principles shape Hermes Agent: it doesn’t decide for you—you set rules, it learns rules, then gets better over time. Control stays with the user; execution complexity is on the system.
 
-Multi-week projects stay coherent because retrieval is cross-session, not a blank chat each time.
+### Not replacement—progression
 
-## §13 Dev Automation
+A common misunderstanding: Hermes is here to replace Claude Code or OpenClaw. It isn’t. These three tools solve problems at different layers.
 
-Pair with Claude Code: interactive coding vs background watchers, review, and digests.
+Claude Code is interactive coding. You sit at the terminal, back and forth in real time. It’s your pair engineer.
 
-## §14 Content Creation
+OpenClaw is configuration-as-behavior. You write SOUL.md; it becomes what you want. Config is transparent, the ecosystem is mature, ClawHub has 44,000+ community Skills.
 
-Parallel research with sub-agents; Skills accumulate your writing style over a series.
+Hermes is autonomous background + self-improvement. You don’t need to sit beside it. It runs, learns, and evolves on its own. Online 24/7, reachable via Telegram or Discord anytime.
 
-## §15 Multi-Agent Orchestration
+One interesting point: all three adopt the agentskills.io standard—Skills interoperate. A Skill you write in Claude Code works in Hermes, and vice versa. They’re not three parallel lines; they’re three roles in one ecosystem.
 
-delegate_task with isolation, durable ledgers (later versions), and careful tool scopes.
+> **Key takeaway** If you’re mainly writing code, Claude Code is enough. If you want a 7×24 background Agent that watches tasks and gets smarter on its own, look at Hermes.
 
-## §16 Hermes vs OpenClaw vs Claude Code
+### Harness in the box
 
-Three species, one ecosystem. Hermes drives; OpenClaw can contain; Claude Code pairs interactively.
+Back to the opening question: why is this time different?
 
-![§16 Hermes vs OpenClaw vs Claude Code](/guides/hermes-agent/09-three-species.en.svg)
+The lobster craze taught regular people one thing: AI can be something you *raise*, not something you *open and use*. OpenClaw’s SOUL.md, memory, and personalization let people feel “my AI” for the first time.
 
-## §17 Boundaries of Self-Improving Agents
+But lobster keepers hit another problem: you build the whole harness yourself. Write SOUL.md, tune skills by hand, clean memory on a schedule. The lobster gets better only if you’re willing to feed it time.
 
-Let agents improve “how”; you keep “what” and “never.” Stay on the loop for direction.
+Hermes takes a different angle: weld the harness into the factory settings—and let the harness grow.
 
-![§17 Boundaries of Self-Improving Agents](/guides/hermes-agent/10-control-loop.en.svg)
+From your first conversation, Hermes starts writing memory automatically, distilling Skills, optimizing workflows. The longer you use it, the deeper its read on you, the better the work. You’re not training it—it’s training itself.
 
-## Appendix · Agent Harness Deep Dive
+Hermes is the first Agent that ships with a harness. And the harness grows on its own.
 
-Harness = OS around the LLM. Twelve components, TAO loop, seven design decisions—mapped back to Hermes.
+## §02 Hermes Agent at a Glance: 60 Seconds
 
-![Appendix · Agent Harness Deep Dive](/guides/hermes-agent/14-os-metaphor.en.svg)
+*Hermes Agent at a Glance: 60 Seconds*
 
-![Appendix · three engineering layers](/guides/hermes-agent/11-three-layers.en.svg)
+One flow diagram, a few numbers, one comparison table. After those three, you know what Hermes is.
 
-![Appendix · TAO / ReAct loop](/guides/hermes-agent/12-tao-loop.en.svg)
+### Architecture in one diagram
 
-![Appendix · seven Harness decisions](/guides/hermes-agent/13-seven-decisions.en.svg)
+![Hermes architecture on one line](/guides/hermes-agent/02-architecture.en.svg)
 
-## Appendix · Version Evolution (v0.7 → v0.19)
+Hermes Agent’s architecture strings together on one line:
 
-Apr–Jul 2026: from terminal wrapper to durable personal AI infra. Velocity → Surface → Quicksilver.
+Learning loop → Three-layer memory → Skill system → 40+ tools → Multi-platform Gateway
 
-![Appendix · Version Evolution (v0.7 → v0.19)](/guides/hermes-agent/15-version-phases.en.svg)
+Left to right, one sentence per module:
 
-![Appendix · six capability pillars](/guides/hermes-agent/17-six-pillars.en.svg)
+The learning loop is Hermes’s heart. After every task it auto-retrospects: what to remember, what Skill to distill, whether existing Skills need tuning. The loop runs continuously—you don’t trigger it manually.
 
-![Appendix · kernel slimdown](/guides/hermes-agent/16-kernel-slim.en.svg)
+Three-layer memory is Hermes’s brain. Session memory holds “what just happened”; persistent memory holds “who you are and what you like”; Skill memory holds “how to do things.” Each layer has a job. SQLite + FTS5 indexing, retrieve on demand—not load everything.
+
+The Skill system is Hermes’s skill library. Each Skill is a standalone markdown file under `~/.hermes/skills/`. Three sources: bundled with the repo, created by the Agent, installed from the community Hub. Key point: Skills aren’t static—they self-improve in use.
+
+40+ built-in tools are Hermes’s hands and feet. Five categories: execution (run code, files), information (search, scrape), media (image, video), memory (read/write storage), coordination (sub-Agent delegation). Plus MCP integration for 6,000+ external apps.
+
+Multi-platform Gateway is Hermes’s front door. Telegram, Discord, Slack, WhatsApp, Signal, CLI—12+ platforms. Message it on Telegram; it runs on a VPS in the background; conversations stay continuous across platforms.
+
+### Key numbers
+
+v0.7.0, released April 3, 2026. Numbers worth remembering:
+
+| Metric | Data |
+| --- | --- |
+| GitHub stars | 27,000+ (within two months of launch) |
+| First-month growth | 6,000+ stars |
+| Built-in tools | 40+ |
+| Supported platforms | 12+ |
+| MCP integrations | 6,000+ apps |
+| Sub-Agent concurrency | Up to 3 |
+| Minimum deploy cost | $5/month VPS |
+| Memory footprint | <500MB (without local LLM) |
+| License | MIT (fully open source) |
+
+27,000+ stars in two months is fast. OpenClaw needed the lobster wave to reach today’s scale. Hermes hit this number without a similar social virality loop—developers clearly think it solves a real problem.
+
+### Key differences vs OpenClaw
+
+After the lobster craze, the top question is: how is Hermes actually different from OpenClaw?
+
+| Dimension | Hermes Agent | OpenClaw |
+| --- | --- | --- |
+| Core idea | Self-improving learning loop | Configuration-as-behavior (SOUL.md) |
+| Memory | Three-layer self-improvement (session / persistent / Skill) | Multi-layer (Daily Logs / MEMORY.md / semantic search), mostly manual upkeep |
+| Skill maintenance | Agent auto-creates + self-improves | Human-authored and maintained |
+| User modeling | Honcho dialectical modeling (multi-dimensional identity inference) | SOUL.md configuration |
+| Multi-platform access | 12+ platform Gateway | 50+ messaging platforms (Telegram / Discord / WhatsApp / Slack / Signal, etc.) |
+| Ecosystem scale | 40+ built-in tools + MCP 6,000+ | ClawHub 44,000+ community Skills |
+| Deployment | Self-hosted (from $5 VPS) | Official hosted / self-hosted |
+| Skill interoperability | Both use agentskills.io standard | |
+
+The biggest gaps are learning ability and user modeling. OpenClaw Skills are mostly hand-written and tuned; evolution depends on community and active user maintenance. The longer you use Hermes, the sharper Skills get, the deeper memory goes, the smoother the work.
+
+OpenClaw still beats Hermes on ecosystem maturity. ClawHub’s 44,000+ community Skills cover almost every scenario. Hermes’s community is early. The lobster wave’s 26 million users gave OpenClaw massive network effects—that’s not something pure tech closes overnight.
+
+One line: OpenClaw is the lobster you raise; Hermes is the lobster that grows on its own. One needs your care; one learns from experience.
+
+### Run it for $5
+
+Cost matters to a lot of people. The answer might surprise you.
+
+Hermes itself is free—MIT open source. You only pay LLM API usage. Deploy cost depends on your setup:
+
+Cheapest: any $5/month VPS (Hetzner CX22 ~$4/month; DigitalOcean, Vultr work too), Ubuntu 22.04. Without a local LLM, memory stays under 500MB. Pair with OpenRouter for Claude Haiku or DeepSeek—API cost stays low.
+
+Even cheaper: serverless. Use Daytona or Modal as backend—environment sleeps when idle, wakes on message. Near-zero cost between sessions.
+
+Privacy-first: run Ollama on a VPS with local 8B or 70B open models. Zero API fees, but you want a bigger VPS (16GB+ RAM recommended).
+
+Any of these: $5 VPS + Telegram Bot gives you a 24/7 personal AI Agent. Far better value than subscription commercial Agents for many use cases.
+
+> **Key takeaway** For context: Claude Code Pro is $20/month; Max is $200/month. Hermes at $5 VPS + API often lands under $10/month for typical use. Different products, different jobs—but the cost floor is much lower.
+
+### Who it’s for
+
+Last question: is this book for you?
+
+If any of these fit, keep reading:
+
+- You’ve used Claude Code or OpenClaw and want an Agent that runs background tasks on its own—not the kind where you sit and watch, the kind that works while you sleep.
+
+- You know Harness Engineering and want to see what productized methodology looks like.
+
+- You want a private AI Agent on your own VPS—data never leaves your server.
+
+- You’re simply curious what an open-source project did right to hit 27,000+ stars in two months.
+
+Next chapters start with the learning loop and peel Hermes’s core mechanisms layer by layer.
+
+## §03 The Learning Loop: The Agent Builds Its Own Harness
+
+*The Learning Loop: Self-Harnessing Agent*
+
+The most surprising thing about Hermes Agent isn’t what it can do—it’s that it *changes*. The more you use it, the better it gets. That’s not marketing; it’s an observable, verifiable closed loop.
+
+### Start with a real scenario
+
+Say the first time you ask Hermes to write a Python script: “Write a crawler that grabs titles and summaries from a site.”
+
+It’ll produce something that works. Style might not match yours; naming might not match your habits; error handling might not match your expectations. Normal—it doesn’t know you yet.
+
+By the tenth time, everything’s different. It knows you prefer httpx over requests, log errors to a file instead of stdout, structure projects under `src/` by module, and hate long functions.
+
+Nobody taught it that. It learned on its own.
+
+That’s what the learning loop does.
+
+### Five stages, one loop
+
+![Five stages of the learning loop](/guides/hermes-agent/03-learning-loop.en.svg)
+
+Hermes’s learning loop has five stages. Each alone is simple; chained together they form a continuous improvement flywheel.
+
+Curate memory → Create Skill → Skill self-improvement → FTS5 recall → User modeling
+
+Looks like five separate features? They’re causal. Memory feeds Skill creation; Skill use gathers feedback that triggers self-improvement; FTS5 pulls history at the right moment; user modeling stitches the fragments into a full picture.
+
+One by one:
+
+### Stage one: Curate memory
+
+After each conversation turn, Hermes actively decides what’s worth remembering—active decision, not passive storage.
+
+Traditional chat memory is blunt: dump the whole history into context. More chat, longer context, until it bursts. Like trying to hold every life event in working memory at once—humans can’t do that.
+
+Hermes is closer to keeping a diary. When a conversation ends, it looks back: what did we cover? anything new? any preferences expressed?
+
+Then it writes what matters into SQLite with FTS5 full-text indexes.
+
+There’s also a periodic nudge—timed reminders to review recent interactions. Like a diary app ping: anything worth recording today?
+
+### Stage two: Autonomous Skill creation
+
+When Hermes finishes a relatively complex task, it asks: will I need this solution again?
+
+If yes, it distills the solution into a Skill file under `~/.hermes/skills/`. A markdown file with task description, steps, and notes.
+
+Example: you ask Hermes to clean a CSV and load it into a database. After finishing, it might create `csv-to-database.md` with common cleaning steps, your preferred DB connection pattern, your usual field validation rules.
+
+Next time you say “import this CSV,” it doesn’t start from zero—it loads the Skill and runs the way you already validated.
+
+### Stage three: Skill self-improvement
+
+Creating a Skill isn’t the end. During use, if you give feedback, Hermes uses it to edit the Skill itself.
+
+You say “the import script should check if the table exists first.” Hermes doesn’t only add the check this once—it goes back and updates the Skill file so the check is default next time.
+
+Like continuous improvement in software: fix a production bug, don’t just patch—update docs and standards so the class of bug doesn’t repeat.
+
+Key difference: traditional AI memory is a pile of chat logs; Hermes memory is distilled experience. One is a tape that grows until it overflows; one is a notebook you can keep using.
+
+### Stage four: FTS5 cross-session recall
+
+Remembering a lot only helps if you can find the right thing at the right time.
+
+Hermes uses SQLite’s FTS5 extension for full-text index. Before a new conversation, it searches memory by topic and loads relevant bits into context—not the entire history, retrieval on demand.
+
+That matters more than it sounds. Most AI tools either forget last time or stuff all history in and slow down. Hermes: database question → database memories; frontend question → frontend memories. Like a well-organized note system with index and table of contents.
+
+FTS5 is also purely local. Memory never leaves your machine—just a SQLite file. Moving house? Copy `~/.hermes/`.
+
+### Stage five: User modeling
+
+The last stage is Honcho user modeling—optional external integration. It goes beyond “what you said” to infer “what kind of person you are.”
+
+After each conversation, Honcho analyzes the exchange and derives preferences, habits, goals. Not just logging statements—inferring deeper traits from behavior patterns.
+
+You never said “I like concise code,” but Honcho might infer it from how you repeatedly edit generated code. Next codegen defaults to concise.
+
+Honcho’s multi-dimensional identity modeling gets a full chapter next.
+
+### Mitchell Hashimoto’s idea, automated
+
+If you read the Orange Book *Harness Engineering*, you may remember Mitchell Hashimoto’s habit with Claude Code: every time the Agent errs, add a rule to CLAUDE.md.
+
+“Don’t use `any` in this project.”
+
+“Tests live in `__tests__/`, not under `src/`.”
+
+“Commit messages in English, verb-first.”
+
+Rule by rule; after weeks, CLAUDE.md becomes a detailed project spec. The Agent goes from clueless newcomer to veteran who knows every unwritten rule. Mitchell said it feels like training a new teammate.
+
+Hermes does the same thing—automated.
+
+You don’t hand-write CLAUDE.md or summarize rules after every mistake. Hermes observes, summarizes, writes Skills, applies rules on the next call.
+
+| Dimension | Mitchell’s way (manual) | Hermes’s way (automatic) |
+| --- | --- | --- |
+| Rule source | Human observes problem, writes rule | Agent distills from feedback |
+| Storage | CLAUDE.md (single file) | Multiple Skill files + memory DB |
+| Trigger improvement | Only if human remembers to add rules | Auto-evaluated after each use |
+| Cross-project | Copy CLAUDE.md by hand | Skills global—all projects share |
+| Improvement speed | Depends on human diligence | Continuous auto—doesn’t get lazy |
+
+Automatic isn’t perfect. Mitchell’s hand-written rules are often sharper—humans know their needs clearly. Hermes’s auto rules may need tuning or misread context. But the floor drops to zero. Not everyone has Mitchell’s patience for a fine-grained rules file. Hermes gives “gets better with use” to people who don’t want to babysit config.
+
+### Flywheel acceleration
+
+None of the five stages alone is novel. Memory, Skills, retrieval, user profiles—we’ve seen them in AI.
+
+Hermes’s move is wiring them into a closed loop. Memory feeds Skills; Skill use creates new memory; new memory triggers Skill updates; better Skills produce better outcomes; better outcomes sharpen user modeling; sharper modeling makes the next memory curation more targeted.
+
+Positive feedback. The more you use it, every stage strengthens—at once. Amazon’s flywheel: more users → more data → better recommendations → more users.
+
+Hermes’s flywheel spins for *one* user. It doesn’t need millions of users’ data—just your history. After a few days you feel the shift.
+
+> **Key takeaway** Learning loop payoff tracks usage frequency. Once or twice a week → slow improvement. Daily work partner → flywheel spins fast. That’s why Hermes fits a $5 VPS running 24/7—continuous accumulation.
+
+### What this means
+
+Back to the title: the Agent builds its own harness.
+
+In Harness Engineering, humans build the harness. You write CLAUDE.md, configure hooks, design feedback. All need ongoing human input.
+
+Hermes’s bet: while running, the Agent weaves its own harness. Drifts off course → self-correct and remember. Finds a good method → distill into a Skill for reuse. Meets a new user → build a model of them.
+
+Humans aren’t out of the loop. You can edit Skill files, delete bad memory, adjust user profiles anytime. By default, the system is self-driving.
+
+Next chapter: the loop’s critical infrastructure—three-layer memory. If the learning loop is the engine, memory is the fuel.
+
+## §04 Three-Layer Memory: From Goldfish to Old Friend
+
+*Three-Layer Memory: From Goldfish to Old Friend*
+
+Most AI chat tools have goldfish memory—what you said last turn is gone next turn. Hermes aims to be an old friend: remembers what you said, knows what you’re like, and learned how you work.
+
+### Why memory is the hardest problem
+
+![Three-layer memory architecture](/guides/hermes-agent/04-three-memory.en.svg)
+
+You might think AI memory is just “save chat, load chat next time.”
+
+Not that simple. An active user might exchange thousands of words with AI daily—tens of thousands per month. Stuff it all in the context window and either it won’t fit or the model gets sluggish from noise. Most of chat is filler and repetition; maybe 10% is actually valuable.
+
+Good memory isn’t about storing more—it’s about finding the right thing.
+
+Hermes uses a three-layer architecture; each layer handles a different memory type.
+
+### Layer one: Session memory
+
+Session memory answers: what happened?
+
+Every turn’s content, tool calls, and results go into SQLite with FTS5 full-text indexes. Episodic memory—like the hippocampus.
+
+Key design choice: retrieve on demand, not load everything. At the start of a new chat, Hermes doesn’t dump all prior history. It FTS5-searches by current topic and loads only relevant slices.
+
+Benefits:
+
+| Approach | Full load | On-demand retrieval (Hermes) |
+| --- | --- | --- |
+| Context usage | Grows linearly with chat | Roughly constant |
+| Retrieval precision | Everything present, nothing findable | Keyword-targeted match |
+| Long-term viability | Breaks after a few days | Months or years |
+| Response speed | Gets slower | Stays stable |
+
+FTS5 is SQLite’s full-text extension—no extra database. Everything local in SQLite: no network, no privacy leak. Conversation memory never leaves your machine.
+
+### Layer two: Persistent memory
+
+Persistent memory answers: who are you?
+
+This layer doesn’t store raw chat—it stores durable state distilled from chat. Coding preferences, project layout habits, usual toolchain, work-hour patterns. Cross-session; new chat doesn’t wipe it.
+
+Technically, persistent memory also lives in SQLite, managed by memory tools. Pure file-level: no external server, no cloud sync—data under `~/.hermes/`.
+
+That means you can:
+
+- Back up `~/.hermes/` to a USB stick and continue on another machine
+- Mount `/opt/data` to the host when deploying with Docker to keep state
+- Sync across devices via cloud drive (real-time SQLite sync isn’t recommended, but periodic copy is fine)
+
+Portability is underrated. Many AI tools lock memory in the cloud—switch tools, start from zero. Hermes memory is your files; move them how you like.
+
+### Layer three: Skill memory
+
+Skill memory answers: how do we do things?
+
+The first two layers remember what happened and what you’re like. The third remembers methodology and operating rules. Each Skill is a markdown file under `~/.hermes/skills/`, human-readable and editable.
+
+Three layers map to cognitive science:
+
+Episodic memory (what happened) → Semantic memory (what the world is like) → Procedural memory (how to do things)
+
+Learning to ride a bike uses all three: you remember the last fall (episodic), know low center of gravity helps (semantic), your body auto-balances (procedural). Hermes on a task is similar: remembers how you edited code last time, knows your preferences, runs a validated playbook.
+
+Collaboration example: you say “deploy this project.” Hermes FTS5-searches session memory for last deploy’s port conflict (episodic). Checks persistent memory for Aliyun ECS + Nginx reverse proxy (semantic). Loads `deployment-checklist` Skill and runs your verified steps (procedural). Three layers, three jobs.
+
+### Honcho: knows you better than you admit
+
+Beyond three local layers, Hermes has an optional add-on: Honcho user modeling from Plastic Labs.
+
+Honcho goes deeper than logging what you said—it infers who you are. Official term: dialectical user modeling across multiple identity dimensions.
+
+Concrete scenario:
+
+Say for three weeks you ask Hermes for Python scripts daily. Honcho might infer:
+
+- **Skill level:** not a pure beginner, not an expert—you read code better than you write it
+- **Work rhythm:** active ~9–11 PM, likely side projects after work
+- **Communication style:** you want results first, theory later—no long lectures
+- **Goal inference:** maybe prepping a data analysis project—recent tasks cluster on data processing
+- **Emotional pattern:** impatient when code errors—short direct answers work better then
+- **Preference contradiction:** you say you want full comments, but reviews show you never read them
+
+> **Note** That last one. Honcho catches say-vs-do gaps. Stated preferences and behavior-derived preferences can differ—dialectical modeling tracks both.
+
+These inferences inject into later prompts as invisible context. You don’t see them; you feel Hermes “getting you.”
+
+### vs Claude Code auto-memory
+
+Claude Code has memory too: CLAUDE.md and auto-memory. How does it differ from Hermes?
+
+| Dimension | Claude Code | Hermes Agent |
+| --- | --- | --- |
+| Memory format | CLAUDE.md + auto-memory text files | SQLite DB + FTS5 index + Skill files |
+| Write mode | CLAUDE.md manual; auto-memory semi-auto | Fully automatic; human can override anytime |
+| Retrieval | Load full CLAUDE.md at startup | On-demand FTS5 full-text search |
+| Granularity | Project-level (one CLAUDE.md per project) | Global + project-level |
+| User modeling | None (you write preferences) | Honcho auto-infers profile |
+| Procedural memory | Instructions in CLAUDE.md | Standalone Skill files, self-improving |
+| Cross-project share | `~/.claude/CLAUDE.md` global instructions | All memory naturally global |
+| Storage ceiling | CLAUDE.md kept to a few KB | SQLite theoretical ceiling very high |
+
+Different philosophies. Claude Code: human writes, AI executes—full control, ongoing maintenance. Hermes: AI writes, human reviews—low floor, high automation; auto-generated content isn’t always accurate.
+
+Which wins depends on scenario. Heavy Claude Code user with weeks polishing CLAUDE.md—your hand-woven harness may beat Hermes auto-generated. Don’t want to maintain config—Hermes full-auto is less hassle.
+
+### Memory isn’t magic
+
+Benefits covered—now limits.
+
+**Worth remembering:**
+
+- User preferences and habits (code style, tools, communication)
+- Project context (architecture decisions, stack, file layout)
+- Validated solutions (Skills)
+- Recurring patterns (e.g. how you handle a class of errors)
+
+**Don’t remember:**
+
+- One-off task details (“write a birthday message”—skip it)
+- Stale info (API version from three months ago may be wrong)
+- Wrong inferences (Hermes may misread preferences—delete them)
+- Sensitive data (passwords, keys, PII shouldn’t enter memory)
+
+> **Note** Hermes memory currently has no automatic expiry. Long use → DB grows. Periodically check `~/.hermes/` size and prune stale Skills. Known improvement area.
+
+Another issue: memory pollution. Early wrong facts can linger—e.g. it “learns” you prefer Python 2 and keeps generating Python 2 syntax.
+
+Review memory regularly. Scan `~/.hermes/skills/`, delete bad Skills. Fix persistent memory inferences. Like tidying a notebook—stuff to update shows up.
+
+### From storage to understanding
+
+Back to the title: from goldfish to old friend.
+
+Goldfish aren’t blind—they’re forgetful. Every meeting is the first. Most AI tools: new chat, zero context.
+
+An old friend knows your temper and habits, knows when you say you don’t care but you do. No re-explaining background—the background is already there.
+
+Hermes three-layer memory plus Honcho walks that path. Session memory supplies raw material; persistent memory supplies portrait; Skill memory supplies method; Honcho stitches fragments into a full read on you.
+
+Longer use → deeper understanding. Not a slogan—the math of three-layer memory plus closed-loop learning.
+
+Next chapter: another core mechanism—Skill system. If memory is *knowing*, Skills are *doing*.
+
+## §05 The Skill System: Capabilities That Evolve
+
+*Skills: Self-Evolving Capabilities*
+
+OpenClaw Skills need hand-writing and hand-maintenance. Hermes Skills grow on their own and get better on their own. That gap drives a completely different experience.
+
+### What a Skill actually is
+
+In Hermes, each Skill is a standalone markdown file under `~/.hermes/skills/`. It records procedural memory—how the Agent does a particular thing.
+
+Analogy: you teach a new teammate weekly reports. First time step by step; second time a few questions; third time they run it alone. A Skill is that “after the third time” state—method frozen into reusable docs.
+
+Three sources:
+
+| Source | Description | Scale |
+| --- | --- | --- |
+| Bundled Skills | Pre-installed capabilities at install—MLOps, GitHub workflows, research, common scenarios | 40+ |
+| Agent-created | After complex tasks, Agent distills solution into a Skill | Grows with use |
+| Skills Hub | Community skill packs, one-click install | Growing |
+
+Not three equal pillars. Bundled Skills are the starting line; Skills Hub is the accelerator; Agent-created Skills are Hermes’s real killer feature.
+
+### agentskills.io: the lingua franca of Skills
+
+Hermes Skills aren’t a walled garden. They use the agentskills.io standard—30+ tools already support it, including Claude Code, Cursor, Copilot, Gemini CLI.
+
+Skills you wrote for Claude Code run in Hermes. Vice versa.
+
+Unlike App Store logic—one ecosystem per platform, multi-platform porting. agentskills.io is more like USB: one Skill plugs in anywhere.
+
+If you already use Claude Code, your Skill assets aren’t locked to one tool. Switch to Hermes or run both—Skills migrate cleanly.
+
+### Self-improvement: Skills get better with use
+
+![Skill self-improvement loop](/guides/hermes-agent/05-skill-evolve.en.svg)
+
+This is the biggest difference between Hermes and every other Agent Skill system.
+
+Traditional Skills need human maintenance. You write a code-review Skill; it follows your steps. Step doesn’t work in practice? You edit by hand. OpenClaw’s 44,000+ community Skills mostly work this way.
+
+Hermes Skills are alive. They sit in the learning loop and auto-optimize from real feedback.
+
+Mechanism:
+
+**1. Execute Skill**
+
+Agent completes the task per steps recorded in the Skill
+
+**2. Collect feedback**
+
+User reaction (satisfied / unsatisfied / correction) logged to session memory
+
+**3. Update Skill**
+
+Agent analyzes feedback and edits relevant steps in the Skill file
+
+**4. Next run uses the new version**
+
+Improved Skill applies automatically in later tasks
+
+Sounds idealistic? Sure—quality depends on LLM capability and feedback clarity. But the direction is right: learn from experience, don’t wait for a human to maintain docs.
+
+**vs Mitchell Hashimoto:** Mitchell said with Claude Code, “every mistake → one more rule in CLAUDE.md.” Hermes automates that. You don’t add rules—the Agent observes, summarizes, writes Skills. Tradeoff: less direct control over every rule.
+
+### Key differences vs OpenClaw Skills
+
+OpenClaw’s ClawHub has 44,000+ community Skills—far more than Hermes by count. Philosophy is totally different:
+
+| Dimension | OpenClaw Skill | Hermes Skill |
+| --- | --- | --- |
+| Creation | Human-authored SOUL.md | Agent-created + human-authored |
+| Maintenance | Human updates | Auto evolution + human intervention |
+| Personalization | Generic templates, user forks to customize | Grows naturally from your usage habits |
+| Interoperability | agentskills.io standard | agentskills.io standard (interoperable) |
+| Ecosystem scale | 44,000+ (large) | 40+ bundled + community (growing) |
+
+OpenClaw wins on scale and transparency. Read SOUL.md—you see exactly what the Skill does; every step is yours.
+
+Hermes wins on adaptability. Same “write code” Skill: after three weeks, a Python dev and a Rust dev have two very different versions. Not a generic template—tailored.
+
+Not either/or. agentskills.io lets Skills cross over. Install from ClawHub into Hermes and let Hermes keep improving it in use.
+
+### In practice: let Hermes create a Skill
+
+Enough mechanism—concrete process.
+
+Say every morning you want Hermes to summarize yesterday’s GitHub notifications—important PRs and Issues sorted. First few times you repeat the full brief:
+
+> **Key takeaway** “Check yesterday’s GitHub notifications, sort by importance, PRs and Issues separate, ignore bot auto-notifications.”
+
+By the third or fourth time, Hermes does something in the background: distill the recurring pattern into a Skill file. Under `~/.hermes/skills/` you’ll see new markdown, roughly:
+
+```markdown
+# GitHub Daily Digest
+
+## Trigger conditions
+
+User mentions "GitHub notifications", "daily summary", etc.
+
+## Steps
+
+1. Call GitHub MCP for notifications from the past 24 hours
+2. Filter out bot auto-notifications
+3. Group by type (PR / Issue / Discussion)
+4. Sort by importance (mention > review request > other)
+5. Present as a concise list
+
+## User preferences
+- No full bodies—title and status only
+- PRs and Issues shown separately
+```
+
+From then on, “check GitHub” is enough—Hermes knows the job.
+
+Better part comes later. One day you say “include Discussion this time.” Hermes doesn’t only add it once—it updates the Skill file. Next time, Discussion is included without you asking.
+
+That’s what “self-evolution” means in practice. No mysterious AI breakthrough—just automating the loop: user correction → rule update → next execution.
+
+> **Note** Skill self-improvement needs clear feedback. “Something’s off” with no specifics → hard for the Agent to improve accurately. Good feedback = good evolution direction.
+
+## §06 40+ Tools & MCP: Connect Everything
+
+*40+ Tools & MCP: Connect Everything*
+
+No matter how smart an Agent is, it can't get real work done without tools. Hermes ships with 40+ built-in tools—from running code to sending messages. MCP extends its reach to 6,000+ external apps.
+
+### Five tool categories at a glance
+
+![40+ Tools & MCP](/guides/hermes-agent/06-tools-mcp.en.svg)
+
+Hermes tools are grouped into five categories by function. You don't need to memorize them all—just know these capabilities exist and look them up when you need them.
+
+| Category | Core tools | What they're for |
+| --- | --- | --- |
+| Execution | terminal, code_execution, file | Run commands, execute code (sandboxed), read/write files |
+| Information | web, browser, session_search | Search the web, browser automation, search conversation history |
+| Media | vision, image_gen, tts | Understand images, generate images, text-to-speech |
+| Memory | memory, skills, todo, cronjob | Operate the memory layer, manage Skills, task planning, scheduled jobs |
+| Coordination | delegation, moa, clarify | Delegate to sub-Agents, multi-model reasoning, ask the user for clarification |
+
+A few worth calling out on their own:
+
+session_search is one of Hermes's more distinctive capabilities. It uses FTS5 full-text indexing to search conversation history, paired with LLM summarization, so the Agent can quickly recall "that plan we discussed last week." Most Agents don't have this—they start from zero every conversation.
+
+moa (Multi-model Orchestrated Answering) lets Hermes call multiple LLMs at once and synthesize their answers into a final result. Useful when you need high reliability—fact-checking or technical judgment, for example.
+
+cronjob lets you define scheduled tasks in natural language. Say "check my GitHub notifications every morning at 9," and it creates a timed trigger. No cron expressions, no separate scheduler setup.
+
+### Toolset: not all-on, enable on demand
+
+Turning on all 40+ tools at once doesn't make sense. An Agent that helps you write code doesn't need Home Assistant permissions; one that manages your calendar doesn't need code_execution.
+
+Hermes solves this with the Toolset mechanism. Tools are grouped by function—you enable or disable them in config.yaml as needed:
+
+```yaml
+# config.yaml example
+toolsets:
+  - web          # web search
+  - terminal     # terminal commands
+  - file         # file operations
+  - skills       # Skill management
+  - delegation   # sub-Agent delegation
+  # - homeassistant  # comment out if you don't need it
+  # - rl             # reinforcement learning related
+```
+
+This isn't just a feature toggle. Fewer enabled tools means a more focused Agent—faster responses and lower token usage. If you only need a file-organizing assistant, file and memory Toolsets are enough.
+
+Toolsets are also a security boundary. The constraint layer from §03 is implemented at the tool level through Toolsets. You can precisely control what the Agent can and can't touch.
+
+### MCP: a unified interface to 6,000+ apps
+
+40+ built-in tools cover general scenarios. But everyone's stack is different—you might use Jira for projects, Notion for docs, Slack for communication. How does Hermes plug into those?
+
+MCP (Model Context Protocol).
+
+MCP is an open protocol that defines a communication standard between AI Agents and external tools. Hermes connects to any MCP Server via stdio or HTTP. The MCP ecosystem now covers 6,000+ apps—GitHub, Slack, Jira, Google Drive, databases, and more.
+
+Setup is simple—add a block to config.yaml:
+
+```
+# Connect GitHub MCP Server
+mcp_servers:
+- name: github
+transport: stdio
+command: npx @modelcontextprotocol/server-github
+env:
+GITHUB_TOKEN: ${GITHUB_TOKEN}
+```
+
+Once configured, Hermes can use GitHub capabilities: create Issues, review PRs, check repo status. No custom code, no bespoke tools—the MCP Server is plug-and-play capability extension.
+
+Hermes also supports per-server tool filtering. One MCP Server might expose 20 tools, but you might only want the Agent to use 3. Tool filtering lets you precisely control what capabilities are exposed to the Agent.
+
+### Sub-Agent delegation: three horses at once
+
+![Sub-Agent delegation](/guides/hermes-agent/07-subagents.en.svg)
+
+delegation is Hermes's most powerful coordination tool. It can spawn sub-Agent instances, dispatch tasks, and run them in parallel.
+
+Independent context. Each sub-Agent has its own conversation context—they don't interfere. The main Agent passes necessary background when assigning work; sub-Agents operate in isolated spaces.
+
+Restricted toolsets. You can specify which tools each sub-Agent may use. Research-only needs web and browser; coding-only needs terminal and file. That's both efficiency and safety.
+
+Up to 3 concurrent. This limit is intentional. Three concurrent sub-Agents already cover most parallel scenarios (research, coding, and testing at once)—beyond that, coordination gets hard.
+
+Main Agent breaks down the task → Sub-Agent A
+
+| Research | → Sub-Agent B |
+| --- | --- |
+| Write code | → Sub-Agent C |
+
+Testing
+
+If you've used Claude Code multi-instance parallelism, this will feel familiar. The difference: Claude Code's multiple instances are opened manually, with no coordination between them. Hermes sub-Agent delegation is the Agent deciding when to dispatch and how to aggregate results.
+
+In practice: sub-Agents shine when you need "do several unrelated things, then summarize." Ask Hermes to write a technical blog post—it might dispatch one sub-Agent to research latest material, one to analyze competitor articles, one to organize code examples, then the main Agent weaves all three into a draft.
+
+### Tool permissions and sandbox: constraints in practice
+
+Earlier chapters covered the learning loop, memory, and Skills—mechanisms that make the Agent stronger. But the stronger the Agent, the more constraints matter.
+
+Hermes applies three layers of constraint at the tool level:
+
+Toolset control. Only tools enabled in config.yaml can be invoked—the coarsest switch.
+
+code_execution sandbox. Code runs in an isolated environment, separate from your system. Even if the Agent runs problematic code, your filesystem stays untouched.
+
+Sub-Agent restricted toolsets. When delegating, you can specify a subset of tools. A search sub-Agent shouldn't have—and doesn't need—terminal access.
+
+If you've read the Harness Engineering Orange Book, this is the constraint layer (hooks/linter) as implemented in Hermes. Same idea:
+
+Give the Agent enough capability to finish the job—not extra permissions.
+
+> **Key takeaway** For security-sensitive setups (e.g. running on a production server), enable only the Toolsets you need, and use MCP per-server filtering to further limit tools exposed to the Agent. Better to have the Agent ask "I need XX permission" than to leave everything on by default.
+
+These three constraints together form a pragmatic security model. It doesn't chase theoretical perfect isolation—it balances practicality and safety. The more trust you give the Agent, the more it can do. But even with default settings unchanged, Hermes won't perform dangerous operations without you knowing.
+
+## §07 Install & Configure: Three Ways
+
+*Installation & Configuration*
+
+From zero to running—the fastest path is five minutes. This section covers three install options, from local dev to a 24/7 server. Pick what fits you.
+
+### Option 1: Local install (5-minute start)
+
+Local install is the most direct path—good for trying it before committing long term. The only prerequisite is git on your machine.
+
+> **Note** Later releases (see "Version evolution" at the end) made **Docker First** the recommended production path; `pip` / re-running the install script can hit dependency issues in some environments. The steps below are fine for getting started— for production, prefer official Docker docs and v0.19.1+ images.
+
+**1. Run the one-line install script**
+
+Open a terminal and paste:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh | bash
+```
+
+The installer handles Python, Node.js, and all dependencies. Works on macOS, Linux, and WSL2.
+
+**2. Configure the LLM backend**
+
+After install, edit the config file:
+
+```bash
+# Config file location
+~/.hermes/config.yaml
+```
+
+Add your model API key (model selection is covered in detail below).
+
+**3. Start Hermes**
+
+```bash
+hermes
+```
+
+That's it—one word. A welcome message means install succeeded.
+
+> **Key takeaway** If you use uv for Python, you can also install with `uv pip install hermes-agent`. Same result—use whichever you prefer.
+
+### Option 2: Docker (clean isolation)
+
+Don't want a pile of dependencies on your machine? Docker is the cleanest choice.
+
+```
+docker pull nousresearch/hermes-agent:latest
+docker run -v ~/.hermes:/opt/data nousresearch/hermes-agent:latest
+```
+
+Key flag: `-v ~/.hermes:/opt/data` maps the container data volume to the host. All Hermes state (memory, Skills, config) lives under `/opt/data`. Delete and recreate the container—data stays.
+
+Nice design. Unlike tools that scatter state across paths, everything Hermes needs is under `~/.hermes/`—pack that directory when you migrate.
+
+### Option 3: $5 VPS, 24/7
+
+Want Hermes always online without keeping your laptop open? A $5/month VPS is enough.
+
+Recommended providers:
+
+| VPS provider | Monthly cost | Notes |
+| --- | --- | --- |
+| Hetzner CX22 | ~$4/mo | Best value, EU nodes |
+| DigitalOcean Droplet | $5/mo | Singapore / US West nodes |
+| Vultr | $5/mo | Low latency from Tokyo |
+
+Pick Ubuntu 22.04 LTS, SSH in, run the install script—same as local. Without local models, memory use stays under 500MB—a $5 box is plenty.
+
+Pair with the Telegram Gateway (§09)—message Hermes from your phone; it responds on the VPS. Coffee money for a 24-hour AI assistant.
+
+> **Serverless option** Hermes also supports Daytona and Modal serverless backends. The environment sleeps when idle and wakes on message—cost between sessions approaches zero. Good for light usage but always reachable. Set `terminal: daytona` or `terminal: modal` in config.yaml.
+
+### config.yaml in depth
+
+Whatever install path you choose, core config lives in one file: `~/.hermes/config.yaml`.
+
+A minimal working config looks like this:
+
+```yaml
+# ~/.hermes/config.yaml
+model:
+  provider: openrouter                 # model provider
+  api_key: sk-or-xxxxx                 # your API key
+  model: anthropic/claude-sonnet-4     # model to use
+terminal: local                        # terminal backend (local/docker/ssh/daytona/modal)
+gateway:                               # messaging gateway (optional—§09)
+  telegram:
+    token: YOUR_BOT_TOKEN
+  discord:
+    token: YOUR_BOT_TOKEN
+```
+
+Not many fields—let's walk through them.
+
+### provider and model
+
+Hermes supports a wide range of model sources:
+
+| Provider | Recommended models | Best for |
+| --- | --- | --- |
+| OpenRouter | Claude Sonnet 4 / GPT-4o | 200+ models, flexible switching |
+| Nous Portal | Hermes 3 series | Official pick, deep Agent integration |
+| OpenAI | GPT-4o / o3 | Direct OpenAI API |
+| z.ai / Zhipu | GLM-5 | Friendly for users in China |
+| Ollama | Hermes 3 8B/70B | Fully offline, privacy-first |
+
+> **Note**
+
+> **Note** From April 2026, Anthropic blocked third-party tools from accessing Claude via Claude subscriptions (Pro/Max). Hermes, OpenClaw, and other Agent frameworks were affected. You can still use Claude via API keys pay-as-you-go, but cost is much higher. Consider OpenRouter or Nous Portal Hermes 3 series first.
+
+My suggestion: start with OpenRouter so you can switch models and get a feel. Once you settle on a daily driver, connect directly to that API to skip middle fees.
+
+### terminal
+
+Six backends—where Hermes executes code:
+
+- local: runs on your machine, simplest
+
+- docker: runs in a container, isolated and safer
+
+- ssh: connects to a remote server
+
+daytona / modal: serverless, wake on demand
+
+- singularity: HPC cluster environments
+
+Most people pick local. If you're worried about the Agent executing code on your machine, Docker is a good middle ground.
+
+### Troubleshooting
+
+> **Note** Install script stuck? Check network. The script pulls from GitHub and PyPI. In mainland China you may need a proxy or mirror.
+
+> **Note** `hermes` command not found? The install script adds it to PATH, but exotic shells (e.g. fish) may need `source ~/.bashrc` or a new terminal.
+
+> **Key takeaway** Want to verify install? Run `hermes --version`—a version number means success. Latest as of writing is v0.7.0.
+
+> **Note** Docker container starts but nothing happens? Confirm `~/.hermes/config.yaml` exists with `model` configured. The container reads host-mapped config. If config.yaml is missing, Hermes will guide you through creation on startup.
+
+> **Key takeaway** VPS security tip: on a VPS, set `terminal: docker` so code runs in a container—avoid the Agent touching the host filesystem directly. A $5 VPS is enough to run containers.
+
+That's the config story. Hermes keeps it lean—one config.yaml for everything, no scattered env vars or layered config files. For an Agent this capable, the config surface is refreshingly restrained.
+
+Next section: straight into conversation. Hermes doesn't need everything configured before use—install, add an API key, start, and you're ready for your first chat.
+
+## §08 First Conversation: Let Hermes Meet You
+
+*First Conversation*
+
+Installed, launched—now what? This section walks through your first conversation. The point isn't what you say—it's what Hermes does behind the scenes.
+
+### Starting from blank
+
+Type `hermes` in the terminal and you'll see a simple chat UI. No onboarding wizard, no setup flow—just a cursor waiting for you.
+
+Say something casual:
+
+Hi, I'm Huashu—I do AI media. I use Claude Code a lot and want to try Hermes.
+
+Hermes replies normally. The interesting part happens where you can't see it.
+
+### Memory writes quietly
+
+After the first round, look at `~/.hermes/`:
+
+```
+~/.hermes/
+├── config.yaml # your config
+├── state.db # SQLite (conversation history + FTS5 index)
+├── skills/ # Skill directory (still empty)
+│ └── bundled/ # bundled Skills
+└── memories/ # persistent memory
+```
+
+state.db already has content. Your intro and Hermes's reply are in SQLite, with an FTS5 full-text index.
+
+Next launch, Hermes won't start from zero—it can search and find that conversation.
+
+Unlike ChatGPT's "looks like memory but reloads full history every time," Hermes retrieves on demand—history surfaces only when relevant. Months of conversations in the DB won't slow it down.
+
+### Keep chatting—deeper memory kicks in
+
+Chat a few more rounds. Tell it your habits, for example:
+
+I use macOS daily; Cursor is my main editor. I write in Markdown and prefer 「」 quotes over "".
+
+Hermes writes this into the persistent memory layer. Mapping to §04's three layers: what you just said in chat is session memory (what happened); preferences and habits are persistent memory (who you are).
+
+You don't need special commands like "remember this." Hermes decides what's worth persisting. If you've used Claude Code auto-memory, this feels familiar—Hermes is more aggressive; it actively plans what to store.
+
+### Trigger your first Skill creation
+
+Try a slightly richer task:
+
+Convert this Markdown to WeChat Official Account–compatible HTML—keep bold and code block styling.
+
+First time, Hermes will figure it out—maybe run a script in the terminal, maybe generate HTML in chat.
+
+After it finishes, check `~/.hermes/skills/` again:
+
+```
+~/.hermes/skills/
+├── bundled/ # bundled Skills
+└── markdown-to-wechat.md # new file!
+```
+
+Hermes automatically distilled the solution into a Skill. Open the markdown—you'll see input format, conversion rules, and output requirements recorded. Next time you ask for something similar, it invokes the Skill instead of rediscovering the approach.
+
+That's the learning loop from §03. You're not teaching it step by step—it distills what it did into capability.
+
+Skill self-improvement: if you're unhappy with the result, say what to fix. Hermes won't only fix this output—it updates the Skill file. Next run uses the improved version automatically.
+
+### You don't configure—you use
+
+Recap of what just happened:
+
+You chatted casually → Hermes built your profile → you gave a task → Hermes auto-created a Skill. You didn't write config, edit files, or set rules. Very different from Claude Code's hand-written CLAUDE.md or OpenClaw's yaml setup.
+
+You can absolutely edit Skill files by hand (§10)—but at the start you don't need to. Just use it; Hermes grows into the shape that fits you.
+
+That's Hermes's most distinctive angle. Other Agent tools ask you to decide upfront what you want, how to configure, how to constrain. Hermes flips it: use first; structure emerges from use.
+
+Next: Hermes leaves the terminal and shows up on your phone.
+
+## §09 Multi-Platform Access: Reach It Anywhere
+
+*Multi-Platform Access*
+
+Hermes doesn't live only in the terminal. Add a Telegram Bot and reach it from your phone. Add Discord and Slack for the team. The key:
+
+All platforms share one brain.
+
+### Gateway: one process, every platform
+
+![Messaging Gateway multi-platform entry](/guides/hermes-agent/08-gateway.en.svg)
+
+Multi-platform access runs through the Messaging Gateway module. Hermes doesn't write separate code per platform—one unified gateway process listens on every configured channel.
+
+Architecture:
+
+Telegram → Messaging Gateway ← Discord
+
+Below the gateway sits the same Hermes Agent instance, same memory, same Skills. A message from Telegram and a command from the CLI are the same to Hermes.
+
+### Telegram Bot setup (best mobile entry)
+
+Why Telegram? Simplest setup, best mobile experience. Creating a Bot needs no review—Token works immediately.
+
+**1. Create a Telegram Bot**
+
+In Telegram, find @BotFather, send `/newbot`, follow the prompts to name it. BotFather gives you a Token like:
+
+```
+123456789:ABCdefGhIJKlmNoPQRsTUVwxyz
+```
+
+2. Write to config.yaml
+
+```
+# ~/.hermes/config.yaml
+gateway:
+telegram:
+token: 123456789:ABCdefGhIJKlmNoPQRsTUVwxyz
+```
+
+3. Start Hermes
+
+```
+hermes
+```
+
+On startup Hermes connects the Telegram Gateway automatically. Message your Bot in Telegram—it replies.
+
+Three steps, under two minutes. If Hermes runs on a VPS (§07's $5 plan), you get a 24/7, always-reachable private AI assistant with persistent memory. $5/month VPS plus model usage.
+
+> **Key takeaway** Telegram supports voice messages. Send a voice memo—Hermes transcribes to text and processes it. Commute ideas—speak instead of type.
+
+### Discord and Slack
+
+Same flow as Telegram; Token acquisition differs.
+
+Discord: create an Application in the Discord Developer Portal, get the Token on the Bot page:
+
+```
+gateway:
+discord:
+token: YOUR_DISCORD_BOT_TOKEN
+```
+
+Invite the Bot to your server—it responds in channels. Good for teams—Hermes reviewing code in dev channels, summarizing data in ops channels.
+
+Slack
+
+```
+gateway:
+slack:
+token: xoxb-YOUR-SLACK-BOT-TOKEN
+```
+
+Create an App in Slack's admin UI and install to your Workspace. Permissions are more involved than Telegram, but more enterprise-friendly—IT teams appreciate that.
+
+More platforms: Hermes first-class supports WhatsApp and Signal; the community added DingTalk, Feishu, WeCom, Home Assistant, and more. Full list on the official Messaging docs page. Most need only the matching Token in config.yaml.
+
+### Cross-platform conversation continuity
+
+The most practical part of Hermes multi-platform design.
+
+Morning commute—you tell Hermes on Telegram:
+
+Research Hermes Agent deployment options and put together a doc.
+
+Hermes works, stores results in memory. At the office you open the terminal:
+
+How's that research going? Show me what you have.
+
+Hermes knows what you mean. It doesn't care which platform sent the message—all channels share one Agent and one memory. Telegram chat continues in the CLI. Discord discussion is referenceable in Slack.
+
+Unlike opening separate ChatGPT windows on different devices and re-explaining context every time. Hermes has one brain—whichever door you use.
+
+### A typical deployment
+
+Stringing earlier sections together:
+
+$5 VPS (Ubuntu 22.04)
+
+├── Core Hermes Agent
+
+| ├── | Messaging Gateway |
+| --- | --- |
+| │ ├── | (mobile, always reachable) |
+
+Telegram Bot
+
+│ ├── (team collaboration)
+
+Discord Bot
+
+│ └── (enterprise)
+
+Slack App
+
+| ├── | ~/.hermes/ |
+| --- | --- |
+| │ ├── | (all conversation history) |
+
+state.db
+
+│ ├── (capabilities that accumulate automatically)
+
+skills/
+
+│ └── (one file does it all)
+
+config.yaml
+
+└── Model calls → OpenRouter API
+
+Total cost: VPS $5/mo + model usage (light use $2–5/mo). Less than a fancy coffee—for a memoryful, capable, 24/7 AI assistant.
+
+> **Key takeaway** On model costs: to save more, run an open model on the VPS with Ollama (e.g. Hermes 3 8B). A $5 VPS may not fit large models, but $10–15/mo handles 8B—then inference is free.
+
+### Automated scheduling
+
+Beyond reacting to messages, Gateway supports cron scheduling. Hermes can push a news digest every morning at 8, or summarize the week's GitHub commits every Friday afternoon.
+
+Scheduled results go to your chosen platform via Gateway. It doesn't only wait for you—it can work proactively.
+
+At this point you have a usable Hermes: local or VPS install, model configured, reachable from your phone. Next: manually creating and tuning Skills (§10), and plugging in more tools via MCP (§11).
+
+## §10 Custom Skills: Teach Hermes New Tricks
+
+*Custom Skills: Teaching Hermes New Tricks*
+
+Hermes's learning loop auto-creates Skills—but you can teach it manually too. This section covers writing Skills, installing from the community, and porting Claude Code Skills.
+
+### What a Skill actually is
+
+In Hermes, a Skill is a markdown file. No framework to learn, no API to call—just text telling Hermes what to do in specific situations.
+
+Same idea as CLAUDE.md: define behavior in natural language. Difference: CLAUDE.md applies globally; Skills activate on demand. Ask Hermes for a weekly report—it loads the "weekly report" Skill; ask for code review—it loads another.
+
+Skill files live under `~/.hermes/skills/`, one `.md` file per Skill.
+
+### Create a Skill by hand
+
+Let's write a useful one: standardized Git commit messages.
+
+Create `git-commit-style.md` under `~/.hermes/skills/`:
+
+```markdown
+# Git Commit Style
+
+## Trigger conditions
+
+Activate when the user asks me to commit code, write a commit message, or review commit history.
+
+## Behavior rules
+
+### Commit message format
+- First line: type(scope): short summary (max 50 characters)
+- Blank line
+- Body: explain why, not what changed
+
+### Type enum
+- feat: new feature
+- fix: bug fix
+- refactor: refactor (no behavior change)
+- docs: documentation
+- test: tests
+- chore: build / tooling
+
+### Constraints
+- Write the body in Chinese; types stay in English
+- Don't write filler like "modified XX file"
+- One commit, one logical change
+
+## Examples
+
+    feat(auth): 支持微信扫码登录
+
+    之前只能用手机号登录，微信用户需要先绑定手机号再登录，流程太长。
+    现在直接扫码就能登录，未绑定手机号的用户会自动创建账号。
+```
+
+Save it—next time you say "commit these changes," Hermes follows this format. No extra setup.
+
+> **Key takeaway** Skill triggering is automatic. You don't say "use XX Skill"—Hermes matches the most relevant Skill from your request via FTS5 full-text search plus semantic understanding.
+
+### Anatomy of a good Skill
+
+After writing dozens of Skills, common structure:
+
+| Section | Purpose | Required? |
+| --- | --- | --- |
+| Title | Lets Hermes quickly identify what the Skill does | Yes |
+| Trigger conditions | When to activate | Strongly recommended |
+| Behavior rules | How to do it—steps, constraints, format | Yes |
+| Examples | One complete input → output example | Strongly recommended |
+| What not to do | Clear boundaries to prevent drift | Optional |
+
+The more specific the trigger, the higher the hit rate. "When the user mentions code" is too vague; "when the user asks me to commit code, write a commit message, or review commit history" is good.
+
+### Install community Skills from Skills Hub
+
+Hermes ships with Skills Hub—community Skills from other developers. Install flow is simple:
+
+**1. Browse available Skills**
+
+Ask Hermes in chat: "What community Skills are available?" It lists popular Hub Skills by category. Or be specific: "Any Skills for Python development?"
+
+**2. Install**
+
+When you find one, tell Hermes "install XX Skill." It downloads the markdown to `~/.hermes/skills/` and it's live—no restart.
+
+**3. Customize**
+
+Installed Skills are plain markdown—edit directly. Community Skills are the starting point; tailoring them to you is the finish line.
+
+Hermes bundled skills: 40+ covering MLOps, GitHub workflows, research assistant, and more—built in, no extra install.
+
+### Skill debugging tips
+
+After writing a Skill, how do you know it triggered correctly?
+
+Ask directly. Tell Hermes "which Skills are loaded right now?" It lists active Skills. If the one you expect is missing, triggers are probably too narrow.
+
+Check logs. Logs record which Skills matched each request, why selected, why skipped. Under `~/.hermes/logs/`.
+
+Progressive testing. Don't jump to complex cases—confirm trigger and basic behavior with the simplest request, then edge cases.
+
+> **Note** Skills can conflict. Overlapping triggers—Hermes picks the higher match score, but results may surprise you. Weird behavior? Check for Skill conflicts first.
+
+### Hands-on: port a Claude Code Skill to Hermes
+
+Practical scenario: you've built great Skills in Claude Code and don't want to start over on Hermes. The agentskills.io standard makes Skills portable—migration cost is low.
+
+Real example: my Claude Code "WeChat article proofreading" Skill—three-pass review (facts, style, detail).
+
+SKILL.md roughly:
+
+```
+# WeChat Official Account article proofreading
+## Trigger conditions
+Activate when the user mentions "proofread," "reduce AI tone," "too AI-sounding," or "polish."
+## Proofreading workflow
+### Pass 1: Fact check
+- Verify all data, dates, and product names
+- Flag uncertain information
+### Pass 2: Style check
+- Remove AI buzzwords (first/second/in conclusion)
+- Break up AI sentence patterns
+- Replace formal wording with conversational language
+### Pass 3: Detail polish
+- Keep sentences to 15–25 characters
+- Keep paragraphs to 3–5 lines on a phone screen
+- Bold ~10 key points
+```
+
+Copy to `~/.hermes/skills/proofreading.md`—Hermes uses it as-is. No format changes, no API adaptation—everyone's markdown, same semantic structure.
+
+If the Skill references Claude Code–specific tools (a particular MCP Server), swap those for Hermes equivalents. Core logic, triggers, and behavior rules transfer.
+
+agentskills.io's point: Skills aren't locked to one Agent. Skills from Claude Code, Cursor, Gemini CLI work in Hermes—and the other way around. Pick an Agent without worrying about migration cost.
+
+Next: MCP integration. Skills teach Hermes how to work; MCP connects external tools. Together they cover a very wide range of scenarios.
+
+## §11 MCP Integration: Connect Your Tool Stack
+
+*MCP Integration: Connecting Your Tool Stack*
+
+Hermes's 40+ built-in tools are already strong—but real work goes further. MCP lets Hermes plug into GitHub, databases, Slack, Jira, and 6,000+ external services without writing adapter code.
+
+### What MCP is and why it matters
+
+MCP stands for Model Context Protocol—an open standard Anthropic proposed in late 2024. Think USB for the AI tool world: any Agent that speaks MCP can call tools from any MCP Server that implements the protocol.
+
+For Hermes, MCP means no bespoke tool per external service. Want GitHub? Install the GitHub MCP Server. Want a database? Install a database MCP Server. The community already has thousands of ready-made Servers.
+
+### Two connection modes: stdio and HTTP
+
+Hermes supports two ways to connect MCP Servers—the difference is where the Server runs.
+
+| Mode | Server location | Best for | Performance |
+| --- | --- | --- | --- |
+| stdio | Local subprocess | Local tools, filesystem, databases | Fast, no network overhead |
+| HTTP (SSE) | Remote server | Cloud services, team-shared Servers | Depends on network |
+
+stdio is enough for most cases. The MCP Server runs as a Hermes child process; communication is stdin/stdout—fast and simple. HTTP fits Servers that need independent deployment or shared access across Agents.
+
+Configure under `mcp_servers` in config.yaml:
+
+```
+# stdio mode
+mcp_servers:
+github:
+command: "npx"
+args: ["-y", "@modelcontextprotocol/server-github"]
+env:
+GITHUB_PERSONAL_ACCESS_TOKEN: "ghp_xxxxx"
+```
+
+```
+# HTTP mode
+mcp_servers:
+remote-tools:
+url: "https://your-server.com/mcp"
+transport: "sse"
+```
+
+### Hands-on: GitHub MCP
+
+GitHub is one of the most common MCP integrations. After setup, Hermes can create Issues, open PRs, review code, manage project boards.
+
+**1. Prepare a GitHub Token**
+
+GitHub Settings → Developer settings → Personal access tokens—generate a token. At minimum check `repo` and `read:org`. For Issues and PRs, enable write on `issues` and `pull_requests`.
+
+2. Configure config.yaml
+
+Add the GitHub MCP Server in config.yaml:
+
+```
+mcp_servers:
+github:
+command: "npx"
+args: ["-y", "@modelcontextprotocol/server-github"]
+env:
+GITHUB_PERSONAL_ACCESS_TOKEN: "ghp_your_token_here"
+```
+
+Prefer env vars over plaintext in config—reference with `${GITHUB_TOKEN}`.
+
+3. Restart Hermes and verify
+
+After restart, ask Hermes "list my GitHub repos" or "show recent Issues in XX repo." Correct answers mean connection succeeded.
+
+**4. Daily use**
+
+Once connected, use natural language for GitHub:
+
+"Create an Issue in alchaincyf/my-app titled Fix login page redirect"
+
+"Review the changes in this PR"
+
+"List new Issues opened in the last week, grouped by label"
+
+GitHub MCP tools cover repo management, Issues, PR review, code search, branches, and more. You don't memorize tool names—state the need; Hermes picks the right call.
+
+### Hands-on: database MCP
+
+Databases are another high-frequency case. After setup, Hermes can query data, build reports, analyze trends—no hand-written SQL.
+
+PostgreSQL example:
+
+```
+mcp_servers:
+postgres:
+command: "npx"
+args: ["-y", "@modelcontextprotocol/server-postgres"]
+env:
+POSTGRES_CONNECTION_STRING: "postgresql://user:pass@localhost:5432/mydb"
+```
+
+Then: "how many users registered this month?" or "daily order amount trend for the last 30 days"—Hermes generates SQL, runs it, returns results.
+
+> **Note** Database MCP defaults to read-write. If you only want queries, use a read-only DB account—especially for production databases.
+
+SQLite and MySQL have MCP Servers too—same pattern, different package and connection string.
+
+### Per-server tool filtering
+
+With multiple MCP Servers, available tools multiply. GitHub alone exposes a dozen; add database, filesystem, Slack—you might have dozens or hundreds.
+
+Too many tools hurt Agent decision quality. Matching against 100 tools is worse than 20—and some tools you never want touched.
+
+Hermes supports per-server tool filtering—expose only selected tools per Server:
+
+```
+mcp_servers:
+github:
+command: "npx"
+args: ["-y", "@modelcontextprotocol/server-github"]
+env:
+GITHUB_PERSONAL_ACCESS_TOKEN: "ghp_xxxxx"
+allowed_tools:
+- "list_issues"
+- "create_issue"
+- "get_pull_request"
+- "create_pull_request_review"
+```
+
+Even if GitHub MCP exposes delete-repo or change-settings tools, Hermes can't reach them. Least privilege matters more than ever in the Agent era.
+
+### When to use MCP vs native tools
+
+Hermes has 40+ native tools; MCP adds thousands. How to choose?
+
+| Use native tools: | Use MCP: |
+| --- | --- |
+| Terminal commands, file ops, web search, image generation, memory management, sub-Agent delegation. Built-ins are deeply optimized, tightly integrated with the learning loop and memory—fast, predictable. | GitHub, databases, Slack, Jira, Google Drive, and other external services. They need specific APIs—MCP is the right fit. |
+| | Terminal can run CLIs too, but MCP gives structured I/O and higher accuracy. |
+
+Simple rule: if Hermes already has it built in, use built-in; if you need an external service, use MCP.
+
+Both can handle some cases—e.g. Git. `terminal` runs local git commands—good for day-to-day commit/push in the current repo. GitHub MCP goes through the API—better for cross-repo work, bulk Issues, PR review—platform-level tasks.
+
+Practical advice: don't connect every MCP Server on day one. Start with one or two you use most (GitHub, database); add more as you go. Each new Server widens the tool space and lengthens the decision path.
+
+### MCP + Skill combo
+
+MCP answers "what can connect"; Skills answer "how to use it." Together they're stronger.
+
+Example: GitHub MCP plus a "code review" Skill. The Skill defines review standards (naming, error handling, test coverage); MCP reads PR diffs. Hermes reviews code to your standard automatically.
+
+Another: database MCP runs SQL; a "weekly report" Skill defines format and key metrics. Friday afternoon cron—Hermes queries data, generates the report, posts to Slack. MCP, Skills, and native tools together—that's the full power.
+
+At this point you've covered Hermes's core capabilities. The next Part moves into real scenarios—what these pieces can do combined.
+
+## §12 Personal Knowledge Assistant: Power of Cross-Session Memory
+
+*Personal Knowledge Assistant: The Power of Cross-Session Memory*
+
+How big is the gap between an AI assistant that truly remembers you and one you have to re-introduce yourself to every day? Feel it with a project that runs for three weeks.
+
+### Three weeks of research, starting from scratch
+
+Say you're researching a new field. Maybe you're an indie developer trying to figure out AI Agent deployment options in 2026: local, cloud, Serverless—what are the pitfalls for each?
+
+In week one, you ask three or four questions. You talk about Docker deployment memory usage, VPS pricing comparisons, Daytona's free-tier limits. That information is scattered across different conversations.
+
+In week two you want to dig deeper into Serverless. You open ChatGPT or Claude. What's the first thing you do? Re-explain what you're doing.
+
+"I'm researching AI Agent deployment options. Last week I looked at Docker and VPS. Now I want to understand Serverless. I previously found that Daytona has a free tier but with limits…"
+
+Every new conversation costs 3 to 5 minutes just setting context. That's not an AI capability problem—it's an architecture problem. Traditional AI has no cross-session memory. Every time is a blank slate.
+
+### What Hermes remembers
+
+Same scenario, but with Hermes.
+
+After week one's conversations, Hermes's three memory layers each capture different things:
+
+| Memory layer | What it records | Purpose |
+| --- | --- | --- |
+| Session memory (SQLite + FTS5) | What you asked, what it looked up, conversation transcripts | Precise retrieval when you need details |
+| Persistent memory | "User is researching AI Agent deployment, ruled out option X, prefers low cost" | Auto-load context in the next conversation |
+| Skill memory | "Research tasks: list dimensions first → dig into each → summarize each round" | Reuse methodology |
+
+In week two you open Hermes and say "keep looking at Serverless options." No need to re-explain background—persistent memory already knows what you're doing. It may even proactively remind you: last week you mentioned Daytona's free-tier limits—want to confirm the latest policy first?
+
+This isn't magic. It's FTS5 full-text search at work. Hermes doesn't stuff last week's entire conversation into context—that would waste tokens. Based on your current question, it retrieves the most relevant historical snippets.
+
+### Retrieval vs. full loading
+
+This design choice is worth unpacking.
+
+Many people assume "memory" means stuffing all historical conversations into the prompt. Claude Code's auto-memory does exactly that: write key info to MEMORY.md, read it all on every startup. Good enough for coding.
+
+Knowledge-assistant scenarios are different. Three weeks of research conversations might be tens of thousands of words. Loading everything causes two problems: token cost explodes, and information overload actually hurts answer quality. Large models don't distribute attention evenly in very long context—key information gets buried.
+
+Hermes's approach: persistent memory stores summaries (a few hundred words). When you need details, FTS5 searches the original conversations and injects only the most relevant snippets into context. Like carrying a one-page note and going to the filing cabinet when you need more.
+
+Recommended  Not recommended
+
+| Hermes approach: persistent memory (summary) + on-demand retrieval (FTS5). Token cost stays controlled; information stays precise. | Full-load approach: stuff all history into the prompt. Works short-term; after three weeks the prompt is packed and cost doubles. |
+| --- | --- |
+
+### Honcho: it knows you better than you think
+
+If Honcho user modeling is enabled, memory goes one level deeper.
+
+Honcho doesn't just record what you said—it infers what you didn't say. Say you pick the lowest-cost option three research rounds in a row. Honcho infers "this user is cost-sensitive." Next time it recommends options, pricing moves to the front.
+
+This dialectical modeling spans multiple identity dimensions: technical level, style preferences, communication habits. The longer you use it, the more precisely it understands you.
+
+Huashu's experience: after two weeks, Hermes started replying in short sentences automatically—it noticed I prefer direct conclusions over long analysis. This adaptation is gradual. You don't configure anything explicitly.
+
+### The experience gap vs. traditional AI chat
+
+One analogy to sum it up: traditional AI is like a hotel front desk—new staff every day, you re-introduce yourself each time. Hermes is like your personal assistant who's known you for three months—knows you drink Americanos, hate writing weekly reports, and what project you're researching lately.
+
+In knowledge-assistant scenarios, the gap shows up in three ways:
+
+**1. Zero startup cost**
+
+No background setup every time. Say "continue" and you continue.
+
+**2. Research has continuity**
+
+Options you ruled out last week won't get recommended again. Confirmed information won't get re-verified. The whole research thread is a line, not scattered dots.
+
+**3. Methodology grows**
+
+Methods Hermes distilled from your first research project (list dimensions first, dig into each, summarize each round) get saved as a Skill. The second research project reuses them automatically—you don't teach it again.
+
+> **Key takeaway** Cross-session memory isn't a silver bullet. For one-off tasks like "translate this paragraph for me," Hermes's memory system adds nothing. Memory value scales with task duration. The longer the task and the more complex the context, the bigger the efficiency gain from memory.
+
+## §13 Dev Automation: From Code Review to Deploy
+
+*Dev Automation: From Code Review to Deployment*
+
+Claude Code writes code. Hermes watches the pipeline. These two tools aren't either/or—they each own a segment.
+
+### A developer's morning
+
+9 AM, you open your laptop. Three Telegram messages pop up. Not from colleagues—from Hermes:
+
+"At 23:17 last night, a PR merged to main—387 new lines. Review found two issues: auth module token expiry logic doesn't handle edge cases; test coverage dropped from 82% to 76%. Full report saved to the project Skill."
+
+"At 2:40 AM, CI ran a regression pass—3 tests failed. 2 introduced by yesterday's PR, 1 is a known flaky test."
+
+"Today's daily report draft is ready, based on yesterday's 4 commits and 2 PRs. Needs your confirmation before sending."
+
+This isn't hypothetical. Hermes's cron scheduling + GitHub MCP + memory system lets it keep working while you sleep.
+
+### Automated code review
+
+Traditional code review has two pain points: latency—you submit a PR and wait for a reviewer; consistency—different reviewers focus on different things, some on architecture, some on formatting.
+
+Setting up automated code review with Hermes is straightforward:
+
+**1. Connect GitHub MCP**
+
+Configure the GitHub MCP Server in config.yaml. Hermes can read PRs, diffs, and issues from the repo.
+
+**2. Set up cron scheduling**
+
+Tell Hermes in natural language: "Check main for new PRs every 6 hours and review them." It creates the cron job automatically.
+
+**3. Define review standards**
+
+Write your code standards as a Skill. For example: "Functions no longer than 50 lines," "Error handling must use custom types," "Every API endpoint must have tests." Hermes reviews each PR against these standards.
+
+Step three is the key. Review standards are a Skill—they evolve automatically from your feedback. Mark an issue Hermes missed, and next time it'll watch for similar patterns. Traditional lint rules are static; Hermes's review standards are alive.
+
+### Test generation and execution
+
+There's a fundamental difference between Hermes doing tests and Claude Code doing tests. With Claude Code, you say "write tests for this function," it writes them, you review.
+
+Hermes finds which functions lack tests on its own, writes them, runs them, fixes failures, then gives you a report.
+
+This comes from combining several tools:
+
+Tool  Role
+
+| file | Scan the codebase, find modules missing tests |
+| --- | --- |
+| code_execution | Run tests in a sandbox |
+| terminal | Generate coverage reports |
+| memory | Remember which modules were reviewed, which tests are flaky |
+
+Pair with cron for weekly coverage checks. Every Monday morning, auto-scan; if coverage falls below threshold, send a notification.
+
+### Automated daily and weekly reports
+
+This sounds simple, but it's addictive once you use it.
+
+Hermes pulls the day's commits, PR status, and issue changes via GitHub MCP, combines them with what you discussed in session memory, and generates a daily report you can confirm without trying to remember everything.
+
+Weekly reports are more interesting. With cross-session memory, Hermes sees the whole week's thread: what bug you fixed Monday, why you changed the architecture Wednesday, why Friday's PR was sent back. Not a flat commit list—a narrative with cause and effect.
+
+Practical tip: when Hermes generates the daily report, also update a project Skill with this week's technical decisions. Next week's weekly report can cite those directly instead of guessing your intent from commit messages.
+
+### How Claude Code and Hermes divide the work
+
+These two tools aren't competitors. They're good at completely different things:
+
+| Dimension | Claude Code | Hermes Agent |
+| --- | --- | --- |
+| Interaction mode | You're beside it, real-time dialogue | Runs in background, scheduled reports |
+| Strengths | Write code, refactor, debug | Patrol, monitor, summarize, schedule |
+| Time horizon | Done within one session | Runs across days and weeks |
+| Trigger | You initiate | Cron or event-driven |
+
+One line: Claude Code is the craftsman; Hermes is the butler. The craftsman builds things; the butler keeps everything on track. You don't ask the butler to lay bricks, and you don't ask the craftsman to do night watch.
+
+Claude Code writes code and opens PRs → Hermes auto-reviews PRs → Hermes runs tests to verify →
+
+Hermes generates daily report summary
+
+Once this pipeline runs, your focus shifts from "write code + review code + run tests + write daily report" to "write code + confirm results." Everything in the middle is automated.
+
+> **Note** Hermes code review is assistive, not a replacement. It's good at pattern problems (naming violations, missing tests, missed edge cases), but architecture-level judgment still needs a human. Don't skip human review just because it's automated—at minimum, keep human review on core modules.
+
+## §14 Content Creation: From Research to Draft
+
+*Content Creation: From Research to Final Draft*
+
+Using AI to write articles isn't new. Letting AI remember your writing style, research habits, even reader feedback—and evolve into your dedicated editor over time—that's how Hermes does content.
+
+### The life of an article
+
+I've written 100+ WeChat articles with Claude Code. The flow is familiar: give it a topic, it searches, drafts, edits, adds images. The whole thing takes about 2 to 3 hours.
+
+But one problem never goes away: every new session, it forgets last article's lessons.
+
+Last week I told it not to use "in conclusion." It fixed it. This week's new article—"in conclusion" showed up again. I added a banned-words list to CLAUDE.md. That helped, but CLAUDE.md is a static file—it doesn't update itself.
+
+Hermes content creation is different at exactly this point.
+
+### Sustained content projects
+
+Say you're doing a series—five articles on AI Agents. The traditional way treats each piece as standalone: re-explain reader profile, re-define style, re-list topics already covered.
+
+With Hermes on this series, it's completely different:
+
+After article one, Hermes's memory captures several things: the series positioning, target readers, your draft edit preferences (e.g., you split every long sentence it wrote into short ones), and which technical points were already explained in article one.
+
+Starting article two, you only say "write article two of this series, topic XXX." It knows the style, knows which concepts don't need re-explaining, knows what dissatisfied you last time.
+
+By article five, its understanding of your writing preferences is very precise—not because you configured anything, but because it learned from your feedback on its own.
+
+### Parallel research with sub-Agents
+
+For a deep technical article, research often takes longer than writing. The traditional approach is linear: search topic A, organize, search topic B, organize topic C.
+
+Hermes's delegate_task tool makes this parallel. Say you're writing an AI Agent comparison—you can dispatch three sub-Agents at once:
+
+Sub-Agent 1
+
+Research Hermes architecture → Sub-Agent 2 research OpenClaw ecosystem → Sub-Agent 3 gather community feedback
+
+Three sub-Agents work in parallel and return results. The main Agent synthesizes them into structured research material. Research that used to take over an hour finishes in 20 minutes.
+
+Each sub-Agent can get a different tool set. The one researching architecture needs web search and browser; the one gathering community feedback might only need web search.
+
+Restricted tool sets aren't just security design—they're efficiency design. Sub-Agents don't get distracted by too many tools.
+
+### Skill accumulation for writing style
+
+This is the most valuable part of Hermes for content creation.
+
+Traditional AI writing tools control style via prompt. You write "conversational tone, sentences under 20 words, no AI buzzwords" in the prompt—every time—or maintain a long system prompt.
+
+Hermes stores style rules as a Skill. At first it might be a few simple rules: don't use "in conclusion," keep paragraphs to 3–5 lines, use conversational words like "I think" and "actually."
+
+Here's the key: this Skill self-improves.
+
+When you edit drafts, Hermes observes and learns. You change "perform optimization" to "optimize it" three times—it adds a rule to the Skill:
+
+"Avoid 'perform + verb' constructions." You delete a forced summary paragraph—it learns "don't force a big conclusion at the end."
+
+After a month, this writing-style Skill has dozens of rules, all from your real feedback. It becomes your personal editor handbook—and it's maintained automatically.
+
+> **Key takeaway** Hermes Skill self-improvement isn't a black box. Every Skill update shows a diff under ~/.hermes/skills/. If a rule went off track, you can fix it manually—and Hermes will incorporate your correction into learning.
+
+### How this differs from writing with Claude Code
+
+I use both tools for content creation. The difference is clear:
+
+| Dimension | Claude Code | Hermes Agent |
+| --- | --- | --- |
+| Best fit | Single articles, one-off tasks | Series content, ongoing projects |
+| Style control | CLAUDE.md + manual maintenance | Skill auto-accumulation and evolution |
+| Research efficiency | Linear search | Sub-Agent parallel research |
+| Context continuity | Depends on auto-memory, limited capacity | Three-layer memory, on-demand retrieval |
+| Learning | Doesn't learn; rules are human-written | Learns automatically from your feedback |
+
+That doesn't mean Claude Code is bad. For a single article, Claude Code's interaction is smoother—you see edits in real time and give feedback immediately. Hermes wins on the long arc. Two articles a week for three months—by article ten, Hermes is far better than article one; Claude Code at article ten looks about like article one.
+
+Huashu's approach: single commissioned articles with Claude Code—fast interaction, brand feedback adjusted on the spot. Series topics and personal columns with Hermes—let the writing Skill grow over time. Both together, no conflict.
+
+## §15 Multi-Agent Orchestration: Three Horses at Once
+
+*Multi-Agent Orchestration: Running Three Horses at Once*
+
+When one Agent isn't enough, run three in parallel. delegate_task is Hermes's most powerful—and easiest to misuse—tool.
+
+### Why you need multiple Agents
+
+An Agent's ceiling depends on its context window and tool set. When a task gets complex enough, a single Agent hits two walls.
+
+Context explosion. One Agent handling research, coding, and testing at once—all three streams of information crammed into the same context, interfering with each other. Web content from research eats tokens; less room left for code reasoning.
+
+Time bottleneck. Three tasks in sequence, 30 minutes each—90 minutes total. Run them in parallel and total time becomes the slowest task's duration.
+
+Hermes's delegate_task tool exists for these two problems. It can launch up to 3 sub-Agents at once, each with its own context and tool set.
+
+### delegate_task in detail
+
+delegate_task isn't simply "spawn a sub-thread." It does several critical things.
+
+Feature  Description
+
+| Independent context | Sub-Agents have their own conversation history; they don't pollute the main Agent's context |
+| --- | --- |
+| Restricted tool set | You can specify which tools a sub-Agent may use. Research Agent gets only web and browser; coding Agent gets only terminal and file |
+| Independent terminal sessions | Each sub-Agent has its own terminal; no cross-interference |
+| Concurrency cap of 3 | Hard-coded limit to prevent resource exhaustion |
+| Result handoff | When sub-Agents finish, results return to the main Agent for synthesis |
+
+The limit of 3 concurrent sub-Agents is deliberate. Nous Research found in testing that beyond 3 sub-Agents, the main Agent's synthesis quality drops sharply. Not a compute issue—it's attention fragmentation when the model integrates too many independent information sources.
+
+### A real case: competitive analysis report
+
+Say you need a competitive analysis of AI coding tools covering three products: Claude Code, Cursor, Hermes Agent. The traditional way is research one by one, then merge manually.
+
+With delegate_task, the flow becomes:
+
+Main Agent
+
+Split tasks + define template → parallel execution → main Agent synthesizes + generates report
+
+The parallel middle step, expanded:
+
+**1. Main Agent defines the task template**
+
+"Research [product name] on these dimensions: positioning, core features, technical architecture, pricing, community size, pros and cons. Output results as a markdown table."
+
+**2. Dispatch three sub-Agents**
+
+Sub-Agent A researches Claude Code, Sub-Agent B Cursor, Sub-Agent C Hermes. Each sub-Agent gets only web and browser—no file or terminal needed.
+
+**3. Main Agent synthesizes**
+
+After the three sub-Agents return, the main Agent integrates into one comparison report and adds its own judgment and recommendations.
+
+Three research tasks in parallel—total time goes from "A + B + C" to "max(A, B, C)." In practice, a competitive analysis that usually takes 40 minutes comes out in 15.
+
+### Restricted tool sets as security design
+
+delegate_task's restricted tool sets aren't just an efficiency tool—they're a security mechanism.
+
+Imagine: you ask a sub-Agent to search for a code snippet online. It finds one with malicious injection. If that sub-Agent also has terminal access, it might execute the code. If it only has web access, search results come back as text to the main Agent for review.
+
+That's the value of restricted tool sets: least privilege at the Agent layer.
+
+Recommended  Not recommended
+
+| Good practice: research sub-Agents get web + browser only; coding sub-Agents get terminal + file + code_execution only; synthesis sub-Agents get no external tools—text only. | Bad practice: give every sub-Agent the full tool set. Convenient, but you lose isolation and safety. |
+| --- | --- |
+
+### Relationship to Anthropic's three-Agent architecture
+
+Anthropic's Agent design guide proposes a classic three-Agent architecture: Planner plans, Generator executes, Evaluator evaluates. This pattern has proven effective in many scenarios.
+
+Hermes's delegate_task is similar in spirit but differs in important ways:
+
+| Dimension | Anthropic three-Agent | Hermes delegate_task |
+| --- | --- | --- |
+| Role division | Fixed roles (plan / execute / evaluate) | Task-driven, flexible roles |
+| Communication | Chain (plan → execute → evaluate) | Star topology (main Agent ↔ sub-Agents) |
+| Parallelism | Usually serial | Up to 3 concurrent |
+| Memory | No built-in memory | Main Agent keeps full memory |
+
+Hermes's model is more flexible. You can implement Anthropic's three-Agent architecture with delegate_task—one sub-Agent plans, one executes, one evaluates. Or you can run three sub-Agents on the same type of parallel task (e.g., research three products at once). The architecture isn't fixed—it depends on how you split the work.
+
+Anthropic's three-Agent architecture is a thinking framework—it tells you "complex tasks can split into plan, execute, evaluate." Hermes's delegate_task is the execution tool that lands the framework. One designs; one implements.
+
+> **Key takeaway** Multi-Agent orchestration is easy to over-engineer. Not every task needs sub-Agents. If a single Agent can handle it within its context window, splitting adds communication overhead and synthesis errors. Only consider delegate_task when context isn't enough or you need parallel speedup.
+
+Rule of thumb: if you find yourself writing long synthesis instructions for the main Agent to merge sub-Agent results, the split may be wrong. Good splits make synthesis simple: each sub-Agent's output is self-contained, format-unified, and ready to stitch together.
+
+## §16 Hermes vs OpenClaw vs Claude Code: Not a Multiple-Choice Question
+
+*Not a Choice — A Combination*
+
+Three tools aren't three paths—they're three horses. Your job isn't to pick one; it's to figure out who hauls freight, who covers ground, and who watches the house.
+
+### Three species
+
+![Claude Code · OpenClaw · Hermes](/guides/hermes-agent/09-three-species.en.svg)
+
+Over the past year, too many AI Agent tools popped up in the ecosystem. But the three worth taking seriously, in my view, are Claude Code, OpenClaw, and Hermes Agent.
+
+Not because they're the hottest—because they represent three completely different design philosophies.
+
+Claude Code is an interactive coding tool. You sit at the terminal, give it requirements, it writes code, runs tests, commits to git. You're present the whole time—pair programming with a strong engineer. Core value: real-time coding productivity.
+
+OpenClaw is a "configuration-as-behavior" framework. You write the Agent's personality, knowledge, and skills into SOUL.md and Skill files—configuration defines what the Agent is. Core value: predictable, auditable, reproducible.
+
+Hermes Agent is an autonomous background engine. You deploy it on a server; it runs 24/7, remembers on its own, creates Skills on its own, improves on its own. Core value: autonomy and self-improvement.
+
+| Dimension | Claude Code | OpenClaw | Hermes Agent |
+| --- | --- | --- | --- |
+| Core philosophy | Interactive coding | Configuration-as-behavior | Autonomous background + self-improvement |
+| Your role | Command from the terminal | Write config to define behavior | Deploy, then check in occasionally |
+| Memory | CLAUDE.md + auto-memory | Multi-layer memory (SOUL.md + Daily Logs + semantic search), transparent and controllable | Three-layer self-improving memory |
+| Skill source | Manual install | ClawHub 44,000+ | Agent-created + community Hub |
+| Run mode | On demand | On demand | 24/7 background |
+| Deployment | Local CLI (subscription) | Local CLI (free + API fees) | $5 VPS / Docker / Serverless |
+
+See the difference? These three tools aren't solving the same problem at all.
+
+### Which tool for which scenario
+
+I've used Claude Code for half a year, OpenClaw for several months, and Hermes more recently. My read: don't pick by how strong the tool is—pick by which interaction mode fits your scenario.
+
+Scenario  Recommended tool  Why
+
+| Build new features, refactor code | Claude Code | Needs real-time feedback and human judgment |
+| --- | --- | --- |
+| Standardize Agents for a team | OpenClaw | SOUL.md is clear at a glance; auditable and reproducible |
+| 24/7 code review | Hermes | Cron scheduling + GitHub MCP, unattended |
+| Personal knowledge assistant | Hermes | Three-layer memory accumulates across sessions; knows you better over time |
+| Customer service / community bot | Hermes | Native 12+ platform Gateway, multi-channel |
+| Quickly validate product ideas | Claude Code | Fast start, fast iteration, real-time direction changes |
+| Enterprise scenarios needing tight control | OpenClaw | Transparent config, predictable behavior |
+| Long-term content projects | Hermes + Claude Code | Hermes for ongoing research accumulation; Claude Code for drafting |
+
+That last row matters. Many scenarios aren't one tool alone. In long content projects, Hermes gathers information daily and builds memory; Claude Code sits down and writes. Each owns a segment.
+
+### Convergence or divergence
+
+Something interesting: these three tools are learning from each other's strengths.
+
+Claude Code added auto-memory—moving toward Hermes-style persistent memory. OpenClaw's ClawHub has 44,000+ community Skills; Hermes is building its own Skill Hub. Hermes supports the agentskills.io standard, meaning it can use Skills from the Claude Code ecosystem directly.
+
+It looks like convergence. But I think underlying divergence is actually widening.
+
+Claude Code's essence is real-time human–AI dialogue. No matter how much memory and automation you add, you sitting there watching it work doesn't change.
+
+Anthropic's business model drives this: subscription, charged by time you use it.
+
+Hermes's essence is AI running autonomously in the background. No matter how many interaction surfaces you add, core value is it works when you're not there. MIT open source + self-hosting drives this.
+
+OpenClaw sits in the middle. It's not as focused on real-time interaction as Claude Code, nor as focused on autonomous operation as Hermes. Its unique value is "transparent and controllable." SOUL.md lets you see at a glance what this Agent will and won't do. In enterprise compliance, that property is irreplaceable.
+
+### agentskills.io: what Skill interoperability means
+
+In early 2026, the agentskills.io standard started getting adopted across tools. 30+ tools support it now, including Claude Code and Hermes.
+
+What does that mean?
+
+A Skill you wrote for Claude Code can be used directly by Hermes. A Skill Hermes created automatically can be taken to Claude Code. Skills aren't tied to one tool—they become portable capability units.
+
+The long-term impact may be bigger than any single tool. It's saying: whichever horse you ride, the saddle is universal.
+
+Time spent writing Skills isn't wasted when you switch tools. Your Skill library is your asset—not a platform appendage.
+
+OpenClaw's ClawHub has 44,000+ Skills. If those Skills can be invoked by Hermes via agentskills.io, Hermes's capability boundary expands instantly. Conversely, Skills Hermes creates and improves can feed back into the whole ecosystem.
+
+### Not multiple choice—a combination problem
+
+After writing three Orange Books (Claude Code, Harness Engineering, OpenClaw), my biggest judgment on this space: the winners won't be individual tools—they'll be people who combine tools well.
+
+My workflow is combination. Claude Code handles everything that needs me present: writing articles, writing code, product decisions. It's my "day shift."
+
+Hermes (or similar autonomous Agents) handles what doesn't need me: monitor repos, scheduled research, maintain the knowledge base. It's my "night shift."
+
+OpenClaw's SOUL.md and Skill system give me a standardized configuration language. Whether Claude Code or Hermes runs underneath, behavior constraints are written the same way.
+
+Huashu's judgment: don't "choose" among these three tools. Ask three questions: what tasks need me watching? what can run in the background? what scenarios need transparency and auditability? The answers naturally place them in different roles.
+
+Agent tool competition won't converge to one winner. Like you wouldn't use a hammer to turn a screw—interactive coding, configuration management, and autonomous operation are three different work modes. They'll coexist for a long time.
+
+The interesting question isn't "which is better" but "how do they collaborate." agentskills.io is already paving that road.
+
+## §17 Boundaries of Self-Improving Agents: How Far Can They Go
+
+*The Boundaries of Self-Improving Agents*
+
+Hermes's most exciting capability is also its most unsettling one.
+
+### That diagram again
+
+![Control spectrum and self-improvement boundaries](/guides/hermes-agent/10-control-loop.en.svg)
+
+In the last chapter of the Harness Engineering Orange Book, I wrote about Kief Morris's diagram. Three layers: in the loop, on the loop, out of the loop.
+
+In the loop: review the Agent's output line by line. On the loop: don't watch output—hold the reins. Out of the loop: you say what you want; the Agent handles everything.
+
+My conclusion then was that on the loop might be the best balance. You're not doing repetitive labor, but you're still there.
+
+Hermes Agent pushes this discussion to a new place.
+
+Its learning loop is automatic. It creates Skills on its own, improves Skills on its own, decides what to remember on its own. After you deploy, it gets stronger over time. This isn't on the loop anymore. You don't even adjust the reins by hand—the reins grow on their own.
+
+### Progress or risk?
+
+### Can Skill self-improvement run away?
+
+Start with the technical layer. Hermes Skill self-improvement has several constraints.
+
+Skill files are readable markdown. Not black-box neural weights—text you can open and read. What it changed, you see in the diff.
+
+Memory data is local. SQLite + FTS5 on local disk—you can inspect and delete directly. No "the Agent secretly learned something you don't know."
+
+Tool permissions are sandboxed. The Agent can't grab new system permissions arbitrarily; the tool set must be configured explicitly.
+
+Technically, Hermes self-improvement is controlled and auditable. You see what it changed, can roll back, can delete.
+
+But technically controlled doesn't mean practically controlled.
+
+The problem is on the human side.
+
+Will you actually check every day which Skills the Agent changed? Will you audit its memory database? Probably not. The appeal of deploying Hermes is
+
+"don't worry about it." If you check self-improvement results every day, how is that different from manually maintaining Skills?
+
+This tension is fundamental: autonomous Agent value is you don't have to watch—but safety wants you watching.
+
+Kief Morris's judgment applies again here: the difference between in the loop and on the loop shows most when you're unhappy with results. But if the Agent improved a Skill and you never noticed the outcome was wrong—when do you notice?
+
+Nous Research's choice
+
+Nous Research's founding team made a clear choice on this: user control first.
+
+They've said explicitly: models should be "steerable"—users adjust behavior on demand, without corporate content-policy constraints.
+
+That's not just slogans. Hermes Agent's MIT license means you own all source code, can audit every step of the learning loop, can change self-improvement thresholds, frequency, and scope, or turn off automatic Skill creation entirely.
+
+Compared to closed-source Agents, this transparency gives you a floor: in the worst case, you can see what all the code is doing.
+
+But I'll say something uncomfortable.
+
+"You can see the code" and "you looked at the code" are two different things. Most users won't read source. Most people deploying Hermes will use default config.
+
+MIT license gives you the right to audit—not a guarantee you'll exercise it.
+
+### Open source vs. closed source: different shapes of trust
+
+That leads to a bigger question: for self-improving Agents, is open source or closed source more trustworthy?
+
+The intuitive answer is open source. Transparent code, community audit, MIT license.
+
+Reality is more complex than intuition.
+
+Claude Code is closed source. You don't know what Anthropic's Agent internals look like. But Anthropic has a clear commercial incentive for predictable Agent behavior: if Agents go rogue and break users' repos, they lose subscribers. Commercial pressure is a constraint.
+
+Hermes is open source. You can see all the code. But if self-improvement causes problems, Nous Research has no commercial obligation to fix them for you. The other side of MIT: consequences are yours.
+
+Two shapes of trust: "I trust your commercial incentives" vs. "I trust my own audit ability."
+
+For people with technical chops, open source is obviously better—you control everything. For people who don't want to touch code and just want to use it, closed commercial service may actually feel safer—someone has your back.
+
+### Where is the ceiling on self-improvement?
+
+Back to the core question: how far can self-improving Agents go?
+
+My judgment: the ceiling isn't technical—it's feedback signal.
+
+Hermes's self-improvement loop depends on a key assumption: it can tell whether its improvements are good or bad. It changes a Skill; the next task goes better—that's positive feedback. But who defines "better"?
+
+If you're present giving feedback, the loop works. You say "that's wrong"; it adjusts. That's supervised improvement.
+
+If you're not present, the Agent only has its own evaluation criteria. It thinks this reply was faster, more accurate. But "fast" and "accurate" don't equal "correct." Some errors need domain knowledge to spot. The Agent doesn't know what it doesn't know.
+
+In Harness Engineering I wrote: Mitchell Hashimoto could write a good harness for Ghostty because he understands every detail of terminal emulation. Self-improving Agents don't have Mitchell's domain knowledge. They can optimize execution efficiency—they can't judge whether the direction is right.
+
+Self-improvement makes the Agent run faster in known directions. But direction itself still has to come from humans.
+
+### Questions for you
+
+I don't want a neat conclusion here. These questions have no fixed answers, and answers will keep shifting as technology evolves.
+
+But I want to list a few worth thinking about continuously.
+
+How far are you willing to let the Agent improve on its own?
+
+Rewrite Skill files? Fine. Auto-create new Skills? Probably fine. Modify its own core config? Maybe not. Modify its own learning-loop logic? Absolutely not. Where do you draw the line?
+
+Who audits self-improvement results?
+
+You audit—how often? Community audit—do you trust community judgment? Nobody audits—do you accept that risk?
+
+Do self-improving Agents need a "forgetting" mechanism?
+
+Humans forget—that's not a bug, it's a feature. Outdated experience gets dropped so it doesn't distort present judgment. Agent memory only grows. Patterns learned three months ago may be stale. Who tells the Agent "forget this one"?
+
+What does Kief Morris's concern become in the Hermes context?
+
+Morris worried: if junior developers never touch code details, who designs harnesses later? In Hermes terms: if the Agent designs its own reins, who judges whether the rein design is right?
+
+Maybe the answer is: someone always needs to stay in the loop at some level. Not reviewing every line of code—but understanding what the whole system is doing and why.
+
+Maybe the answer is: we don't know yet.
+
+Huashu's judgment: self-improving Agents are the most exciting direction in this field, but their ceiling is set by how much humans stay involved. A fully hands-off self-improving Agent wins on efficiency and loses on direction. The best state may be: let the Agent self-improve on *how*; you only decide *what* and *what not*. That's not laziness—it's another kind of on the loop.
+
+---
+
+## Appendix · Agent Harness Deep Dive: From Chatbot to Agent
+
+*Supplementary reading: get the "harness" story straight, then revisit why Hermes ships with one out of the box.*
+
+> This chapter is adapted from *Agent Harness: Turning AI from a Chatbot into a Real Agent*, rearranged in this handbook's tone and aligned with Hermes's five-component model.
+
+You may have built a chatbot, wired up a few tools, and even shipped a demo that looks great. But once you hit production, the cracks show: **the model forgets what it did three steps ago, tool calls fail, and the context window fills with junk.**
+
+The problem usually isn't the model itself. It's everything around it.
+
+LangChain's experiments nailed this: same model, same weights—change only the infrastructure—and TerminalBench ranking jumps from the thirties into the top five. Other research had an LLM optimize its own infrastructure and hit 76.4% pass rate, beating human-designed systems.
+
+That infrastructure now has an official name: **Agent Harness**.
+
+What Hermes does is push the harness from "you bolt it together by hand" to "it ships pre-installed—and keeps tightening itself."
+
+### What Is an Agent Harness
+
+The term got formalized in early 2026, but the idea has been running for a while.
+
+A harness is the full software infrastructure wrapped around an LLM: **orchestration loop, tools, memory, context management, state persistence, error handling, and safety guardrails**.
+
+- Anthropic's Claude Code docs put it plainly: the SDK is "the agent harness that drives Claude Code."
+- OpenAI's Codex team calls the non-model infrastructure that "makes LLMs actually useful" the harness.
+- LangChain's Vivek Trivedy has a precise line: **"If you're not the model, you're the harness."**
+
+One thing that's easy to mix up:
+
+| Concept | What it is |
+| --- | --- |
+| **Agent** | Emergent behavior: has goals, uses tools, self-corrects—the "thing" the user sees |
+| **Harness** | The machinery that produces that behavior: loop, tools, memory, permissions… |
+
+When someone says "I built an agent," they usually mean: they built a harness and pointed it at a model.
+
+![OS metaphor for LLM and Harness](/guides/hermes-agent/14-os-metaphor.en.svg)
+
+Beren Millidge (2023, *Scaffolded LLMs as Natural Language Computers*) gave a precise analogy:
+
+- Raw LLM ≈ a CPU with no memory, no disk, no I/O
+- Context window ≈ RAM (fast but limited)
+- External database ≈ disk (large but slow)
+- Tool integration ≈ device drivers
+- **Harness ≈ operating system**
+
+He even said: **"We reinvented the von Neumann architecture"**—because that's the natural abstraction for any computing system.
+
+### Three Layers of Engineering
+
+Three concentric circles surround the model:
+
+![Three layers of engineering: prompts, context, harness](/guides/hermes-agent/11-three-layers.en.svg)
+
+| Layer | What it does |
+| --- | --- |
+| Prompt engineering | Carefully crafting the instructions the model receives this turn |
+| Context engineering | Managing what the model sees and when it sees it |
+| **Harness engineering** | Covers the first two, plus the full application infrastructure: tool orchestration, state persistence, error recovery, validation loops, safe execution, lifecycle management |
+
+The harness isn't wrapping paper for prompts—it's the complete system that makes autonomous agent behavior possible.
+
+Cross-reference this handbook §01: **the five components (instructions / constraints / feedback / memory / orchestration) are a productized slice of harness engineering**; the 12 components below are a production-grade breakdown at finer granularity.
+
+### The 12 Components of a Production-Grade Harness
+
+Drawing on Anthropic, OpenAI, LangChain, and broader practice, a production-grade harness typically has 12 building blocks:
+
+| # | Component | One-liner | Rough Hermes mapping |
+| --- | --- | --- | --- |
+| 1 | Orchestration loop | Think→Act→Observe (TAO / ReAct) while loop | Learning loop + main task execution loop |
+| 2 | Tools | The agent's hands: register, validate, sandbox, feed observations back | 40+ tools + MCP + Toolset |
+| 3 | Memory | Short session history + cross-session long-term memory | Three-layer memory + Honcho |
+| 4 | Context management | Prevent "context rot"; compress / mask / retrieve on demand | FTS5 on-demand recall, not stuffing the whole window |
+| 5 | Prompt assembly | System prompt + tool definitions + memory + history + user message | Skill / config / memory assembly |
+| 6 | Output parsing | Native tool_calls; execute if called, final answer if not | Runtime tool-call protocol |
+| 7 | State management | Checkpoints, recovery, progress on disk | `~/.hermes/` state and Skill files |
+| 8 | Error handling | Transient retries / feed errors back as observations / interrupt for human when needed | Sandbox failure feedback + permission prompts |
+| 9 | Guardrails & safety | Input/output/tool-level guards; permissions separated from reasoning | Toolset, sandbox, restricted tool sets for sub-agents |
+| 10 | Validation loop | Tests/linter/screenshots/LLM judge—the line between toy and production | Retrospectives and Skill self-improvement in the learning loop |
+| 11 | Sub-agent orchestration | Fork / handoff / nested graphs; control context bloat | `delegate_task`, max 3 concurrent |
+| 12 | Lifecycle | Startup, scheduling, multi-endpoint entry, graceful shutdown | Gateway + cron + VPS/24×7 |
+
+A few points worth remembering on their own:
+
+**The orchestration loop** is the heart. Mechanically it's often a while loop; what's hard is everything the loop has to manage. Anthropic describes their runtime as a "dumb loop"—intelligence lives in the model, the harness manages turns.
+
+**Context management** is where many agents fail. Key content falls into the middle of the window and performance can drop 30%+ (Lost in the Middle). Strategies include: compress history, mask observations, retrieve on the fly (grep/glob instead of stuffing whole files into context), sub-agents return only 1–2k token summaries. One sentence goal: **maximize the probability of getting work done with the smallest high-signal token set.**
+
+**The validation loop** separates demos from production. Boris Cherny said: give the model a way to verify its work and quality can improve 2–3×. Rule feedback, visual feedback, LLM judges—they're all sensors.
+
+**Safety**: Anthropic separates permission enforcement from model reasoning—the model decides "what I want to try," the tool system decides "what's allowed." Same philosophy as Hermes's Toolset / restricted tool sets for sub-agents.
+
+### How One Loop Turn Works
+
+![One harness loop turn](/guides/hermes-agent/12-tao-loop.en.svg)
+
+1. **Assemble the prompt**: system prompt + tool schema + memory + history + current user message; put important context at both ends (avoid middle rot).
+2. **Call the model**: produces text, tool requests, or both.
+3. **Classify output**: no tool calls → done; tool calls → continue; handoff → swap current agent and restart.
+4. **Execute tools**: validate args, check permissions, run in sandbox, capture results; read-only can run concurrently, mutations should be serial.
+5. **Package results**: format as model-readable observations; errors flow back as results too, enabling self-correction.
+6. **Update context**: append to history; trigger compression when approaching window limits.
+7. **Loop again**: until termination—no tool calls, turn/token limits, guardrail tripwire, user interrupt, or safety rejection.
+
+Simple questions: 1–2 turns; complex refactors may chain dozens of tool calls. For long tasks spanning multiple context windows, Anthropic's side has a two-phase "Ralph Loop" idea: an initialization agent lays down environment and progress files; the coding agent reads git log and progress each turn, picks the highest-priority unfinished item, commits and writes a summary—**the filesystem provides continuity across windows**. Same class of solution as Hermes putting state in `~/.hermes/`, using Skills/memory to sustain across sessions.
+
+### How Real Frameworks Implement It
+
+| Framework | Harness shape | Flavor |
+| --- | --- | --- |
+| Claude Agent SDK / Claude Code | `query()` dumb loop; collect→act→validate | Thin harness, intelligence stays with the model |
+| OpenAI Agents SDK / Codex | `Runner`; code-first workflows; Core + App Server + multiple clients share one harness | "Stronger in Codex UI than generic chat" precisely because they share the harness |
+| LangGraph | Explicit state graph; `llm_call` ↔ `tool_node`; Deep Agents literally call themselves an agent harness | Control flow drawn on a graph |
+| CrewAI | Role agents + Task + Crew; Flows for deterministic backbone | Multi-agent division of labor |
+| AutoGen → Microsoft Agent Framework | Conversation-driven; sequential/concurrent/group chat/handoff/magentic | Rich orchestration patterns |
+
+Read this table with Hermes in mind: it's closer to an "out-of-the-box thick product harness"—learning loop, three-layer memory, Skill self-improvement, Gateway all welded in—not just an SDK you assemble yourself.
+
+### The Scaffolding Metaphor
+
+Building scaffolding is temporary infrastructure: workers use it to reach upper floors; **when the building is done, the scaffolding comes down**.
+
+Key insight: as models get stronger, harness complexity should shrink. Manus rebuilt five times in six months, deleting complexity each time—complex tool definitions collapsed into a generic shell, manager agents collapsed into structured handoffs.
+
+There's also co-evolution: **models are often post-trained inside a specific harness**. Claude Code's model learned the tool set from training; mess with tool implementations and performance can drop. A one-sentence future validation test:
+
+> If you swap in a stronger model and performance rises without needing to thicken the harness much, the design holds up.
+
+The field is thinning overall, but harnesses won't disappear—even the strongest models need someone (or something) managing the window, executing tools, persisting state, and validating results.
+
+### Seven Decisions That Define Every Harness
+
+![Seven decisions that define every harness](/guides/hermes-agent/13-seven-decisions.en.svg)
+
+Every harness architect runs into these seven choices:
+
+1. **Single agent vs multi-agent**  
+   Anthropic / OpenAI consensus: squeeze a single agent dry first. Multi-agent adds routing overhead and context loss at handoffs. Split when tools are severely overloaded (~10+ overlapping tools) or task domains are clearly independent. Hermes hard-caps concurrency at 3—that's this judgment productized.
+
+2. **ReAct vs plan-and-execute**  
+   ReAct interleaves step by step (flexible, more expensive); plan-and-execute separates planning from execution (can parallelize for speed). Pick by task.
+
+3. **Context window strategy**  
+   Time-based clearing, conversation summarization, observation masking, structured notes, sub-agent delegation. Prioritize preserving reasoning traces over raw tool spew.
+
+4. **Validation loop design**  
+   Computational validation (tests/linter) gives deterministic truth; reasoning validation (LLM judge) catches semantic issues. Guidelines (before action) and sensors (after action) should come in pairs.
+
+5. **Permission tightness**  
+   Permissive is fast but risky; restrictive is safe but slow. Hermes defaults pragmatic: sensitive operations can ask you for permission; Toolset errs on the side of fewer tools.
+
+6. **Tool scope**  
+   More tools often means worse performance. Vercel deleted 80% of tools from v0 and got better; the principle is **expose only the minimum set needed for the current step**—exactly Hermes Toolset philosophy.
+
+7. **Harness thickness**  
+   Anthropic bets on thin harness + model evolution; graph frameworks bet on explicit control. Hermes chooses "thick for the user, thin for configuration": features built in, but `config.yaml` stays restrained.
+
+### The Harness Is the Product
+
+**Same model, different harness—can mean a gap of twenty-plus leaderboard spots.**
+
+The harness is not a solved commodity layer. The grunt work lives here: treat context as a scarce resource; catch errors before failure compounds; build memory continuity that doesn't hallucinate; bet on how much scaffolding to build vs how much to leave to the model.
+
+Next time an agent fails, don't blame the model first—look at the harness.
+
+And Hermes's proposition is: weld this grunt work into factory settings, then let the learning loop keep tightening the screws. After this chapter, go back to §02–§06 and you'll see where each building block sits on the full harness map.
+
+---
+
+## Appendix · Version Evolution: From v0.7 to v0.19 (Plain English)
+
+*The main handbook is framed around v0.7.0. This chapter fills in, in plainer language, what it grew into between April and July 2026.*
+
+> Material compiled from the public Hermes version evolution research report (covering v0.7.0 / v2026.4.3 → v0.19.1 / v2026.7.30). Numbers and CVEs follow community advisories and official changelogs—verify against current docs before deploying.
+
+### Three Sentences to Start
+
+1. **In four months, Hermes went from "impressive terminal wrapper" to "personal AI infrastructure that can run long-term."**  
+2. **The first half laid foundations** (cross-platform, decoupling, memory/Skills); **the second half went to war** (desktop, extreme performance, security and enterprise control).  
+3. **The main text teaches "harness out of the box"; this chapter teaches "how the harness kept getting tighter."**
+
+![Two phases in four months](/guides/hermes-agent/15-version-phases.en.svg)
+
+### Version Timeline (Milestones Only)
+
+The project uses two numbering schemes: date-based `v2026.M.D` and semantic `v0.X.Y`. The pace was brutal—at one point over a thousand PRs merged in twenty days. Below are only the nodes that changed the experience:
+
+| Date | Version | Codename / one-liner |
+| --- | --- | --- |
+| 04-03 | v0.7.0 | **Handbook starting point**: pluggable memory, credential pool, browser integration, credential leak prevention |
+| 04-08 | v0.8.0 | Intelligence: native Google AI Studio, switch models without restart, guided self-optimization |
+| 04-13 | v0.9.0 | Mobile & comms: Termux / Android, iMessage, WeChat Gateway |
+| 04-16 | v0.10.0 | Tool gateway: Nous Portal unlocks search / image gen / TTS / browser automation |
+| 04-23 | v0.11.0 | Terminal revolution: Ink TUI, plugin transport layer, Bedrock / Codex OAuth |
+| 04-30 | v0.12.0 | Automation curation: **Curator** continuously optimizes Skills in the background; Teams; TUI cold start −57% |
+| 05-07 | v0.13.0 | Tenacity: durable multi-agent kanban, checkpoint V2, gateway self-recovery; **redaction on by default** |
+| 05-16 | v0.14.0 | Foundation: Windows beta, Grok OAuth, **local subscription proxy** (detailed below); PyPI install was short-lived |
+| 05-28 | v0.15.0 | Velocity: **largest refactor ever**; `session_search` goes full FTS5; Promptware; Bitwarden |
+| 06-05 | v0.16.0 | Surface: **Electron desktop + Admin Panel**; OIDC; `/undo`; SSRF hardening |
+| 06-19 | v0.17.0 | Reach: Photon native iMessage, Raft proxy network, Blueprints, background sub-agent enhancements |
+| 07-01 | v0.18.0 | Judgment: P0/P1 vulnerabilities cleared; **MoA** first-class; completion contracts; scale-to-zero gateway |
+| 07-20 | v0.19.0 | Quicksilver: first-token latency ~−80%; reasoning stream live by default; **smart approval on by default**; durable sub-agent ledger |
+| 07-30 | v0.19.1 | Stability patch: thousands of fixes merged as baseline for Docker / cloud hosting / enterprise deployment |
+
+Can't memorize the whole table? Three names are enough: **Velocity (split it) → Surface (make it usable) → Quicksilver (make it fast)**.
+
+![Six pillars of v0.19](/guides/hermes-agent/17-six-pillars.en.svg)
+
+---
+
+### Architecture: Splitting the "Monolith File" into a Microkernel
+
+Early core logic was piled into `run_agent.py`, which at one point exceeded **16,000 lines**—prompts, tool dispatch, failover, state writeback all mashed together. Hard to collaborate, harder to extend.
+
+v0.15 cut it by about **76%**, core down to roughly **3,800 lines**, logic split into a dozen modules under `agent/`:
+
+| Responsibility | Plain-English meaning |
+| --- | --- |
+| Prompt lifecycle | Layered assembly: personality/system instructions (stable) · memory retrieval (variable) · live state (more variable) |
+| Provider resolution | Decides which client logic this call goes through |
+| Context flush | Async write to SQLite before conversation ends—power loss doesn't easily wipe cognition |
+
+![Core engine slimmed down](/guides/hermes-agent/16-kernel-slim.en.svg)
+
+Only after splitting could they seriously support three native API modes (instead of force-converting everything to OpenAI format and losing model-specific features):
+
+| Mode | Who it's for | Plain English |
+| --- | --- | --- |
+| `chat_completions` | OpenRouter and other OpenAI-compatible endpoints | Most common standard chat |
+| `codex_responses` | Codex / Responses API | Stronger code, more stable structured feedback |
+| `anthropic_messages` | Claude native Messages | System Prompt / tool syntax don't go sideways |
+
+**Takeaway for you**: when picking a model, don't just ask "can we connect?"—ask "does it use the native channel?" Native channels are usually more stable and save you the "translation tax."
+
+### Performance: Cold Start and the "Deep Breath" Disappeared
+
+Quicksilver (v0.19) pushed the experience to daily-usable:
+
+| Metric | Before → after (order of magnitude) | In human terms |
+| --- | --- | --- |
+| CLI / TUI / desktop cold start | ~4.3s → ~0.9s (~−80%) | Open it without that long wait |
+| Reasoning display | Buffer then dump → **live streaming by default** | Long-thinking models no longer "freeze then flood the screen" |
+| Markdown streaming render | ~**14×** after dedicated optimization | Text appears as it arrives, no stutter |
+| Redundant multi-step tool calls | ~−47% | Less wasted work |
+
+### Memory Retrieval: Stop Using the LLM as a Search Engine
+
+Main text §03–§04 covered FTS5. v0.15 pushed it to the limit: `session_search` **de-LLM-ified**—historical lookup goes to SQLite FTS5 (CJK gets bigram indexing too), and the model only does a tiny summary when needed.
+
+Results:
+
+- Cross-session recall became **millisecond-scale** (reports claim orders-of-magnitude improvement over the old path)  
+- **API token cost for this step near zero**  
+- Persistent memory became economically "affordable to feed"
+
+Plain English: **search with the database, think with the model. Not the other way around.**
+
+### Closed-Loop Learning: Curator and "Breathing Skills"
+
+The main text's learning loop gained a background role in later versions—**Curator**:
+
+`Execute → Evaluate → Extract → Optimize → Reuse`
+
+After a complex task finishes, Curator reviews the trajectory and writes successful strategies / pitfalls into Markdown Skills; later you can edit, fork, or even deprecate them via `skill_manage`. This is the engineering version of "application-level self-evolution"—not a slogan, files actually change.
+
+Three-layer memory got finer too (consistent with main text, slightly newer terminology):
+
+| Layer | New terminology mapping | Key habit |
+| --- | --- | --- |
+| Working memory | Current session window | Compress when over limit, don't force-stuff |
+| Semantic memory | Profile vault, `USER.md` / `SOUL.md`, Honcho; project-facing split into `AGENTS.md` | Cron "Dream Session" compacts short→long |
+| Procedural memory | Skill library | **Progressive disclosure**: `skills_list` first (~3k tokens), then `skill_view` when needed |
+
+Bundled skills got more "engineering-grade" too—for example the arXiv Skill isn't random search; it follows rules for Boolean retrieval, XML→structured summaries, version tracing. Think of it as: **advanced SOPs that ship with the product**.
+
+### Orchestration: Beyond Three Horses—Kanban and Ledger
+
+Main text §15's `delegate_task` (default max 3 concurrent) gained hard constraints in later releases:
+
+1. **Absolute context ignorance**: sub-agents are born blank, only see the `goal` / `context` the parent injects—upstream hallucinations don't spread easily.  
+2. **Durable ledger (v0.19)**: gateway crashes, sub-task progress lives in `state.db`, comes back and can still deliver the answer—"don't lose finished work."  
+3. **Auditable**: sub-conversations don't pollute the parent's view, but logs hit disk—you can `tail -f` and watch.
+
+There's also **Multi-agent Kanban V2**: break big goals into autonomous sub-tasks, swap models per task (strong model for code, small model for log scanning).
+
+Combined with OpenClaw, the community often sums it up in one line:
+
+> **Hermes drives, OpenClaw contains.**  
+> Hermes handles reasoning and growth; OpenClaw handles process containment and boundaries. Or flip it: outer Hermes plans, inner OpenClaw executes rigidly.
+
+That fits §16's "not an either/or" perfectly.
+
+### Security: From "Patch After Incident" to Armed by Default
+
+In the first half of 2026, agents that could run code became an attack surface. Reports catalogued a batch of CVEs (Slack/Mattermost injection, DNS rebinding, symlink escape, overly broad file permissions, plus auth lessons on the OpenClaw side). Hermes ran a **Security Wave** from v0.15–v0.19.
+
+You don't need to memorize CVE numbers—remember three product-level answers:
+
+| Mechanism | Plain English |
+| --- | --- |
+| **Smart approval (on by default)** | High-risk operations no longer just "pop up until you're numb"; an auxiliary model runs compliance audit, conclusions cacheable by command hash—less fatigue clicking, less blind agreeing |
+| **SecretSource** | API keys fetched on demand from Bitwarden / 1Password etc., not sitting in plaintext `.env` long-term |
+| **Redaction + Promptware** | Redact by default; intercept known injection fingerprints, stop the model being tricked into leaking system settings |
+
+File sandbox, Docker/SSH capability stripping, OIDC, persistent file permission reclamation… all under "don't trust the client to behave."
+
+> **Key takeaway** If you're still on a very old image or host install, upgrade to **v0.19.1+** stable baseline first, then talk about connecting production channels.
+
+### Experience: Desktop and Mission Control
+
+From v0.16, there's an Electron **desktop app**: drag files, fuzzy model search, multi-language, multiple Profiles in one window. v0.19 pushed UI streaming render faster still.
+
+The browser admin console is often called **Mission Control / Workspace V2**, five capabilities you'll actually use:
+
+1. Unified conversations (Web / terminal / Telegram same context)  
+2. Embedded terminal  
+3. **Memory browser** (visually browse/edit/delete FTS5 long-term memory)  
+4. Skill admin (hot-reload toggles)  
+5. **Reasoning inspector** (why tool A wasn't used and tool B was)
+
+Gateway keeps adding platforms (Photon iMessage, Teams, Feishu, DingTalk, Home Assistant…), and supports **Profile-based routing**: one Bot Token, work group vs life group get different memory and tool boundaries—a simple version of multi-tenancy.
+
+### Model Side: MoA, Local Proxy, Academic Glue
+
+**Mixture-of-Agents (MoA, v0.18)**  
+Multiple reference models each speak their piece, then an aggregator model synthesizes. Quality can jump, but cloud token bills can explode (some tests hit ~80×). Hence later "reasoning effort tiers"—a knob between quality and spend.
+
+**`hermes proxy` (from v0.14)**  
+Turns your Claude / ChatGPT / Grok etc. **subscription sessions** into a local OpenAI-compatible port (commonly 8642). Aider, Cline, Continue can point at it—in compliance with platform ToS where allowed, bridging "subscription compute ↔ local toolchain." Ecosystem patch, not magic; read platform ToS before use.
+
+Academically, work has used Hermes-class tool loops for Lean formal verification assisting math reasoning (arXiv preprints etc.)—showing the framework's modularity suits a "testbed," not just a chat shell.
+
+Nous's own Hermes model family (e.g. variants emphasizing Hybrid Reasoning) aligns tighter with the product shape of "main loop + live thought stream": **think it through, then act**.
+
+### Deployment: Why Official Docs Say Use Docker
+
+v0.14 pushed `pip install` and `curl | bash`, meant to lower the bar. Hit dependency hell: Node, ffmpeg, AV libraries… Pip can't manage them all; worse, re-running `install.sh` once **shimmed itself into a deadlock loop**.
+
+So the course correction was blunt:
+
+> **Deprecate pip / Homebrew as primary install paths → Docker First.**  
+> Data lives in `~/.hermes` volume; image is stateless, pin version tags (e.g. `:v2026.7.30`).
+
+Serverless backends (Daytona / Modal) continue: sleep when idle, wake on message or Cron—main text §07's "a few dollars to keep it running in the background" became the orthodox narrative in later releases.
+
+**For readers**: if the one-click script in the main text fights your environment, check current official Docker docs first; treat this chapter as the "why they changed their mind" manual.
+
+### One Cross-Reference Table: Main Text Concepts → What Grew Later
+
+| What you learned in main text | What v0.15–v0.19 added |
+| --- | --- |
+| Learning loop | Curator background curation, Skill lifecycle tools |
+| Three-layer memory + FTS5 | De-LLM retrieval, progressive `skill_view`, Dream Session |
+| Sub-agents ×3 | Context isolation, durable ledger, Kanban V2 |
+| Toolset / sandbox | Smart approval, SecretSource, redaction on by default, CVE hardening |
+| Gateway multi-platform | Desktop app, Mission Control, Profile routing |
+| `$5 VPS` | Docker pinned versions + scale-to-zero / serverless |
+
+### Closing: Dawn of Persistent Personal AI (Plain English)
+
+Hermes is no longer just "a few clever prompt tricks + API." It connects a slimmed kernel to zero-cost cross-session retrieval, to self-rewriting Skills, to a recoverable sub-agent network, all under approval, ledger, and sandbox. Terminal, desktop, a dozen IM platforms—one brain.
+
+For anyone deeply wiring this into business: understanding this evolution isn't just about using tools—it's about learning to design **autonomous systems that are safe, low-cost, and accumulate knowledge with the user**.
+
+Next time a changelog makes your eyes glaze over, use this chapter as a table of contents: ask "is this foundation, experience, or security?" before deciding whether to follow.
+
+### Further Reading (Selected Report References)
+
+- [Hermes Agent Changelog](https://hermes-ai.net/changelog/)  
+- [NousResearch/hermes-agent Releases](https://github.com/NousResearch/hermes-agent/releases)  
+- [Agent Loop Internals](https://hermes-agent.nousresearch.com/docs/developer-guide/agent-loop)  
+- [Architecture](https://hermes-agent.nousresearch.com/docs/developer-guide/architecture)  
+- [Subagent Delegation](https://hermes-agent.nousresearch.com/docs/user-guide/features/delegation)  
+- [Docker Guide](https://hermes-agent.nousresearch.com/docs/user-guide/docker)  
+- Comparison & practice: [Hermes vs OpenClaw](https://fountaincity.tech/resources/blog/hermes-agent-vs-openclaw-when-to-use-which-and-when-to-use-both/)  
+- Public security discussion: CSA / Unit 42 etc. on Agent CVEs and autonomous attack chains (check latest IDs and patches before deploying)
