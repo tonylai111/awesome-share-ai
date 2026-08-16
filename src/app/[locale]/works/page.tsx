@@ -2,10 +2,22 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 
-const projects = [
+const projects: {
+  id: "youtubeDigest" | "agentCards";
+  href: string;
+  download?: string;
+  external: boolean;
+}[] = [
   {
-    id: "agentCards" as const,
+    id: "youtubeDigest",
+    href: "/articles/youtube-digest",
+    download: "/articles/youtube-digest/youtube-digest-v1.22.0.zip",
+    external: false,
+  },
+  {
+    id: "agentCards",
     href: "https://tonylai111.github.io/agent-cards/#cards",
+    external: true,
   },
 ];
 
@@ -41,16 +53,44 @@ export default async function WorksPage({
       <ul className="works-list">
         {projects.map((project) => (
           <li key={project.id}>
-            <a
-              href={project.href}
-              className="work-card"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <h2>{t(`items.${project.id}.title`)}</h2>
-              <p>{t(`items.${project.id}.description`)}</p>
-              <span className="work-cta">{t("visit")}</span>
-            </a>
+            <div className="work-card">
+              {project.external ? (
+                <a
+                  href={project.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <h2>{t(`items.${project.id}.title`)}</h2>
+                  <p>{t(`items.${project.id}.description`)}</p>
+                </a>
+              ) : (
+                <Link href={project.href}>
+                  <h2>{t(`items.${project.id}.title`)}</h2>
+                  <p>{t(`items.${project.id}.description`)}</p>
+                </Link>
+              )}
+              <div className="work-actions">
+                {project.download ? (
+                  <a href={project.download} className="work-cta" download>
+                    {t("download")}
+                  </a>
+                ) : null}
+                {project.external ? (
+                  <a
+                    href={project.href}
+                    className="work-cta"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {t("visit")}
+                  </a>
+                ) : (
+                  <Link href={project.href} className="work-cta">
+                    {t("readGuide")}
+                  </Link>
+                )}
+              </div>
+            </div>
           </li>
         ))}
       </ul>

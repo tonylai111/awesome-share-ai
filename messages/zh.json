@@ -47,7 +47,13 @@
     "title": "作品",
     "subtitle": "正在公开的项目与实验。",
     "visit": "打开项目 →",
+    "download": "下载插件",
+    "readGuide": "阅读教程",
     "items": {
+      "youtubeDigest": {
+        "title": "YouTube Digest",
+        "description": "Chrome 扩展。把带字幕的 YouTube 视频变成可阅读、可翻译、可跳转的学习资料。当前版本 v1.22.0。"
+      },
       "agentCards": {
         "title": "Agent Cards",
         "description": "Agent 能力卡片集：把 Agent 技能、工作流与实践整理成可浏览的卡片墙。"

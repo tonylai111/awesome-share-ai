@@ -1,0 +1,311 @@
+---
+title:
+  zh: "YouTube Digest 小白实操，从下载到第一次看懂一条视频"
+  en: "YouTube Digest for Beginners, From Download to Your First Video"
+description:
+  zh: "跟着做完，你会在 Chrome 里装好这个插件，把一条带字幕的 YouTube 视频变成可阅读、可翻译、可跳转、可保存的学习资料。"
+  en: "A hands-on walkthrough: install the Chrome extension and turn a captioned YouTube video into readable, translatable, timestamped study notes."
+date: "2026-08-16"
+tags: [youtube, chrome, learning, japanese]
+category: ai
+readingMinutes: 12
+---
+
+<<<zh>>>
+做完这篇，你会在自己的电脑上留下三样东西。Chrome 里出现 YouTube Digest。设置页里填好两个 Key。打开一条带原生字幕的 YouTube 视频时，侧边栏能出字幕，也能翻译、跳转、记笔记。
+
+这是我在开源项目 [YouTube Digest](https://github.com/zarazhangrui/youtube-digest) 上改过的本地版，当前打包是 v1.22.0。原版已经能抓字幕、做概览、记笔记。我这边多做了日语翻译、卡拉 OK 高亮、视频上方和下方字幕，以及更完整的 Overview 和导出。不需要会写代码，也不需要命令行。
+
+中间最容易卡的两处，我先写在这里。Chrome 加载时必须选中带 `manifest.json` 的那个文件夹。两个 Key 要自己去官网申请，不要发到聊天、截图或这篇文章的评论里。
+
+[下载 YouTube Digest v1.22.0](/articles/youtube-digest/youtube-digest-v1.22.0.zip)
+
+压缩包大约 125 KB。
+
+## 你先准备这四样
+
+1. 一台电脑。
+2. 已经装好的 Google Chrome，版本至少 116。
+3. 一个 [Supadata](https://dash.supadata.ai/auth/sign-up) 账号，用来取 YouTube 原生字幕。
+4. 一个 [DeepSeek 开放平台](https://platform.deepseek.com/api_keys) 账号，用来翻译、做摘要、润色笔记。
+
+Shorts、直播、私密视频，以及没有原生字幕的视频，这个版本用不上。Firefox、Safari 和手机浏览器也还没测过。先找一条普通的 `youtube.com/watch` 页面，点开视频设置，确认它自带字幕。
+
+## 把压缩包放到一个不会随便删的地方
+
+下载后解压。解压出来的文件夹里，必须能看到 `manifest.json`。
+
+我自己放在 `Documents` 下面，名字就叫 `youtube-digest`。换一台电脑也可以继续用这个习惯。Windows 上对应的位置通常是用户目录里的 `Documents\youtube-digest`。
+
+有一件事要提前记住。Chrome 加载的是这个文件夹本身，不是压缩包。装好以后不要移动、改名或删除它，否则扩展会失效，只能重新加载。
+
+## 在 Chrome 里加载
+
+地址栏输入下面这一行，回车。
+
+```text
+chrome://extensions
+```
+
+右上角有一个「开发者模式」开关，打开它。页面上会出现「加载已解压的扩展程序」。点它，选中刚才那个文件夹。选对了，列表里会出现一张 YouTube Digest 卡片，版本号是 1.22.0。
+
+如果点完没反应，多半是选到了上一层目录，或者选进了压缩包还没解压的状态。回到文件夹里，确认第一层就有 `manifest.json`，再选一次。
+
+需要的话，可以在 Chrome 工具栏把 YouTube Digest 固定出来。以后点图标就能开侧边栏。
+
+## 去拿两个 Key
+
+字幕走 Supadata。翻译、Overview、讲解和笔记润色走 DeepSeek。插件自己没有服务器，也不送额度。
+
+### Supadata
+
+打开 [Supadata 注册页](https://dash.supadata.ai/auth/sign-up)，注册并走完很短的新手引导。引导过程中它会生成 API Key。之后也可以到 [控制台](https://dash.supadata.ai/) 再找。
+
+2026 年 8 月，[价格页](https://supadata.ai/pricing) 上的免费档是每月 100 credits，不需要信用卡，没用完的额度不会留到下个月。这个插件只取原生字幕，一次成功请求消耗 1 credit，和视频长短无关。没有字幕却仍去请求，也会扣 1 credit。按这个算法，免费档一个月大概能查 100 条视频。重试会再扣，实际成功数可能更少。
+
+页面改版了，就以 [Supadata 文档](https://docs.supadata.ai/) 为准。
+
+### DeepSeek
+
+打开 [DeepSeek API Keys 页面](https://platform.deepseek.com/api_keys)，登录或注册。点 `Create new API key`，名字可以写成 `YouTube Digest`。创建后立刻复制。完整 Key 往往只显示一次。
+
+这个版本固定使用 DeepSeek V4 Flash，设置里不用填接口地址和模型名。账号没余额时，翻译和 Overview 会失败，需要到开放平台充值后再试。价格会变，用之前看一眼 [DeepSeek 价格页](https://api-docs.deepseek.com/quick_start/pricing/)。
+
+项目 README 里有一条 2026 年 8 月 10 日的估算。一条大约 20 分钟、2935 个英文词的演讲，完整翻译大约是 0.02 到 0.04 元人民币。翻译是滚动到哪一段才请求哪一段，已经缓存的段落不会再打一次。
+
+### 填进设置
+
+打开任意 YouTube 页面，点扩展图标，打开侧边栏。右上角有 Settings。也可以在 `chrome://extensions` 的 YouTube Digest 卡片上打开扩展选项。
+
+把 Supadata 的 Key 贴到 `Supadata API key`，把 DeepSeek 的 Key 贴到 `DeepSeek API key`，再点 `Save settings`。保存成功后，输入框旁边会出现提示。
+
+这两个 Key 只存在你这台电脑的 Chrome 配置里。不要写进备忘录截图，也不要发给任何人。
+
+## 用一条真实视频验收
+
+找一条公开、带原生字幕的普通视频。地址栏应是 `https://www.youtube.com/watch?...` 这种形式。
+
+点扩展图标，或在点赞按钮左边找到「字幕模式」，选「侧边栏」。侧边栏先出现 `Fetching transcript`，随后 Transcript 里会列出带时间戳的原文。
+
+到这里，安装已经成功。下面几步用来确认功能都活着。
+
+在 Transcript 顶部的下拉框里选显示方式。
+
+| 你想看什么 | 选哪一项 |
+| --- | --- |
+| 视频自带的原文 | 原文 |
+| 简体中文 | 中文 |
+| 日语 | 日本語 |
+| 英文原文加中文 | 英语-双语 |
+| 日文原文加中文 | 日语-双语 |
+
+选中文或日语时，DeepSeek 会按段翻译。当前行会跟着声音加粗，列表也会自动滚到中间。点某一行的时间戳，视频会跳回那一秒。
+
+点赞按钮左边的「字幕模式」还能改字幕出现的位置。
+
+| 选项 | 结果 |
+| --- | --- |
+| 侧边栏 | 只在右侧看 |
+| 关闭 | 关掉覆盖字幕 |
+| 视频下方 | 叠在画面底部 |
+| 视频上方 | 叠在画面顶部 |
+
+侧边栏顶部也有同一个下拉框，选项文字是「侧边栏 / 关闭字幕 / 视频下方 / 视频上方」。
+
+再点 Overview。第一次打开会向 DeepSeek 要一份结构稿，页面上会出现 Summary、Core Points、Next Actions、Terms Explained Simply，以及 Chapters 和 Key Quotes。章节和引用都带时间戳，点一下就能跳转。
+
+记笔记时，鼠标先点到视频区域，再按键盘。
+
+| 按键 | 结果 |
+| --- | --- |
+| `n` | 保存当前这条文字笔记 |
+| `c` | 把当前画面存成图片笔记 |
+
+Notes 里可以只看 This Video，也可以切到 All Notes。单条笔记上有 Google Docs 和石墨两个按钮。顶部还有 `Docs All` 和 `石墨 All`。
+
+插件不能替你登录 Google Docs 并自动写入。它会把内容复制到剪贴板，再打开一份新文档，你自己粘贴即可。石墨也是同一套动作。
+
+## 日常里你大概会这样用
+
+改这版时加了日语和双语，是为了让原文和译文待在同一块屏幕上。听到哪一句，那一行就亮起来。看不懂的词可以等 Overview 里的术语解释，也可以选中字幕再要讲解。
+
+导出只在要留下的时候再点。平时笔记和截图都在 Chrome 本地。换电脑不会自动跟着走，重要内容还是导出一次更稳。
+
+设置里还有两项，第一次可以先不动。`Video subtitle style` 能在普通覆盖字幕和弹性弹出字幕之间切换。`Sync offset` 能把覆盖字幕往前或往后挪，范围是负 2 秒到正 2 秒。源字幕时间轴本身不准时，这个旋钮只能微调，不能把坏轴修成准轴。
+
+## 卡住了就按这个顺序查
+
+侧边栏是空白，或提示找不到字幕。先看地址是不是普通 watch 页面。再看视频有没有原生字幕。然后打开 Settings，确认 Supadata Key 还在。最后回到 `chrome://extensions`，点 YouTube Digest 的 Reload，再刷新 YouTube 页面。没有原生字幕时，插件不会改用 AI 去听写。
+
+页面上没有「字幕模式」按钮。先 Reload 扩展，再刷新视频页。当前版本会在 YouTube 操作栏变宽变窄时自己找位置，页面刚打开时可以等一两秒。
+
+按 `c` 存不下画面。确认扩展已经 Reload，视频画面正常显示，并且 Chrome 允许这个扩展使用标签页相关权限。
+
+Notes 里看不见刚才的图片。看看当前筛选是 This Video 还是 All Notes。图片可能记在另一条视频下面。
+
+翻译或 Overview 报错。`401` 或 `403` 多半是 DeepSeek Key 或账号权限有问题。`429` 多半是限速或额度用完。到开放平台看余额和用量。
+
+字幕和声音对不齐。插件按字幕自带的时间戳走。源字幕轴歪了，它也只能跟着歪。可以到 Settings 里改 `Sync offset`，先试 0.2 或负 0.2。
+
+## 数据会去哪里
+
+API Key、设置、笔记和最近缓存，都在这台电脑的 Chrome 里。插件没有自己的账号系统，也没有统计或广告。
+
+你一打开带字幕的视频，标准化后的视频地址会发给 Supadata。你一用翻译、Overview、讲解或笔记润色，相关字幕会发给 DeepSeek。只有你自己点导出时，内容才会进剪贴板，再由你贴到 Google Docs 或石墨。
+
+Supadata 和 DeepSeek 仍按各自的条款处理这些数据。用之前可以看一眼两边的隐私说明。插件压缩包里也有 `PRIVACY.md`。
+
+## 以后要换新版本
+
+这是本地加载的扩展，不会自动更新。我把新的 zip 放到这篇文章时，你重新下载、解压到原来的文件夹，覆盖旧文件。然后打开 `chrome://extensions`，找到 YouTube Digest，点 Reload，再刷新已经打开的 YouTube 页面。
+
+原项目在 [zarazhangrui/youtube-digest](https://github.com/zarazhangrui/youtube-digest)。许可是 MIT。我这份是个人改过的打包，没有上架 Chrome 应用商店。
+<<<en>>>
+When you finish this page, three things should be true. YouTube Digest is loaded in Chrome. Two API keys are saved in Settings. Opening a YouTube watch page with native captions shows a transcript you can read, translate, seek, and save.
+
+This is my local remix of the open-source [YouTube Digest](https://github.com/zarazhangrui/youtube-digest), packaged as v1.22.0. The original already fetches captions, builds an overview, and stores notes. This build adds Japanese translation, karaoke-style highlighting, above-or-below video overlays, a fuller Overview, and export to Google Docs or Shimo. You do not need to write code or use a terminal.
+
+Two places usually break first. Chrome must load the folder that contains `manifest.json`. You create the two keys yourself. Do not paste them into chat, screenshots, or comments.
+
+[Download YouTube Digest v1.22.0](/articles/youtube-digest/youtube-digest-v1.22.0.zip)
+
+The zip is about 125 KB.
+
+## What you need
+
+1. A computer.
+2. Google Chrome 116 or newer.
+3. A [Supadata](https://dash.supadata.ai/auth/sign-up) account, used to fetch native YouTube captions.
+4. A [DeepSeek platform](https://platform.deepseek.com/api_keys) account, used for translation, overviews, and note cleanup.
+
+Shorts, live streams, private videos, and videos without native captions are out of scope. Firefox, Safari, and mobile browsers have not been tested. Start with a normal `youtube.com/watch` page and confirm the video already has captions.
+
+## Put the unzipped folder somewhere you will not delete
+
+Download the zip and extract it. The extracted folder must contain `manifest.json` at the top level.
+
+I keep mine under `Documents` as `youtube-digest`. On Windows that is usually `Documents\youtube-digest` inside your user folder.
+
+Chrome loads the folder, not the zip. After it is loaded, do not move, rename, or delete that folder. If you do, the extension dies and you have to load it again.
+
+## Load it in Chrome
+
+Type this in the address bar and press Enter.
+
+```text
+chrome://extensions
+```
+
+Turn on Developer mode in the top right. Click Load unpacked and choose the folder you just extracted. If it worked, a YouTube Digest card appears with version 1.22.0.
+
+If nothing happens, you probably selected the parent folder or the still-zipped file. Open the folder, confirm `manifest.json` is on the first level, and choose it again.
+
+You can pin YouTube Digest to the Chrome toolbar so the side panel is one click away.
+
+## Get the two keys
+
+Captions go through Supadata. Translation, Overview, explanations, and note polishing go through DeepSeek. The extension has no server of its own and does not give you free quota.
+
+### Supadata
+
+Open the [Supadata sign-up page](https://dash.supadata.ai/auth/sign-up), create an account, and finish the short onboarding. It generates an API key during that flow. You can also find it later in the [dashboard](https://dash.supadata.ai/).
+
+As of August 2026, the [pricing page](https://supadata.ai/pricing) lists a Free plan with 100 credits per month, no credit card, and no rollover. This extension only requests native captions. One successful request costs 1 credit, regardless of video length. A request that returns no transcript still costs 1 credit. In a clean month that is about 100 videos. Retries count too.
+
+If the site changes, follow the [Supadata docs](https://docs.supadata.ai/).
+
+### DeepSeek
+
+Open the [DeepSeek API Keys page](https://platform.deepseek.com/api_keys), sign in or register, then click `Create new API key`. A name like `YouTube Digest` is enough. Copy the key immediately. The full value is often shown only once.
+
+This build is locked to DeepSeek V4 Flash. You do not fill in a base URL or model name. If the account has no balance, translation and Overview fail until you top up. Prices change, so check the [DeepSeek pricing page](https://api-docs.deepseek.com/quick_start/pricing/) before you rely on it.
+
+The project README has an estimate from 10 August 2026. A 20-minute talk with 2,935 English words cost about ¥0.02 to ¥0.04 for a full translation. Translation is lazy. Only the segments you scroll to are requested, and cached rows are reused.
+
+### Save them in Settings
+
+Open any YouTube page, click the extension icon, and open the side panel. Settings is in the top right. You can also open Options from the YouTube Digest card on `chrome://extensions`.
+
+Paste the Supadata key into `Supadata API key`, paste the DeepSeek key into `DeepSeek API key`, then click `Save settings`. A status message appears when it sticks.
+
+Both keys stay in this Chrome profile on your machine. Do not put them in a screenshot or send them to anyone.
+
+## Check it on a real video
+
+Pick a public watch page with native captions. The URL should look like `https://www.youtube.com/watch?...`.
+
+Click the extension icon, or use the 字幕模式 control near the like button and choose 侧边栏. The side panel shows `Fetching transcript`, then a timestamped original transcript.
+
+That is a successful install. The next checks confirm the rest still works.
+
+Use the dropdown at the top of Transcript.
+
+| What you want | Choose |
+| --- | --- |
+| The video's own captions | 原文 |
+| Simplified Chinese | 中文 |
+| Japanese | 日本語 |
+| English plus Chinese | 英语-双语 |
+| Japanese plus Chinese | 日语-双语 |
+
+Chinese and Japanese modes call DeepSeek in small batches. The current line bolds with the audio, and the list stays centered. Click a timestamp to seek.
+
+字幕模式 also controls where captions sit on the video.
+
+| Option | Result |
+| --- | --- |
+| 侧边栏 | Side panel only |
+| 关闭 | Overlay off |
+| 视频下方 | Overlay under the video |
+| 视频上方 | Overlay above the video |
+
+The same control exists at the top of the side panel, labeled 侧边栏 / 关闭字幕 / 视频下方 / 视频上方.
+
+Open Overview. The first visit asks DeepSeek for a structural digest. You should see Summary, Core Points, Next Actions, Terms Explained Simply, plus Chapters and Key Quotes. Chapters and quotes are seekable.
+
+To save a note, click the video first, then use the keyboard.
+
+| Key | Result |
+| --- | --- |
+| `n` | Save a text note |
+| `c` | Save the current frame as an image note |
+
+Notes can show This Video or All Notes. Each note has Google Docs and 石墨 buttons. The header also has `Docs All` and `石墨 All`.
+
+The extension cannot log into Google Docs for you. It copies the note to the clipboard and opens a new document. You paste. Shimo works the same way.
+
+## How the daily loop looks
+
+Japanese and bilingual modes are there so the original line and the translation stay on one screen. The current sentence lights up with the audio. Hard terms can wait for Overview, or you select a line and ask for an explanation.
+
+Export only when you want to keep something. Everyday notes and frames stay in local Chrome storage. They do not follow you to a new computer, so export once if the note matters.
+
+Settings has two extras you can ignore on day one. `Video subtitle style` switches between normal overlay and elastic pop captions. `Sync offset` shifts the overlay from -2 to +2 seconds. If the source captions are already late, this knob can nudge them. It cannot invent a correct timeline.
+
+## If it fails, check in this order
+
+Empty panel, or no transcript. Confirm you are on a normal watch page. Confirm the video has native captions. Open Settings and check the Supadata key. Then Reload YouTube Digest on `chrome://extensions` and refresh YouTube. This build will not fall back to AI transcription.
+
+No 字幕模式 button. Reload the extension, then refresh the video. The current build repositions itself when YouTube's action bar changes. Wait a second after the page loads.
+
+`c` does not save a frame. Reload the extension, confirm the video is visible, and confirm Chrome still grants the tab permissions.
+
+The image note is missing. Check whether the filter is This Video or All Notes. The frame may belong to another video.
+
+Translation or Overview errors. `401` or `403` usually means the DeepSeek key or account permission is wrong. `429` usually means rate limit or empty balance. Check usage on the DeepSeek site.
+
+Captions drift from the voice. The extension follows the timestamps in the source captions. A crooked source stays crooked. Try `Sync offset` at 0.2 or -0.2.
+
+## Where the data goes
+
+Keys, settings, notes, and recent caches stay in this Chrome profile. The extension has no account system, analytics, or ads.
+
+Opening a captioned video sends a normalized YouTube URL to Supadata. Using translation, Overview, explanations, or note cleanup sends the relevant caption text to DeepSeek. Export only copies to your clipboard, and only when you click the button.
+
+Supadata and DeepSeek still process that data under their own terms. The zip also includes `PRIVACY.md`.
+
+## When a new build appears
+
+This is an unpacked extension. It does not auto-update. When I publish a new zip here, download it, extract it over the same folder, Reload YouTube Digest on `chrome://extensions`, and refresh any open YouTube tabs.
+
+The original project is [zarazhangrui/youtube-digest](https://github.com/zarazhangrui/youtube-digest), MIT licensed. This file is a personal remix. It is not on the Chrome Web Store.

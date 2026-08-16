@@ -47,7 +47,13 @@
     "title": "Works",
     "subtitle": "Projects and experiments that are public.",
     "visit": "Open project →",
+    "download": "Download extension",
+    "readGuide": "Read the guide",
     "items": {
+      "youtubeDigest": {
+        "title": "YouTube Digest",
+        "description": "A Chrome extension that turns captioned YouTube videos into readable, translatable, timestamped study notes. Current build: v1.22.0."
+      },
       "agentCards": {
         "title": "Agent Cards",
         "description": "A card wall of agent skills, workflows, and practices — browsable and shareable."
