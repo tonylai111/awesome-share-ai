@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 280" style="width:100%;max-width:760px;height:auto" role="img" aria-label="Five Big Forces">
+<rect x="2" y="2" width="756" height="276" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="380" y="34" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="700" text-anchor="middle">五大力量（The 5 Big Forces）</text>
+<rect x="30" y="55" width="130" height="150" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="95" y="100" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="800" text-anchor="middle">1</text>
+<text x="95" y="130" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">债务货币</text>
+<text x="95" y="155" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="500" text-anchor="middle">Debt cycle</text>
+<rect x="175" y="55" width="130" height="150" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+<text x="240" y="100" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="800" text-anchor="middle">2</text>
+<text x="240" y="130" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">财富/价值观</text>
+<text x="240" y="155" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="500" text-anchor="middle">Politics</text>
+<rect x="320" y="55" width="130" height="150" rx="12" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+<text x="385" y="100" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="800" text-anchor="middle">3</text>
+<text x="385" y="130" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">地缘政治</text>
+<text x="385" y="155" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="500" text-anchor="middle">Geopolitics</text>
+<rect x="465" y="55" width="130" height="150" rx="12" fill="#fdf2f8" stroke="#f9a8d4" stroke-width="2"/>
+<text x="530" y="100" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="800" text-anchor="middle">4</text>
+<text x="530" y="130" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">自然力</text>
+<text x="530" y="155" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="500" text-anchor="middle">Nature</text>
+<rect x="610" y="55" width="120" height="150" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+<text x="670" y="100" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="800" text-anchor="middle">5</text>
+<text x="670" y="130" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">创造力</text>
+<text x="670" y="155" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="500" text-anchor="middle">Invention</text>
+<text x="380" y="245" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="600" text-anchor="middle">全球宏观投资：把新闻放回这五股力量的互动里看</text>
+</svg>
