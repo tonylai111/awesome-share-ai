@@ -10,9 +10,10 @@ const projects: {
 }[] = [
   {
     id: "youtubeDigest",
-    href: "/articles/youtube-digest",
-    download: "/articles/youtube-digest/youtube-digest-v1.22.0.zip",
-    external: false,
+    href: "https://github.com/tonylai111/youtube-digest",
+    download:
+      "https://github.com/tonylai111/youtube-digest/releases/download/v1.22.0/youtube-digest-v1.22.0.zip",
+    external: true,
   },
   {
     id: "agentCards",
