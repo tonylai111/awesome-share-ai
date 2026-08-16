@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 200" style="width:100%;max-width:760px;height:auto" role="img" aria-label="Two things that matter">
+<rect x="2" y="2" width="756" height="196" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="380" y="36" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="700" text-anchor="middle">要做的事，归结到两件</text>
+<rect x="80" y="60" width="280" height="90" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+<text x="220" y="100" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="18" font-weight="800" text-anchor="middle">Earn more than spend</text>
+<text x="220" y="128" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="600" text-anchor="middle">赚得比花得多</text>
+<rect x="400" y="60" width="280" height="90" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="540" y="100" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="18" font-weight="800" text-anchor="middle">Treat each other well</text>
+<text x="540" y="128" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="600" text-anchor="middle">善待彼此</text>
+<text x="380" y="180" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="600" text-anchor="middle">教育、创新、竞争力…都是达到这两件事的途径</text>
+</svg>

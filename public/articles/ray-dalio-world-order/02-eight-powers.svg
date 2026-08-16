@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" style="width:100%;max-width:760px;height:auto" role="img" aria-label="Eight Power Metrics">
+<rect x="2" y="2" width="756" height="296" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="380" y="34" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="700" text-anchor="middle">八项国力指标（平均得综合实力）</text>
+<g font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="600">
+<rect x="30" y="55" width="165" height="50" rx="10" fill="#ecfeff" stroke="#0891b2" stroke-width="1.5"/><text x="112" y="85" fill="#0f172a" text-anchor="middle">1 教育</text>
+<rect x="210" y="55" width="165" height="50" rx="10" fill="#ecfeff" stroke="#0891b2" stroke-width="1.5"/><text x="292" y="85" fill="#0f172a" text-anchor="middle">2 创新/科技</text>
+<rect x="390" y="55" width="165" height="50" rx="10" fill="#ecfeff" stroke="#0891b2" stroke-width="1.5"/><text x="472" y="85" fill="#0f172a" text-anchor="middle">3 竞争力</text>
+<rect x="570" y="55" width="160" height="50" rx="10" fill="#ecfeff" stroke="#0891b2" stroke-width="1.5"/><text x="650" y="85" fill="#0f172a" text-anchor="middle">4 经济产出</text>
+<rect x="30" y="125" width="165" height="50" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="1.5"/><text x="112" y="155" fill="#0f172a" text-anchor="middle">5 贸易份额</text>
+<rect x="210" y="125" width="165" height="50" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="1.5"/><text x="292" y="155" fill="#0f172a" text-anchor="middle">6 军事</text>
+<rect x="390" y="125" width="165" height="50" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="1.5"/><text x="472" y="155" fill="#0f172a" text-anchor="middle">7 金融中心</text>
+<rect x="570" y="125" width="160" height="50" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="1.5"/><text x="650" y="155" fill="#0f172a" text-anchor="middle">8 储备货币</text>
+</g>
+<text x="380" y="220" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="600" text-anchor="middle">典型顺序：教育 → 创新 → （滞后）储备货币；衰落时也大致按同序互相加速</text>
+<text x="380" y="250" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="600" text-anchor="middle">储备货币 = 全球通用交换介质 + 储值工具 → 「过度特权」能借更多</text>
+<text x="380" y="278" fill="#ea580c" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="700" text-anchor="middle">年龄不如体征：看指标变化，才能判阶段、预测下一步</text>
+</svg>
