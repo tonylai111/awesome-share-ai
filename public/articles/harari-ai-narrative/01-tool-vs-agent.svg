@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 220" style="width:100%;max-width:760px;height:auto" role="img" aria-label="Tool vs Agent">
+<rect x="2" y="2" width="756" height="216" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="380" y="34" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="700" text-anchor="middle">工具 vs 智能主体</text>
+<rect x="50" y="55" width="280" height="120" rx="12" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
+<text x="190" y="95" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="16" font-weight="800" text-anchor="middle">工具 Tool</text>
+<text x="190" y="125" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="500" text-anchor="middle">无自主决策、不创新思想</text>
+<text x="190" y="148" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="500" text-anchor="middle">印刷机、原子弹</text>
+<rect x="430" y="55" width="280" height="120" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="570" y="95" fill="#0f172a" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="16" font-weight="800" text-anchor="middle">主体 Agent</text>
+<text x="570" y="125" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="500" text-anchor="middle">可自主决策、可生成新方案</text>
+<text x="570" y="148" fill="#64748b" font-family="PingFang SC, Hiragino Sans GB, Noto Sans SC, Microsoft YaHei, ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="500" text-anchor="middle">AI 武器、非人类企业</text>
+</svg>
