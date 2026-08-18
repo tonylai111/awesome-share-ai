@@ -1,0 +1,186 @@
+---
+title:
+  zh: "Greg 把 Claude Code 当 AI 员工，九件该给新人的东西"
+  en: "Greg Isenberg Turns Claude Code into an AI Employee"
+description:
+  zh: "看完 Greg Isenberg 这集后的笔记。仓库大脑、计划模式、眼睛、审查、例程与权限，以及那张七天流程图。"
+  en: "Notes from Greg Isenberg on treating Claude Code like a hire: repo brain, plan mode, eyes, review, routines, permissions, and a seven-day setup."
+date: "2026-08-18"
+tags: [claude-code, ai-employee, greg-isenberg, workflow]
+category: ai
+readingMinutes: 16
+source:
+  title: "Claude Code New Features, Explained"
+  url: "https://youtube.com/watch?v=SkY-tR9kf-k"
+  channel: "Greg Isenberg"
+---
+
+<<<zh>>>
+
+> 材料来自 [Greg Isenberg 这集](https://youtube.com/watch?v=SkY-tR9kf-k)。我用 YouTube Digest 边看边记，文中那张七天图是插件笔记里截下来的。这是阅读笔记，不是逐字稿。
+
+Greg 开场就说，很多人把 Claude Code 用错了。工具已经很强，人却仍把它当一次性聊天框。他想要的是 AI 员工。给加入公司的人什么，就给 Claude 什么。
+
+他现场拿 [ideabrowser.com](https://www.ideabrowser.com) 上一个医美诊所「错过线索回复」的点子当演示。有人填表、私信、下班后来电问价，店里回得太晚，线索变冷。软件若能在客人去别处预约之前接住，就有现金流。整集都围着这件事搭系统。
+
+## 九件该给新人的东西
+
+![AI 员工地图](/articles/claude-code-ai-employee/01-employee-map.svg)
+
+他列了九块。工作区，记忆，简报，工单，眼睛，审查，日程，权限，再加上技能、连接器和钩子。前八件是人岗标配，第九件让它开始像你家公司自己的东西。
+
+工作区就是仓库。产品文件住在这里，Claude 也只能在这里动手。记忆是你塞进项目的上下文，让它知道你在做什么、买家是谁、眼下什么要紧、好活长什么样、已经踩过哪些坑。简报发生在动手之前，对应计划模式。工单要具体到能看见终点。眼睛要打开产品点一遍，光改文件不够。审查看改前改后。日程把重复活变成例程。权限划清自己干、先问你、必须人拍板。
+
+他说这套一旦转起来，Claude Code 就不像聊天，更像公司的操作层。
+
+## 先把仓库变成大脑
+
+他主要用 Claude 桌面版，觉得比终端不那么吓人。选好项目文件夹后，他给的结构很短。
+
+`/app` 放产品。`/context` 放业务脑子。`/customers` 放销售通话、客服笔记、异议、客人原话。`/demos` 放演示流程、Loom 脚本、截图。`/routines` 放会反复跑的提示。根目录还要三份说明书。`CLAUDE.md` 告诉它怎么干活。`roadmap.md` 告诉它这周什么要紧。`review.md` 告诉它出荷前怎么判。
+
+他给的第一条提示很直。帮我把这个仓库设成 AI 员工工作区。创建或更新那三份 md 和那些文件夹。然后塞业务上下文。产品是医美诊所错过线索回复。买家是诊所老板和运营。痛点是回得太晚。承诺是在客人去别处预约之前接住每一条漏掉的线索。当前目标是做简单落地页和演示流程。缺了会改结构的信息就先问，第一版保持简单。
+
+Claude 会先问几句高杠杆问题，其余用合理默认填上。文件夹有了还不够。他还继续改三份 md。
+
+工作风格写进 `CLAUDE.md`。小而可审的改动。影响产品行为时先讲计划再改。改动聚焦。沿用现有代码风格。改完跑相关检查。总结改了什么、测了什么、还要人看什么。业务那一块再写一遍产品、买家、承诺。质量杠也写死。落地页五秒内要能看懂。演示在桌面和手机都能走通。文案用客人会说的词。
+
+`roadmap.md` 写本周目标。落地页、等候名单表单、演示流程，再把 Loom 发给十个诊所老板。同时写清范围外。支付、CRM、管理后台、多用户权限，先别碰。他要它把力气花在最小可用上。
+
+`review.md` 是标准清单。出荷前问。改动是否跟当前路线图对得上。是否小到能审。主流程是否还通。手机布局有没有问题。表单错误有没有接住。有没有鉴权、支付、生产数据风险。有没有添多余复杂度。针对落地页再加几条。第一次来的人五秒内能否听懂报价。行动按钮够不够显眼。文案是否对准买家。页面有没有用上客人会说的词。
+
+他的原话大意是，不能出荷垃圾，也不能出荷 AI 稀泥。有护栏，模型才靠得住。
+
+## 计划模式，量两次再剪
+
+给真人重要任务，你不会隔墙一扔就指望对方懂。你会先讲要达成什么、什么要紧、约束是什么、怎样才不算浪费时间。计划模式就是这一步。Claude 先看项目、读上下文、想任务，再把做法摊给你，文件还没动。
+
+他加等候名单表单时，没有只丢一句「加个表单」。提示写成，用计划模式。先检查当前应用、`CLAUDE.md`、`roadmap.md`、`review.md`。再给出要改的文件、最小干净实现、用户体验、风险、如何验收、第一版故意不做什么。等我批准再改。
+
+你可以接受、拒绝、改。只做前端演示，或者接到 Supabase 收真实提交。表单再简单一点，只要姓名、邮箱、公司。别碰鉴权、支付和数据库。他引用那句老话，量两次，剪一次。有意义的产品活，几乎都该先计划。
+
+## 一张工单，一条终点，一次可审的改动
+
+很多人把 Claude 用坏，是因为没说清楚「做完」长什么样。工单要小、要清楚、要看得见终点。
+
+坏提示是让应用更好、更出圈、加一点 AI、把整件事做完。Claude 只能猜什么要紧。一猜，你就从管活变成收拾活。他说新模型猜得已经不错，可这一步仍值得做。
+
+好工单像这样。给落地页加等候名单表单，收集姓名、邮箱、公司，提交后给一条简单成功提示，并跟现有品牌一致。再如，用现有设计系统做定价页，并跟首页一致。修邮箱验证后的引导跳转。把五条客户异议收成更利的落地页段落。
+
+计划批准之后，他给一条收口提示。按改进后的计划做一次聚焦改动。小到我能在 diff 里审完。改完跑相关检查，在桌面预览里打开应用，总结改了什么、测了什么、还要人看什么。
+
+diff 就是改前改后。桌面版里可以点进文件、看编辑、留评论、让它改觉得不对的地方。工单一大，你会拿到一堆看起来很壮观、却很难信的改动。规则很简单。一次一张工单。一件任务，一条终点，一次可审的改动。
+
+## 眼睛，点完才算做完
+
+好员工做完会自己检查。打开产品，点流程，跑测试，看报错，看控制台，问客人实际会碰到什么。桌面预览在这里很关键。落地页能打开，仍可能让人懵。表单能提交，仍可能别扭。按钮在页面上，仍可能看不见。标题讲了产品，仍可能没打中买家的痛。
+
+眼睛比浏览器预览更大。跑测试套件、看控制台、看网络错误、确认表单有没有写入记录，都可以算。表单建好后，他让 Claude 从诊所老板第一次看见页面的角度检查。前五秒买家听懂了什么。哪里让人不信。等候名单能不能用。提交之后发生什么。然后只做一轮、修影响最大的那一个问题。
+
+现场它测了空提交，测了成功态，还去核对后端有没有写下记录。它找出的最大摩擦是，页面让一个冷启动的诊所老板交出邮箱，却没说等候名单是什么、会不会被刷广告。它这一轮只加了行动按钮旁的预期说明。Greg 说这就是好员工会做的事，而很少有人真把眼睛写进流程。
+
+## 审查，瓶颈挪到判断上
+
+Claude 建得快了，瓶颈就变成判断。有没有解决对的问题。有没有改对的文件。有没有造出怪边角。对客人是否更清楚。
+
+他分两层。第一层是你自己读 diff。是否对工单。是否对计划。有没有意外。意外通常就是风险。你让它加等候名单，它却去改鉴权、路由、数据库，你要立刻看见。
+
+第二层是让 Claude 拿 `review.md` 当标准再审一遍。查生产问题、坏掉的边角、让人懵的流程。拆成必须修、应该修、可以出荷。盯 bug、用户困惑、安全风险、多余复杂度、超出工单范围的文件、违反路线图的东西。前面写进 `review.md` 的那些，这时候开始回本。
+
+普通审查可以用 `/review`。鉴权、支付这类高风险，他建议 `/ultra-review`，远程开一轮更重的审。
+
+## 例程，才开始像全天在岗
+
+前面都是你坐在旁边时它才干活。员工更值钱的地方，是重复责任。看客户笔记、盯反复出现的问题、审未完成任务。这类活不漂亮，却让公司往前走。
+
+他不建议一上来就让 Claude 在你睡着时改生产代码。先给可控的操作任务。用 Routines。工作日早上七点读 `/customers` 和 `/context`，若接了 GitHub 也读 issue，然后写或更新 `/context/morning-brief.md`。最新笔记里的最大客户痛点，一个产品风险，今天建议做的一件构建，今天该问客人的一个问题。不要改生产代码，不要开 PR，五百字以内。
+
+再加周五下午的运营回顾。审未关闭 issue 和近期客户笔记，归并重复，建议本周杠杆最高的一个修复，写到 `/context/weekly-ops.md`。同样不改代码。
+
+第三条接到 PR。有人开 PR 时，用 `review.md` 审。只在可能造成 bug、流程断裂、安全问题或行为令人困惑的地方留评论。再给一段短摘要，什么看起来好、什么要盯、是否可以进人审。
+
+早报告诉你今天什么要紧。周报帮你看见模式。每个 PR 对照你的标准。他说别人讲的 24/7，指的就是这一层夜班。工作被整理，反馈被汇总，风险被翻出来，下一步越来越清楚。
+
+## 并行会话，别收下一堆解不开的活
+
+桌面版的 Code 页可以开多个会话，各自有上下文和改动。配合 worktree 隔离，改动不会搅成一团。每个会话只交给一个人一件清楚的活。
+
+他举早上三件事。技术，邮箱验证后引导跳转坏了，去修。产品清晰度，落地页主视觉太糊，让诊所老板五秒内听懂。销售，把客户笔记收成更利的演示脚本。旧流程只能一件接一件。现在可以三个会话同时推，但每件都要可审的交接。根因和改了哪些文件。主视觉改前改后。演示脚本处理了哪条异议。
+
+别让 AI 朝四面八方喷活。早上选出三条最有用的工作流，让 Claude 各推一步，你能检查、接受、改、或否。
+
+## 权限当管理策略，别一上来 YOLO
+
+他按授权来想权限。有些事可以放手，有些要先问，有些必须留在人手里。
+
+可以放手的，读文件、检查仓库、提计划、跑本地测试、在小功能分支上改、更新文档、开草稿 PR。先问的，装依赖、改数据库迁移、动鉴权、改支付逻辑、删文件。人拍板的，生产发布、客户数据决策、账单决策、安全敏感改动。
+
+桌面版可以选权限模式。先保守。大改用计划模式。还在学这套系统时，用手审。仓库大脑、审查清单、工单范围变硬之后，再让它跑快一点。给空间，也给边界。YOLO 太险，扩不出一队 AI 员工。
+
+## 技能、连接器、钩子，让它开始像你家的
+
+同一句提示打第二遍，就该收成技能。医美这个项目里，他会做落地页拆解技能。每次都按诊所老板的眼睛看五秒清晰度、糊文案、缺失的信任信号、行动按钮，再只建议一个重点改进。再做客户笔记技能，抽出原话、反复异议、购买触发点。Claude 就不再只按你的意见建，而按客人的语言建。广告文案也能复用。演示脚本技能则把最新产品和笔记收成痛点、产品时刻、回报。
+
+连接器给更好的上下文。GitHub、Linear、Google Drive、Slack。钩子是护栏。改完代码跑格式化。PR 摘要前跑测试。出荷前跑那些要紧的检查。技能让活可重复，连接器给上下文，钩子让流程更安全。再叠上路线图、审查标准、客户笔记和例程，输出才会越来越像你家公司。
+
+## 七天，用到无聊为止
+
+![七天设置](/articles/claude-code-ai-employee/07-seven-day-setup.png)
+
+这张图是我在 YouTube Digest 笔记里，对着 44 分 38 秒那一帧存下来的。标题旁还有一句，用到它开始无聊，说明它在工作。
+
+七天可以压成七小时，也可以拉成一个月，看你会不会写代码、有没有整块时间。他按一周来讲，只是好记。
+
+第一天做仓库大脑。三份 md，业务文件夹，写清客户、问题、当前目标、完成定义。第二天跑计划模式。选一件小产品任务，让 Claude 先检查仓库再改。你要拿到计划、文件列表、风险、验收步骤。第三天只做一个看得见的改进。等候名单、定价页、演示流程、引导 bug，小到能审，真到能拿给客人看。第四天走预览循环。打开桌面预览，点流程，看手机，提高清晰度。第五天审。打开 diff，读改前改后，让 Claude 对照 `review.md`，大改再用审查流程。第六天发给十个人。Loom、演示、落地页，谁可能在意就发给谁，回复写进 `/customers`。第七天建第一条例程。从早报开始。读客户笔记和 issue，推荐今天一件有用的构建。
+
+循环活了。客户反馈进 `/customers`。产品方向进 `roadmap.md`。干活方式进 `CLAUDE.md`。质量标准进 `review.md`。小任务走计划模式。改动走预览和审查。重复活变成定时例程。
+
+底下那行黄字我对着图抄下来。一个仓库。一张路线图。一份审查清单。一条例程。
+
+他在简介里放了用过的提示。材料到这里就讲完了。对我有用的是那句用到无聊。系统还新鲜时人会兴奋。它开始替你收拢反馈和下一步时，会变闷。闷，往往说明它在转。
+
+<<<en>>>
+
+> Source: [Greg Isenberg](https://youtube.com/watch?v=SkY-tR9kf-k). The seven-day graphic is a frame I saved in YouTube Digest notes at 44:38. Reading notes, not a transcript.
+
+Greg's claim is that people use Claude Code as a one-off chat. Treat it like a hire instead. Give it a workspace, memory, a brief, a ticket, eyes, review, a schedule, and permissions. Skills, connectors, and hooks come last and make it feel like your company.
+
+The live demo is a missed-lead responder for med spas, an idea from [ideabrowser.com](https://www.ideabrowser.com). Leads go cold when the shop replies late.
+
+## Nine things a new hire would get
+
+![AI employee map](/articles/claude-code-ai-employee/01-employee-map.svg)
+
+The repo is the workspace. Memory lives in project context. Plan mode is the brief before files change. A ticket has a visible finish line. Eyes means opening the product, not only editing files. Review checks before/after against your bar. Routines are the schedule. Permissions split safe, ask-first, and human-owned work.
+
+## Repo brain
+
+Folders: `/app`, `/context`, `/customers`, `/demos`, `/routines`. Root files: `CLAUDE.md` (how to work), `roadmap.md` (what matters this week), `review.md` (how to judge before shipping). First prompt: set this repo up as an AI-employee workspace, then fill business context, and ask only for missing facts that would change the setup. Keep v1 simple.
+
+Write working style into `CLAUDE.md`. Small reviewable changes. Plan before edits that change product behavior. Stay focused. Match existing style. Run checks. Summarize diffs, tests, and human review. Put buyer, pain, promise, and the five-second landing-page bar in the same file. `roadmap.md` names this week's goal and what is out of scope (payments, CRM, admin, multi-user). `review.md` is the shipping checklist, including first-visit clarity and customer language.
+
+## Plan, ticket, eyes, review
+
+Plan mode: inspect the app and the three md files, then list files, smallest implementation, UX, risks, verification, and what v1 leaves out. Wait for approval. Measure twice, cut once.
+
+One ticket at a time. One task, one finish line, one reviewable change. Vague prompts force Claude to guess, and you spend the day cleaning. After approval, implement as one focused change small enough to read in the diff, then preview and report.
+
+Eyes: start the app, inspect as a first-time med-spa owner, check the form, then one focused pass on the highest-impact issue. In the demo, the biggest friction was asking for email with no reassurance about spam.
+
+Review in layers. You read the diff for surprises. Claude reviews against `review.md` and splits must-fix / should-fix / okay-to-ship. Use `/review` routinely and `/ultra-review` before auth or payments.
+
+## Routines, parallel work, permissions, skills
+
+Start routines with a weekday morning brief under 500 words. No production edits. Add a Friday ops review. Add a PR hook that comments only on bugs, broken flows, security, or confusing behavior. That is the 24/7 night shift.
+
+Parallel sessions plus worktree isolation. Give each session one job and a specific handoff. Do not wake up to one tangled pile.
+
+Safe: read, inspect, plan, local tests, small branches, docs, draft PRs. Ask first: dependencies, migrations, auth, payments, deletes. Human-owned: production deploys, customer data, billing, security. Skip YOLO.
+
+Turn repeated prompts into skills (landing teardown, customer notes, demo script). Connectors feed GitHub, Linear, Drive, Slack. Hooks run format, tests, and checks. Together they become a moat of better outputs.
+
+## Seven days
+
+![The 7-day setup](/articles/claude-code-ai-employee/07-seven-day-setup.png)
+
+Day 1 repo brain. Day 2 plan mode. Day 3 one visible build. Day 4 preview loop. Day 5 review. Day 6 send to 10 people and file replies in `/customers`. Day 7 first routine (morning brief). Use it until it becomes boring. That means it is working. One repo. One roadmap. One review checklist. One routine.
