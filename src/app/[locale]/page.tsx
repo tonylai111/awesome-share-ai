@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { SubscribeWidget } from "@/components/SubscribeWidget";
 
 export default async function HomePage({
   params,
@@ -28,6 +29,9 @@ export default async function HomePage({
       </div>
       <div className="home-visual" aria-hidden>
         <div className="home-visual-caption">Shenzhen · Run · Build · Agent</div>
+      </div>
+      <div className="page-widgets">
+        <SubscribeWidget />
       </div>
     </section>
   );

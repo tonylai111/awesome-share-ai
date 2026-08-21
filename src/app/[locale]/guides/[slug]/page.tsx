@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { FeedbackWidget } from "@/components/FeedbackWidget";
 import { GuideToc } from "@/components/GuideToc";
 import { MdxContent } from "@/components/MdxContent";
 import { ScrollJump } from "@/components/ScrollJump";
+import { SubscribeWidget } from "@/components/SubscribeWidget";
 import {
   formatDate,
   getGuide,
@@ -90,6 +92,10 @@ export default async function GuideDetailPage({
             </span>
           </div>
           <MdxContent source={body} className="mdx-body guide-mdx" />
+          <div className="page-widgets">
+            <FeedbackWidget />
+            <SubscribeWidget />
+          </div>
         </article>
       </div>
       <ScrollJump toBottom={t("toBottom")} toTop={t("toTop")} />

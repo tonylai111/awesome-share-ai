@@ -1155,4 +1155,146 @@ input {
   .page-wide {
     padding-top: 2.5rem;
   }
+
+  .subscribe-form {
+    flex-direction: column;
+  }
+}
+
+.page-widgets {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.feedback-widget,
+.subscribe-widget {
+  padding: 1.35rem 1.25rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.feedback-question {
+  text-align: center;
+}
+
+.feedback-question span {
+  display: block;
+  margin-bottom: 0.85rem;
+  font-weight: 500;
+}
+
+.feedback-buttons {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.feedback-btn,
+.feedback-submit-btn,
+.subscribe-form button {
+  padding: 0.55rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--fg);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
+}
+
+.feedback-btn:hover,
+.feedback-submit-btn:hover,
+.subscribe-form button:hover {
+  border-color: var(--fg-muted);
+}
+
+.feedback-btn.selected {
+  border-color: var(--paper-accent);
+  background: color-mix(in srgb, var(--paper-accent) 12%, var(--bg-elevated));
+}
+
+.feedback-comment {
+  margin-top: 1rem;
+}
+
+.feedback-comment textarea,
+.subscribe-form input[type="email"] {
+  width: 100%;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--fg);
+  font: inherit;
+}
+
+.feedback-comment textarea:focus,
+.subscribe-form input[type="email"]:focus {
+  outline: 2px solid color-mix(in srgb, var(--paper-accent) 45%, transparent);
+  outline-offset: 1px;
+}
+
+.feedback-submit-btn {
+  margin-top: 0.7rem;
+  background: var(--fg);
+  color: var(--bg);
+  border-color: var(--fg);
+}
+
+.feedback-submit-btn:disabled,
+.subscribe-form button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.feedback-success,
+.subscribe-success {
+  margin: 0;
+  text-align: center;
+  color: var(--fg);
+}
+
+.feedback-error,
+.subscribe-error {
+  margin: 0.6rem 0 0;
+  font-size: 0.88rem;
+  color: #b42318;
+}
+
+.dark .feedback-error,
+.dark .subscribe-error {
+  color: #f97066;
+}
+
+.subscribe-widget {
+  text-align: center;
+}
+
+.subscribe-widget h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+}
+
+.subscribe-widget p {
+  margin: 0 0 1rem;
+  color: var(--fg-muted);
+  font-size: 0.92rem;
+}
+
+.subscribe-form {
+  display: flex;
+  gap: 0.55rem;
+}
+
+.subscribe-form button {
+  background: var(--fg);
+  color: var(--bg);
+  border-color: var(--fg);
+  white-space: nowrap;
+}
+
+.subscribe-success {
+  color: var(--fg);
 }

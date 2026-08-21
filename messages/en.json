@@ -95,5 +95,25 @@
     "label": "Language",
     "zh": "简体中文",
     "en": "English"
+  },
+  "feedback": {
+    "question": "Was this page helpful?",
+    "up": "👍 Helpful",
+    "down": "👎 Not helpful",
+    "placeholderUp": "Anything to add, or something we could do better? (optional)",
+    "placeholderDown": "What was missing, or what could be improved? (optional)",
+    "submit": "Send feedback",
+    "submitting": "Sending...",
+    "success": "Thanks for the feedback.",
+    "error": "Couldn’t send. Please try again in a moment."
+  },
+  "subscribe": {
+    "title": "Get updates",
+    "blurb": "I’ll ping you when new writing goes up. No spam.",
+    "placeholder": "Your email",
+    "submit": "Subscribe",
+    "submitting": "Sending...",
+    "success": "You’re in. Thanks for following along.",
+    "error": "Couldn’t subscribe. Please try again in a moment."
   }
 }

@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { FeedbackWidget } from "@/components/FeedbackWidget";
 import { MdxContent } from "@/components/MdxContent";
 import { ScrollJump } from "@/components/ScrollJump";
+import { SubscribeWidget } from "@/components/SubscribeWidget";
 import {
   formatDate,
   getArticle,
@@ -75,6 +77,10 @@ export default async function ArticleDetailPage({
         </span>
       </div>
       <MdxContent source={body} className="mdx-body" />
+      <div className="page-widgets">
+        <FeedbackWidget />
+        <SubscribeWidget />
+      </div>
       <ScrollJump
         toBottom={tScroll("toBottom")}
         toTop={tScroll("toTop")}

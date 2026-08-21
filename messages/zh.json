@@ -95,5 +95,25 @@
     "label": "语言",
     "zh": "简体中文",
     "en": "English"
+  },
+  "feedback": {
+    "question": "这页对你有帮助吗？",
+    "up": "👍 有帮助",
+    "down": "👎 没帮助",
+    "placeholderUp": "有什么想补充的？或者哪里可以做得更好？（选填）",
+    "placeholderDown": "可以说说缺少了什么，或者哪里可以改进（选填）",
+    "submit": "提交反馈",
+    "submitting": "提交中...",
+    "success": "感谢你的反馈！",
+    "error": "提交失败，请稍后重试。"
+  },
+  "subscribe": {
+    "title": "订阅更新",
+    "blurb": "有新内容时第一时间通知你，不发垃圾邮件。",
+    "placeholder": "输入你的邮箱",
+    "submit": "订阅",
+    "submitting": "提交中...",
+    "success": "订阅成功！感谢关注。",
+    "error": "订阅失败，请稍后重试。"
   }
 }
