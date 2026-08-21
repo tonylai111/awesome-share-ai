@@ -43,3 +43,6 @@ yarn-error.log*
 next-env.d.ts
 
 .tmp/
+
+# local agent settings
+.claude/settings.local.json
