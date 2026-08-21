@@ -79,6 +79,12 @@ export default async function LocaleLayout({
           href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"
           rel="stylesheet"
         />
+        {/* Umami 统计代码 */}
+        <script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="f320f8ce-75b4-46db-a25a-b04879571563"
+        />
       </head>
       <body className="min-h-full antialiased">
         <ThemeProvider>
