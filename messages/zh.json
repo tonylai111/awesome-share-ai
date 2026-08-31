@@ -13,18 +13,76 @@
   "home": {
     "greeting": "你好，我是 Tony",
     "aka": "也叫小明同学",
-    "p1": "我是一名拥有 7 年软件开发经验的 AI 从业者与内容创作者，常驻深圳，运营公众号「Tony 的茶馆」。我专注于搭建 AI 写作、视频生成系统与自动化 Agent 工作流，用 AI 赋能日常与业务。",
-    "p2": "工作中我侧重 Claude，日常则使用 OpenClaw；同时研究量化交易管线、本地大模型部署，并持续学习日语 JLPT N2。信奉「能动嘴就不动手」——让 Agent 替你把流程跑通。",
+    "p1": "写了七年代码，现在把时间花在 AI 上：做内容、搭系统，帮人把热闹的演示变成真能干活的 Agent 工作流。常驻深圳，运营公众号「Tony 的茶馆」。",
+    "p2": "工作偏 Claude，日常靠 OpenClaw。也摸量化管线、本地大模型，顺带学日语 JLPT N2。信条：能动嘴就不动手——让 Agent 替你把流程跑通。",
     "ctaArticles": "阅读文章",
     "ctaGuides": "浏览指南"
   },
   "about": {
     "title": "关于我",
-    "p1": "你好，我是 Tony，也叫小明同学。拥有 7 年软件开发经验，是 AI 领域从业者与内容创作者，运营公众号「Tony 的茶馆」，常驻深圳。",
-    "p2": "我的核心目标是搭建 AI 写作、视频生成系统与自动化 Agent 工作流，并承接相关业务。设备生态以 Mac 为主，熟练使用飞书；同时兼顾 Windows 与 Linux。",
-    "p3": "技术栈覆盖 Claude、OpenClaw、Kimi API、Codex、IBKR 量化交易管线、Python 自动化，以及 TradingView + Claude AI 交易机器人。工作侧重 Claude，日常使用 OpenClaw。",
-    "p4": "研究方向包括 Agent 工程师整套技能栈、AI 视频生成、大模型本地部署与量化自动交易系统。学习上同时推进日语 JLPT N2；生活中坚持跑步与骑行健身。近期已完成订婚，定居深圳。",
-    "p5": "阅读偏好层次清晰、小白友好且兼顾技术深度的资料——喜欢把复杂金融术语与 AI 专业名词翻译成通俗语言，并用 Markdown、思维导图与 Anki 卡片整理知识。"
+    "tagline": "AI 自媒体博主 · 技术出身程序员 · Vibe Coding / AI Coding",
+    "bannerLabel": "我的生活与创作",
+    "p1": "你好，我是 Tony，网上也叫小明同学。写了七年代码，现在把大部分时间花在 AI 上：做内容、搭系统、帮人把「说得热闹」的 AI，变成「真能干活」的工作流。公众号「Tony 的茶馆」主理人。",
+    "p2": "设备上我是 Mac 党，飞书用得顺手，Windows 和 Linux 也都能顶上。工具箱里常备 Claude、OpenClaw、Codex、Kimi，外加 Python 自动化。信条很简单：能动嘴就不动手，能让 Agent 跑通，就别自己熬夜点鼠标。",
+    "p3": "业余推进日语 JLPT N2，出门跑步骑行。写东西喜欢层次清楚、小白也能跟，同时不糊弄深度——复杂金融词和 AI 黑话，我会先翻译成人话，再用 Markdown、思维导图和 Anki 把知识钉住。",
+    "servicesTitle": "我能帮你做什么",
+    "servicesSubtitle": "如果你卡在「会用聊天框，但业务还在手工跑」，我们可以聊聊。",
+    "services": {
+      "items": {
+        "agent": {
+          "title": "Agent 工作流落地",
+          "problem": "痛点：想法很多，流程还靠人肉复制粘贴。",
+          "offer": "一起把重复活拆成可跑的 Agent：从需求到提示词、工具链、验收标准，做成你团队真能复用的流水线。"
+        },
+        "content": {
+          "title": "AI 写作与视频生产线",
+          "problem": "痛点：内容要量、要稳，却总卡在灵感和剪辑。",
+          "offer": "帮你搭写作、改稿、分发与 AI 视频生成系统，把公众号、短视频从「偶尔爆一稿」变成可持续出货。"
+        },
+        "explain": {
+          "title": "把黑话讲成人话",
+          "problem": "痛点：资料一堆，团队听不懂，知识落不了地。",
+          "offer": "做培训、文档与知识卡片：金融术语、Agent 概念、工具选型，拆成层次清晰的小白友好材料，顺手给你 Anki / 导图脚手架。"
+        }
+      }
+    },
+    "worksTitle": "作品",
+    "worksSubtitle": "正在公开的项目与实验。",
+    "worksVisit": "打开",
+    "works": {
+      "items": {
+        "awesomeShareAi": {
+          "title": "个人主页",
+          "description": "这个站点的中英双语主页，展示我的写作、指南与项目。"
+        },
+        "agentCards": {
+          "title": "Agent Cards",
+          "description": "Agent 能力卡片集：把 Agent 技能、工作流与实践整理成可浏览的卡片墙。"
+        },
+        "youtubeDigest": {
+          "title": "YouTube Digest",
+          "description": "Chrome 扩展：把带字幕的 YouTube 视频变成可阅读、可翻译、可跳转的学习资料。"
+        }
+      }
+    },
+    "contactTitle": "联系我",
+    "contact": {
+      "wechat": {
+        "label": "公众号",
+        "value": "Tony 的茶馆",
+        "note": "主渠道"
+      },
+      "email": {
+        "label": "邮箱",
+        "value": "tonylai111@163.com",
+        "href": "mailto:tonylai111@163.com"
+      },
+      "github": {
+        "label": "GitHub",
+        "value": "tonylai111",
+        "href": "https://github.com/tonylai111"
+      }
+    }
   },
   "articles": {
     "breadcrumbHome": "首页",

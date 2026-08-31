@@ -700,6 +700,243 @@ input {
   color: var(--paper-accent, #c45c26);
 }
 
+/* About */
+.about-page {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 3rem 1.25rem 2rem;
+}
+
+.about-hero {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 1.75rem;
+}
+
+.about-avatar {
+  width: 112px;
+  height: 112px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+}
+
+.about-tagline {
+  color: var(--fg-muted);
+  margin: -0.35rem 0 0;
+  font-size: 1rem;
+  max-width: 36rem;
+}
+
+.about-prose {
+  margin-top: 2.25rem;
+}
+
+.about-section {
+  margin-top: 3rem;
+}
+
+.about-section-title {
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.5rem;
+}
+
+.about-section-sub {
+  color: var(--fg-muted);
+  margin: 0 0 1.4rem;
+}
+
+.about-services {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+  max-width: 46rem;
+}
+
+.about-service-item {
+  padding: 1.25rem 1.35rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--bg-elevated);
+}
+
+.about-service-item h3 {
+  margin: 0 0 0.55rem;
+  font-size: 1.12rem;
+  letter-spacing: -0.02em;
+}
+
+.about-service-problem {
+  margin: 0 0 0.55rem;
+  color: var(--paper-accent, #c45c26);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.about-service-offer {
+  margin: 0;
+  color: var(--fg-muted);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.about-works {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+  max-width: 46rem;
+}
+
+.about-work-card {
+  display: block;
+  padding: 1.3rem 1.35rem 1.15rem;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--bg-elevated);
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.about-work-card:hover {
+  border-color: color-mix(in srgb, var(--fg) 28%, var(--border));
+  transform: translateY(-1px);
+}
+
+.about-work-card h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+}
+
+.about-work-card p {
+  margin: 0 0 0.85rem;
+  color: var(--fg-muted);
+  font-size: 0.95rem;
+}
+
+.about-work-cta {
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+  color: var(--paper-accent, #c45c26);
+}
+
+.about-contact {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.85rem;
+  max-width: 46rem;
+}
+
+.about-contact-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.3rem 0.8rem;
+  padding: 1rem 1.15rem;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--bg-elevated);
+}
+
+.about-contact-item .label {
+  color: var(--fg-muted);
+  font-size: 0.92rem;
+}
+
+.about-contact-item strong {
+  font-weight: 700;
+}
+
+.about-contact-item em {
+  font-style: normal;
+  font-size: 0.82rem;
+  color: var(--fg-muted);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.1rem 0.5rem;
+}
+
+.about-contact-item a {
+  color: var(--paper-accent, #c45c26);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Photo banner */
+.photo-banner {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--bg-elevated);
+}
+
+.photo-banner-track {
+  display: flex;
+  width: max-content;
+  animation: banner-scroll 42s linear infinite;
+}
+
+.photo-banner:hover .photo-banner-track {
+  animation-play-state: paused;
+}
+
+.photo-banner-group {
+  display: flex;
+  gap: 1rem;
+  padding-right: 1rem;
+}
+
+.photo-banner-item {
+  width: 420px;
+  height: 280px;
+  margin: 0;
+  flex-shrink: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--card-chrome);
+}
+
+.photo-banner-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@keyframes banner-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo-banner-track {
+    animation: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .about-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .photo-banner-item {
+    width: 280px;
+    height: 190px;
+  }
+}
+
 /* Guides grid */
 .guides-grid {
   display: grid;

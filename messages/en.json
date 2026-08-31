@@ -13,18 +13,76 @@
   "home": {
     "greeting": "Hi, I'm Tony",
     "aka": "also known as Xiao Ming",
-    "p1": "I'm an AI practitioner and content creator with 7 years of software engineering experience, based in Shenzhen. I run the WeChat publication 「Tony's Tea House」, and focus on AI writing systems, video generation, and automated agent workflows.",
-    "p2": "At work I lean on Claude; day to day I use OpenClaw. I also explore quant trading pipelines, local LLM deployment, and Japanese (JLPT N2). Motto: if an agent can do it, don't do it by hand.",
+    "p1": "Seven years shipping software; now mostly on AI — content, systems, and agent workflows that turn demos into work that actually runs. Based in Shenzhen; I publish 「Tony's Tea House」.",
+    "p2": "Claude for deep work; OpenClaw for daily loops. Also exploring quant pipelines, local LLMs, and Japanese (JLPT N2). Motto: if an agent can do it, don't do it by hand.",
     "ctaArticles": "Read writing",
     "ctaGuides": "Browse guides"
   },
   "about": {
     "title": "About",
-    "p1": "Hi, I'm Tony — also Xiao Ming. With 7 years in software, I work in AI and create content under 「Tony's Tea House」, based in Shenzhen.",
-    "p2": "My core focus is building AI writing, video generation systems, and automated agent workflows for real business use. I'm Mac-first, fluent in Feishu/Lark, and comfortable across Windows and Linux.",
-    "p3": "Stack: Claude, OpenClaw, Kimi API, Codex, IBKR quant pipelines, Python automation, and TradingView + Claude AI trading bots. Claude for work; OpenClaw for daily life.",
-    "p4": "I'm studying the full agent-engineer skill stack, AI video generation, local LLM deployment, and automated quant systems — plus Japanese JLPT N2. I run and cycle regularly. Recently engaged; settled in Shenzhen.",
-    "p5": "I prefer clear, beginner-friendly writing that still goes deep — translating dense finance and AI jargon into plain language, and organizing knowledge with Markdown, mind maps, and Anki."
+    "tagline": "AI blogger · engineer by trade · Vibe Coding / AI Coding",
+    "bannerLabel": "Life and work",
+    "p1": "Hi, I'm Tony — online I also go by Xiao Ming. Seven years of shipping software, now mostly spent on AI: making content, building systems, and turning flashy demos into workflows that actually run. Host of the WeChat publication 「Tony's Tea House」.",
+    "p2": "Mac-first, fluent in Feishu/Lark, comfortable on Windows and Linux. Day tools: Claude, OpenClaw, Codex, Kimi, plus Python automation. Motto: if an agent can do it, don't click it yourself.",
+    "p3": "Off hours: Japanese JLPT N2, running, cycling. I write for beginners without sanding off the depth — finance jargon and AI buzzwords get translated into plain speech, then pinned down with Markdown, mind maps, and Anki.",
+    "servicesTitle": "What I can help with",
+    "servicesSubtitle": "If you're stuck at “I can chat with AI, but work is still manual,” let's talk.",
+    "services": {
+      "items": {
+        "agent": {
+          "title": "Agent workflows that ship",
+          "problem": "Pain: lots of ideas, still copy-pasting by hand.",
+          "offer": "We turn repeat work into runnable agents — requirements, prompts, toolchains, and acceptance checks your team can reuse."
+        },
+        "content": {
+          "title": "AI writing & video pipelines",
+          "problem": "Pain: you need steady output, but drafts and edits keep stalling.",
+          "offer": "I help you build writing, revision, distribution, and AI video systems so WeChat / short-form stops depending on one lucky night."
+        },
+        "explain": {
+          "title": "Jargon → plain language",
+          "problem": "Pain: docs pile up; the team still can't act on them.",
+          "offer": "Training, docs, and knowledge cards: finance terms, agent ideas, tool choices — clear layers for beginners, plus Anki / mind-map scaffolds."
+        }
+      }
+    },
+    "worksTitle": "Works",
+    "worksSubtitle": "Projects and experiments that are public.",
+    "worksVisit": "Open",
+    "works": {
+      "items": {
+        "awesomeShareAi": {
+          "title": "Personal site",
+          "description": "The bilingual home of this site, where I share writing, guides, and projects."
+        },
+        "agentCards": {
+          "title": "Agent Cards",
+          "description": "A card wall of agent skills, workflows, and practices — browsable and shareable."
+        },
+        "youtubeDigest": {
+          "title": "YouTube Digest",
+          "description": "A Chrome extension that turns captioned YouTube videos into readable, translatable, timestamped study notes."
+        }
+      }
+    },
+    "contactTitle": "Contact",
+    "contact": {
+      "wechat": {
+        "label": "WeChat",
+        "value": "Tony's Tea House",
+        "note": "Primary"
+      },
+      "email": {
+        "label": "Email",
+        "value": "tonylai111@163.com",
+        "href": "mailto:tonylai111@163.com"
+      },
+      "github": {
+        "label": "GitHub",
+        "value": "tonylai111",
+        "href": "https://github.com/tonylai111"
+      }
+    }
   },
   "articles": {
     "breadcrumbHome": "Home",
