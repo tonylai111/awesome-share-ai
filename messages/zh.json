@@ -7,6 +7,7 @@
   "nav": {
     "about": "关于",
     "works": "作品",
+    "fiction": "小说",
     "articles": "文章",
     "guides": "指南"
   },
@@ -84,6 +85,74 @@
       }
     }
   },
+  "fiction": {
+    "breadcrumbHome": "首页",
+    "breadcrumb": "小说",
+    "kicker": "虚构短篇 · 连载",
+    "title": "停",
+    "subtitle": "改编自 E. M. Forster 1909 年的《The Machine Stops》。一个没有反派的故事。",
+    "intro": [
+      "1909 年，E. M. Forster 写下《The Machine Stops》：人类住进六边形的房间，一切由机器供给。机器停下的时候，他们才发现自己已经不会呼吸。",
+      "一百一十七年后，我把它改写到现在。机器换成了模型，恐惧换成了效率，被外包的不再是身体，是判断。",
+      "十篇，约九千字。没有反派，没有爆炸，只有一群做了理性选择的人。"
+    ],
+    "cast": {
+      "title": "人物",
+      "lead": "这个系列里没有反派，也没有队友。五个人，两条线：一对母子，和三个互不相识的人。他们各在一座城里，做同一件事——把某样能力，一次一点地交出去。",
+      "mainLabel": "主线 · 一对母子",
+      "mainNote": "「迟」是慢下来，「驰」是跑出去。母亲三年没出过门，儿子先走了。",
+      "intervalLabel": "间章 · 三个互不相识的人",
+      "intervalNote": "独立插页，不接主线剧情。可以单独读，也可以跳过——跳过不影响主线。",
+      "foot": "卫迟交出去的是判断，沈岸交出去的是逻辑，陆遥交出去的是方向，温言交出去的是表达。四个人，四种能力，四种「我本来会」。而他们各自的每一天，都在给那个最终会替掉自己的东西当训练数据——这一点，小说里一次都没有说破。",
+      "members": [
+        {
+          "name": "卫迟",
+          "tag": "母亲 · 观点与判断",
+          "body": "住在六边形的房间里，三年没出过门。一天按两百次确认，没有一次是她先想到的。她最擅长的事，是把话说得漂亮。",
+          "chapters": "第 1·2·3·4·6·7 篇",
+          "group": "main"
+        },
+        {
+          "name": "卫驰",
+          "tag": "儿子 · 行动与方向",
+          "body": "他先出了门，先断了网，然后回头来叫她。全系列唯一一次换视角，交给了他。",
+          "chapters": "第 5 篇",
+          "group": "main"
+        },
+        {
+          "name": "沈岸",
+          "tag": "27 岁 · 逻辑与实现",
+          "body": "一天审二百一十四段代码，点了二百一十一次通过。他看得懂，所以他什么都没说——这一点最折磨他。",
+          "chapters": "间章一",
+          "group": "interval"
+        },
+        {
+          "name": "陆遥",
+          "tag": "48 岁 · 方向与决策",
+          "body": "在副驾上坐了二十年，钱照拿，觉照睡。直到有一天他挪到驾驶座，才发现自己不认识这座城。",
+          "chapters": "间章二",
+          "group": "interval"
+        },
+        {
+          "name": "温言",
+          "tag": "24 岁 · 表达与情绪劳动",
+          "body": "一天说八百次「很高兴为您服务」。同事不叫她名字，叫她的工号。",
+          "chapters": "间章三",
+          "group": "interval"
+        }
+      ]
+    },
+    "chaptersCount": "{count} 篇",
+    "totalTime": "约 {minutes} 分钟",
+    "chapters": "目录",
+    "minRead": "{minutes} 分钟",
+    "povLabel": "视角",
+    "prev": "上一篇",
+    "next": "下一篇",
+    "toc": "回到目录",
+    "translationNote": "本作目前只有中文正文，英文译本待补。",
+    "disclaimer": "本作为虚构小说创作，人物与事件均属虚构，不构成任何技术、投资或商业判断。"
+  },
   "articles": {
     "breadcrumbHome": "首页",
     "breadcrumb": "写作",
@@ -107,6 +176,7 @@
     "visit": "打开项目 →",
     "download": "下载插件",
     "readGuide": "阅读教程",
+    "readStory": "开始阅读 →",
     "items": {
       "youtubeDigest": {
         "title": "YouTube Digest",
@@ -115,6 +185,10 @@
       "agentCards": {
         "title": "Agent Cards",
         "description": "Agent 能力卡片集：把 Agent 技能、工作流与实践整理成可浏览的卡片墙。"
+      },
+      "fiction": {
+        "title": "《停》",
+        "description": "十篇连载短篇。改编自 E. M. Forster 1909 年的《The Machine Stops》，把「机器」换成今天的模型：没有反派，没有爆炸，只有一群做了理性选择的人。"
       }
     }
   },
@@ -164,6 +238,24 @@
     "submitting": "提交中...",
     "success": "感谢你的反馈！",
     "error": "提交失败，请稍后重试。"
+  },
+  "readerComment": {
+    "kicker": "读者留言",
+    "title": "读完了，想说两句？",
+    "lead": "留言会直接送到作者手上。不用注册，也不会公开。",
+    "nameLabel": "称呼",
+    "namePlaceholder": "选填，不写就记作「匿名读者」",
+    "textLabel": "留言",
+    "textPlaceholder": "哪一段让你停了一下？哪里没看懂？或者只是想留一句「看完了」。",
+    "counter": "{chars} / {max} 字",
+    "submit": "送出留言",
+    "submitting": "送出中…",
+    "thanks": "收到了，谢谢你。",
+    "thanksNote": "每一条作者都会读。",
+    "again": "再写一条",
+    "errorShort": "至少写两个字吧。",
+    "errorFailed": "没送出去，稍后再试试。",
+    "allContext": "整部小说"
   },
   "subscribe": {
     "title": "订阅更新",

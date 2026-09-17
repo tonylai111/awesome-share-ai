@@ -3,11 +3,18 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 
 const projects: {
-  id: "youtubeDigest" | "agentCards";
+  id: "fiction" | "youtubeDigest" | "agentCards";
   href: string;
   download?: string;
   external: boolean;
+  ctaKey?: "visit" | "readGuide" | "readStory";
 }[] = [
+  {
+    id: "fiction",
+    href: "/fiction",
+    external: false,
+    ctaKey: "readStory",
+  },
   {
     id: "youtubeDigest",
     href: "https://github.com/tonylai111/youtube-digest",
@@ -83,11 +90,11 @@ export default async function WorksPage({
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {t("visit")}
+                    {t(project.ctaKey ?? "visit")}
                   </a>
                 ) : (
                   <Link href={project.href} className="work-cta">
-                    {t("readGuide")}
+                    {t(project.ctaKey ?? "readGuide")}
                   </Link>
                 )}
               </div>

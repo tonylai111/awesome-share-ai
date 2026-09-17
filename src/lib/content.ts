@@ -2,9 +2,9 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import type { LocalizedString } from "@/lib/i18n-content";
-import type { ArticleMeta, ContentDoc, GuideMeta } from "@/lib/types";
+import type { ArticleMeta, ContentDoc, FictionChapterMeta, GuideMeta } from "@/lib/types";
 
-export type { ArticleMeta, ContentDoc, GuideMeta, LocalizedString };
+export type { ArticleMeta, ContentDoc, FictionChapterMeta, GuideMeta, LocalizedString };
 export { pickLocalized, formatDate } from "@/lib/i18n-content";
 
 const contentRoot = path.join(process.cwd(), "content");
@@ -95,6 +95,38 @@ export function getGuides(): ContentDoc<GuideMeta>[] {
 
 export function getArticle(slug: string): ContentDoc<ArticleMeta> | undefined {
   return getArticles().find((doc) => doc.meta.slug === slug);
+}
+
+/** 小说章节，按阅读顺序（order 升序）排列 */
+export function getFictionChapters(): ContentDoc<FictionChapterMeta>[] {
+  return readCollection("fiction", (data, slug) => ({
+    slug,
+    order: Number(data.order ?? 0),
+    label: String(data.label ?? ""),
+    kind: (data.kind as FictionChapterMeta["kind"]) ?? "main",
+    pov: String(data.pov ?? ""),
+    title: asLocalized(data.title),
+    description: asLocalized(data.description),
+    date: String(data.date ?? ""),
+    readingMinutes: Number(data.readingMinutes ?? 3),
+  })).sort((a, b) => a.meta.order - b.meta.order);
+}
+
+export function getFictionChapter(
+  slug: string,
+): ContentDoc<FictionChapterMeta> | undefined {
+  return getFictionChapters().find((doc) => doc.meta.slug === slug);
+}
+
+/** 取某章的上一章 / 下一章（按阅读顺序） */
+export function getFictionNeighbors(slug: string): {
+  prev?: FictionChapterMeta;
+  next?: FictionChapterMeta;
+} {
+  const chapters = getFictionChapters().map((doc) => doc.meta);
+  const index = chapters.findIndex((chapter) => chapter.slug === slug);
+  if (index < 0) return {};
+  return { prev: chapters[index - 1], next: chapters[index + 1] };
 }
 
 export function getGuide(slug: string): ContentDoc<GuideMeta> | undefined {

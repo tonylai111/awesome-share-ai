@@ -99,6 +99,36 @@ export async function POST(request: Request) {
     });
   }
 
+  if (type === "comment") {
+    // 读者留言：不是「这页有没有帮助」，所以不复用 feedback 的 rating。
+    const text = clip(body.text);
+    if (text.length < 2) {
+      return NextResponse.json({ error: "bad request" }, { status: 400 });
+    }
+    const name = clip(body.name, 60) || "匿名读者";
+    const context = clip(body.context, 160) || "（未标注）";
+
+    return sendToFeishu({
+      msg_type: "post",
+      content: {
+        post: {
+          zh_cn: {
+            // 自定义关键词是「反馈」，标题里必须带上，否则会被飞书拦截
+            title: "💬 读者留言反馈",
+            content: [
+              [{ tag: "text", text: `留言：${text}` }],
+              [{ tag: "text", text: `署名：${name}` }],
+              [{ tag: "text", text: `位置：${context}` }],
+              [{ tag: "a", text: "查看页面", href: pageUrl }],
+              [{ tag: "text", text: `页面标题：${pageTitle}` }],
+              [{ tag: "text", text: `提交时间：${now}` }],
+            ],
+          },
+        },
+      },
+    });
+  }
+
   if (type === "subscribe") {
     const email = clip(body.email, 320).toLowerCase();
     if (!EMAIL_RE.test(email)) {

@@ -7,6 +7,7 @@
   "nav": {
     "about": "About",
     "works": "Works",
+    "fiction": "Fiction",
     "articles": "Writing",
     "guides": "Guides"
   },
@@ -84,6 +85,74 @@
       }
     }
   },
+  "fiction": {
+    "breadcrumbHome": "Home",
+    "breadcrumb": "Fiction",
+    "kicker": "Serialized short fiction",
+    "title": "The Stop",
+    "subtitle": "Adapted from E. M. Forster's “The Machine Stops” (1909). A story that has no villain.",
+    "intro": [
+      "In 1909 E. M. Forster wrote “The Machine Stops”: people live in hexagonal rooms, everything supplied by the Machine. When it stops, they find they no longer know how to breathe.",
+      "A hundred and seventeen years later I moved it to now. The Machine became the model, fear became efficiency, and what we outsource is no longer our body but our judgement.",
+      "Ten pieces, about 9,000 Chinese characters. No villain, no explosion — only people who each made the reasonable choice."
+    ],
+    "cast": {
+      "title": "Characters",
+      "lead": "There is no villain in this series, and no team. Five people, two threads: a mother and her son, and three people who never meet. They live in different cities and each do the same thing — hand over some ability, a piece at a time.",
+      "mainLabel": "Main line · a mother and son",
+      "mainNote": "迟 (chí) means to slow down; 驰 (chí) means to gallop. Same sound, opposite directions. The mother has not left her room in three years. The son left first.",
+      "intervalLabel": "Interludes · three unrelated people",
+      "intervalNote": "Standalone inserts. They never touch the main plot — read them on their own or skip them; skipping breaks nothing.",
+      "foot": "Wei Chi hands over judgement, Shen An hands over logic, Lu Yao hands over direction, Wen Yan hands over expression. Four people, four abilities, four kinds of “I used to be able to”. And every day they spend is training data for the thing that will eventually replace them — a point the story never once states outright.",
+      "members": [
+        {
+          "name": "卫迟 Wei Chi",
+          "tag": "the mother · judgement",
+          "body": "Lives in a hexagonal room and hasn't been outside for three years. Two hundred confirmations a day, not one of them hers. Her greatest skill is making things sound good.",
+          "chapters": "Ch. 1·2·3·4·6·7",
+          "group": "main"
+        },
+        {
+          "name": "卫驰 Wei Chi",
+          "tag": "her son · action",
+          "body": "He walked out first and cut the network first, then came back to call her out. The one time the series changes point of view, it is his.",
+          "chapters": "Ch. 5",
+          "group": "main"
+        },
+        {
+          "name": "沈岸 Shen An",
+          "tag": "27 · logic",
+          "body": "Two hundred and fourteen pieces of code a day; he pressed approve two hundred and eleven times. He understands it, so he said nothing — which is what hurts him most.",
+          "chapters": "Interlude 1",
+          "group": "interval"
+        },
+        {
+          "name": "陆遥 Lu Yao",
+          "tag": "48 · direction",
+          "body": "Twenty years in the passenger seat, paid all the same. Then one day he moved over to the driver's seat and found he didn't know this city.",
+          "chapters": "Interlude 2",
+          "group": "interval"
+        },
+        {
+          "name": "温言 Wen Yan",
+          "tag": "24 · emotional labour",
+          "body": "Eight hundred “happy to help” a day. Her colleagues don't call her by name; they call her staff number.",
+          "chapters": "Interlude 3",
+          "group": "interval"
+        }
+      ]
+    },
+    "chaptersCount": "{count} pieces",
+    "totalTime": "~{minutes} min",
+    "chapters": "Contents",
+    "minRead": "{minutes} min",
+    "povLabel": "POV",
+    "prev": "Previous",
+    "next": "Next",
+    "toc": "All chapters",
+    "translationNote": "The story is currently available in Chinese only; an English translation is in progress.",
+    "disclaimer": "This is a work of fiction. The characters and events are invented, and nothing here is technical, investment or business advice."
+  },
   "articles": {
     "breadcrumbHome": "Home",
     "breadcrumb": "Writing",
@@ -107,6 +176,7 @@
     "visit": "Open project →",
     "download": "Download extension",
     "readGuide": "Read the guide",
+    "readStory": "Start reading →",
     "items": {
       "youtubeDigest": {
         "title": "YouTube Digest",
@@ -115,6 +185,10 @@
       "agentCards": {
         "title": "Agent Cards",
         "description": "A card wall of agent skills, workflows, and practices — browsable and shareable."
+      },
+      "fiction": {
+        "title": "The Stop",
+        "description": "A ten-part serial adapted from E. M. Forster's “The Machine Stops” (1909), with the Machine recast as today's model. No villain, no explosion — only people who each made the reasonable choice."
       }
     }
   },
@@ -164,6 +238,24 @@
     "submitting": "Sending...",
     "success": "Thanks for the feedback.",
     "error": "Couldn’t send. Please try again in a moment."
+  },
+  "readerComment": {
+    "kicker": "Reader notes",
+    "title": "Finished it — got something to say?",
+    "lead": "Your note goes straight to the author. No account needed, and it stays private.",
+    "nameLabel": "Name",
+    "namePlaceholder": "Optional — leave blank to stay anonymous",
+    "textLabel": "Your note",
+    "textPlaceholder": "Which part made you pause? What did not land? Or just say you finished it.",
+    "counter": "{chars} / {max} characters",
+    "submit": "Send note",
+    "submitting": "Sending…",
+    "thanks": "Got it — thank you.",
+    "thanksNote": "The author reads every one.",
+    "again": "Write another",
+    "errorShort": "At least a couple of characters, please.",
+    "errorFailed": "It did not go through. Please try again later.",
+    "allContext": "the whole series"
   },
   "subscribe": {
     "title": "Get updates",

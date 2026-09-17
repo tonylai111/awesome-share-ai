@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Press_Start_2P } from "next/font/google";
+import Script from "next/script";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
@@ -79,11 +80,17 @@ export default async function LocaleLayout({
           href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"
           rel="stylesheet"
         />
-        {/* Umami 统计代码 */}
-        <script
-          defer
+        {/* Umami 统计代码
+            必须用 next/script，不能写成裸 <script>：
+            App Router 在客户端切换语言时会重建 [locale] 段，
+            裸 <script> 会被 React 当成「客户端新建的脚本节点」而报
+            "Encountered a script tag while rendering React component"。
+            afterInteractive 策略下 next/script 不渲染脚本节点（走 React Float 预加载 +
+            effect 注入），既没有该警告，也会保留 data-website-id。 */}
+        <Script
           src="https://cloud.umami.is/script.js"
           data-website-id="f320f8ce-75b4-46db-a25a-b04879571563"
+          strategy="afterInteractive"
         />
       </head>
       <body className="min-h-full antialiased">
