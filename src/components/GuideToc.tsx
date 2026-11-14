@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import type { TocItem } from "@/lib/toc";
 
 type Props = {
@@ -14,11 +14,48 @@ type Props = {
     noResults: string;
     nav: string;
   };
+  /**
+   * Start collapsed when the viewport is at or below this width.
+   * Desktop stays open. Used by article pages so the same TOC
+   * can sit in a side column and fold down on a phone.
+   */
+  collapseBelow?: number;
 };
 
-export function GuideToc({ items, labels }: Props) {
+function useMaxWidth(maxPx?: number) {
+  const query = maxPx ? `(max-width: ${maxPx}px)` : "";
+
+  const subscribe = useCallback(
+    (onStoreChange: () => void) => {
+      if (!query) return () => {};
+      const mq = window.matchMedia(query);
+      mq.addEventListener("change", onStoreChange);
+      return () => mq.removeEventListener("change", onStoreChange);
+    },
+    [query],
+  );
+
+  const getSnapshot = useCallback(
+    () => (query ? window.matchMedia(query).matches : false),
+    [query],
+  );
+
+  const getServerSnapshot = useCallback(() => false, []);
+
+  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+}
+
+export function GuideToc({ items, labels, collapseBelow }: Props) {
   const [activeId, setActiveId] = useState<string>(items[0]?.id ?? "");
-  const [hidden, setHidden] = useState(false);
+  const narrow = useMaxWidth(collapseBelow);
+  const [manualHidden, setManualHidden] = useState<boolean | null>(null);
+  const [prevNarrow, setPrevNarrow] = useState(narrow);
+  if (narrow !== prevNarrow) {
+    setPrevNarrow(narrow);
+    setManualHidden(null);
+  }
+
+  const hidden = manualHidden ?? (collapseBelow != null && narrow);
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState("");
   const searchRef = useRef<HTMLInputElement>(null);
@@ -30,26 +67,33 @@ export function GuideToc({ items, labels }: Props) {
   }, [items, query]);
 
   useEffect(() => {
-    const headings = items
-      .map((item) => document.getElementById(item.id))
-      .filter(Boolean) as HTMLElement[];
+    let frame = 0;
 
-    if (!headings.length) return;
+    function sync() {
+      // The heading that has most recently crossed the upper third is
+      // the one being read. A scroll listener catches jumps that an
+      // intersection observer misses when a heading skips the band.
+      const line = window.innerHeight * 0.32;
+      let current = items[0]?.id ?? "";
+      for (const item of items) {
+        const el = document.getElementById(item.id);
+        if (!el) continue;
+        if (el.getBoundingClientRect().top <= line) current = item.id;
+      }
+      if (current) setActiveId(current);
+    }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        if (visible[0]?.target.id) {
-          setActiveId(visible[0].target.id);
-        }
-      },
-      { rootMargin: "-20% 0px -60% 0px", threshold: [0, 0.25, 0.5, 1] },
-    );
+    function onScroll() {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(sync);
+    }
 
-    headings.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+    sync();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, [items]);
 
   useEffect(() => {
@@ -76,7 +120,7 @@ export function GuideToc({ items, labels }: Props) {
       if (e.key === "/" && !e.metaKey && !e.ctrlKey && !e.altKey) {
         if (isTypingTarget(e.target) && e.target !== searchRef.current) return;
         e.preventDefault();
-        setHidden(false);
+        setManualHidden(false);
         setSearchOpen(true);
         requestAnimationFrame(() => searchRef.current?.focus());
         return;
@@ -95,7 +139,7 @@ export function GuideToc({ items, labels }: Props) {
 
       if (e.key === "h" || e.key === "H") {
         if (e.target === searchRef.current) return;
-        setHidden((v) => !v);
+        setManualHidden(!hidden);
         return;
       }
 
@@ -125,7 +169,7 @@ export function GuideToc({ items, labels }: Props) {
 
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [activeId, filtered, items, query, searchOpen]);
+  }, [activeId, filtered, hidden, items, query, searchOpen]);
 
   if (!items.length) return null;
 
@@ -136,14 +180,22 @@ export function GuideToc({ items, labels }: Props) {
   }
 
   return (
-    <aside className={`guide-toc ${hidden ? "is-hidden" : ""}`}>
+    <aside
+      className={[
+        "guide-toc",
+        hidden ? "is-hidden" : "",
+        !hidden && narrow ? "is-user-open" : "",
+      ]
+        .filter(Boolean)
+        .join(" ")}
+    >
       <div className="guide-toc-controls">
         <span>{labels.tree}</span>
         <div className="guide-toc-actions">
           <button
             type="button"
             onClick={() => {
-              setHidden(false);
+              setManualHidden(false);
               setSearchOpen((v) => !v);
               requestAnimationFrame(() => searchRef.current?.focus());
             }}
@@ -152,7 +204,7 @@ export function GuideToc({ items, labels }: Props) {
           >
             /
           </button>
-          <button type="button" onClick={() => setHidden((v) => !v)}>
+          <button type="button" onClick={() => setManualHidden(!hidden)}>
             {hidden ? labels.show : labels.hide}
           </button>
         </div>
