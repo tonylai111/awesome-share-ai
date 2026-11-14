@@ -17,7 +17,9 @@
     "p1": "写了七年代码，现在把时间花在 AI 上：做内容、搭系统，帮人把热闹的演示变成真能干活的 Agent 工作流。常驻深圳，运营公众号「Tony 的茶馆」。",
     "p2": "工作偏 Claude，日常靠 OpenClaw。也摸量化管线、本地大模型，顺带学日语 JLPT N2。信条：能动嘴就不动手——让 Agent 替你把流程跑通。",
     "ctaArticles": "阅读文章",
-    "ctaGuides": "浏览指南"
+    "ctaGuides": "浏览指南",
+    "portraitAlt": "Tony 的近照",
+    "portraitCaption": "深圳 · 跑步 · 搭建 · Agent"
   },
   "about": {
     "title": "关于我",
@@ -167,6 +169,8 @@
     "minRead": "{minutes} 分钟阅读",
     "wordCount": "{count}",
     "empty": "暂无文章。",
+    "distribution": "分类占比",
+    "mixCount": "{count} 篇 · {percent}%",
     "share": "分享",
     "copied": "已复制链接",
     "newer": "较新",
@@ -272,5 +276,8 @@
     "submitting": "提交中...",
     "success": "订阅成功！感谢关注。",
     "error": "订阅失败，请稍后重试。"
+  },
+  "code": {
+    "scrollHint": "横滑 →"
   }
 }

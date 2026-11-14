@@ -38,7 +38,6 @@ export default async function ArticlesPage({
         articles={articles}
         locale={locale as Locale}
         labels={{
-          all: t("all"),
           categories: {
             ai: t("categories.ai"),
             quant: t("categories.quant"),
