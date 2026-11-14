@@ -48,7 +48,9 @@ function readCollection<T extends { slug: string }>(
         "date" in a.meta ? String((a.meta as { date: string }).date) : "";
       const dateB =
         "date" in b.meta ? String((b.meta as { date: string }).date) : "";
-      return dateB.localeCompare(dateA);
+      const byDate = dateB.localeCompare(dateA);
+      if (byDate !== 0) return byDate;
+      return a.meta.slug.localeCompare(b.meta.slug);
     });
 }
 
@@ -95,6 +97,33 @@ export function getGuides(): ContentDoc<GuideMeta>[] {
 
 export function getArticle(slug: string): ContentDoc<ArticleMeta> | undefined {
   return getArticles().find((doc) => doc.meta.slug === slug);
+}
+
+/** Newer article (prev) and older article (next), by publish date. */
+export function getArticleNeighbors(slug: string): {
+  prev?: ArticleMeta;
+  next?: ArticleMeta;
+} {
+  const articles = getArticles().map((doc) => doc.meta);
+  const index = articles.findIndex((article) => article.slug === slug);
+  if (index < 0) return {};
+  return { prev: articles[index - 1], next: articles[index + 1] };
+}
+
+/** Other pieces in the same category, skipping the current article and its neighbors. */
+export function getRelatedArticles(slug: string, limit = 3): ArticleMeta[] {
+  const articles = getArticles().map((doc) => doc.meta);
+  const index = articles.findIndex((article) => article.slug === slug);
+  if (index < 0) return [];
+  const current = articles[index];
+  const skip = new Set(
+    [slug, articles[index - 1]?.slug, articles[index + 1]?.slug].filter(
+      (value): value is string => Boolean(value),
+    ),
+  );
+  return articles
+    .filter((article) => article.category === current.category && !skip.has(article.slug))
+    .slice(0, limit);
 }
 
 /** 小说章节，按阅读顺序（order 升序）排列 */

@@ -166,7 +166,14 @@
     },
     "minRead": "{minutes} min read",
     "wordCount": "{count}",
-    "empty": "No articles yet."
+    "empty": "No articles yet.",
+    "share": "Share",
+    "copied": "Link copied",
+    "newer": "Newer",
+    "older": "Older",
+    "sameDay": "Same day",
+    "related": "Related reading",
+    "pagerLabel": "More articles"
   },
   "works": {
     "breadcrumbHome": "Home",

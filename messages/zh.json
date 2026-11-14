@@ -166,7 +166,14 @@
     },
     "minRead": "{minutes} 分钟阅读",
     "wordCount": "{count}",
-    "empty": "暂无文章。"
+    "empty": "暂无文章。",
+    "share": "分享",
+    "copied": "已复制链接",
+    "newer": "较新",
+    "older": "较旧",
+    "sameDay": "同日",
+    "related": "相关阅读",
+    "pagerLabel": "前后文章"
   },
   "works": {
     "breadcrumbHome": "首页",
