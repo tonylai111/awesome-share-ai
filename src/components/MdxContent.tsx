@@ -1,5 +1,6 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
+import { CodeBlock } from "@/components/CodeBlock";
 import { slugify } from "@/lib/toc";
 
 type Props = {
@@ -47,6 +48,7 @@ function createHeadingComponents() {
         <table {...props} />
       </div>
     ),
+    pre: (props: React.ComponentProps<"pre">) => <CodeBlock {...props} />,
   };
 }
 

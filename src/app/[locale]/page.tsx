@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { SubscribeWidget } from "@/components/SubscribeWidget";
@@ -27,9 +28,19 @@ export default async function HomePage({
           {t("ctaGuides")}
         </Link>
       </div>
-      <div className="home-visual" aria-hidden>
-        <div className="home-visual-caption">Shenzhen · Run · Build · Agent</div>
-      </div>
+      <figure className="home-portrait">
+        <Image
+          src="/avatar.png"
+          alt={t("portraitAlt")}
+          width={512}
+          height={512}
+          priority
+        />
+        <figcaption>
+          <span className="home-portrait-name">Tony</span>
+          <span className="home-portrait-meta">{t("portraitCaption")}</span>
+        </figcaption>
+      </figure>
       <div className="page-widgets">
         <SubscribeWidget />
       </div>

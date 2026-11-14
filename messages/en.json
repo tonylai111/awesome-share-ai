@@ -17,7 +17,9 @@
     "p1": "Seven years shipping software; now mostly on AI — content, systems, and agent workflows that turn demos into work that actually runs. Based in Shenzhen; I publish 「Tony's Tea House」.",
     "p2": "Claude for deep work; OpenClaw for daily loops. Also exploring quant pipelines, local LLMs, and Japanese (JLPT N2). Motto: if an agent can do it, don't do it by hand.",
     "ctaArticles": "Read writing",
-    "ctaGuides": "Browse guides"
+    "ctaGuides": "Browse guides",
+    "portraitAlt": "Portrait of Tony",
+    "portraitCaption": "Shenzhen · Run · Build · Agent"
   },
   "about": {
     "title": "About",
@@ -167,6 +169,8 @@
     "minRead": "{minutes} min read",
     "wordCount": "{count}",
     "empty": "No articles yet.",
+    "distribution": "Category mix",
+    "mixCount": "{count} · {percent}%",
     "share": "Share",
     "copied": "Link copied",
     "newer": "Newer",
@@ -272,5 +276,8 @@
     "submitting": "Sending...",
     "success": "You’re in. Thanks for following along.",
     "error": "Couldn’t subscribe. Please try again in a moment."
+  },
+  "code": {
+    "scrollHint": "scroll →"
   }
 }
